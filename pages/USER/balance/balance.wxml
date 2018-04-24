@@ -1,0 +1,42 @@
+<view class="wrap">
+  <view class="balance_info"> 
+    <!-- <image src="../../../images/balance_bgc.png"></image> -->
+    <view class="img"></view> 
+    <view class="info">
+      <text>{{userInfo.user_money}}</text>
+      <text>可用余额</text>
+    </view>
+  </view>
+  <view class="list_wrap">
+    <navigator url="/pages/USER/balanceExport/balanceExport">
+      <view class="list">
+        <view class="left">
+          <view class="name">申请提现</view>
+        </view>
+        <view class="icon_jump" style="width: 14rpx; height: 27rpx;">
+          <image src="../../../images/icon_jump_small.png" />
+        </view>
+      </view>
+    </navigator>
+    <navigator url="/pages/USER/balanceList/balanceList">
+      <view class="list">
+        <view class="left">
+          <view class="name">提现记录</view>
+        </view>
+        <view class="icon_jump" style="width: 14rpx; height: 27rpx;">
+          <image src="../../../images/icon_jump_small.png" />
+        </view>
+      </view>
+    </navigator>
+    <navigator url="/pages/USER/editPassword/editPassword">
+      <view class="list">
+        <view class="left">
+          <view class="name">设置/修改支付密码</view>
+        </view>
+        <view class="icon_jump" style="width: 14rpx; height: 27rpx;">
+          <image src="../../../images/icon_jump_small.png" />
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

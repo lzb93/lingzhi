@@ -1,0 +1,35 @@
+<view class="wrap">
+ 
+  <view class="content_ul" style="padding-top: 0;">
+    <view class="content_li_wrap" wx:for="{{items}}"wx:key>
+      <view class="order_sn">
+        <text>订单编号：{{item.order_sn}}</text>
+        <text>{{item.status_name}}</text>
+      </view>
+      <!-- <navigator url="/pages/USER/orderDetial/orderDetial?order_id={{item.order_id}}"> -->
+        <view class="content_li clearfix"  >
+          <view class="img">
+            <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+          </view>
+          <view class="con">
+            <view class="tit tx_ov2">{{item.goods_name}}</view>
+            <!-- <view class="isbaoy">{{item.spec_key_name}}</view> -->
+            <view class="msg">
+              <text>￥{{item.refund_deposit}}</text>
+              <text></text>
+              <text>x {{item.goods_num}}</text>
+            </view>
+          </view>
+        </view>
+      <!-- </navigator> -->
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据</view>
+  </view>
+
+</view>

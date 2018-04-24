@@ -1,0 +1,4 @@
+<view class="distri_bution">
+  <image src="../../../images/distribution_01.jpg" mode="widthFix"></image>
+</view>
+<view class="distri_info">{{distriInfo}}</view>

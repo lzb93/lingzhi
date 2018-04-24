@@ -1,0 +1,77 @@
+<view class="wrap">
+  <view class="userinfo_wrap">
+    <view class="userinfo">
+      <view class="img">
+        <image src="{{userInfo.avatarUrl}}" />
+      </view>
+      <view class="info">
+        <view class="name"> {{userInfo.nickName}}
+        <!-- <image src='../../../images/bianji.png' style='width:31rpx;height:31rpx;display: inline-block;margin-left:15rpx;'></image> -->
+        </view>
+        <view class="name" wx:if="{{!userInfo}}" catchtap="login">登录</view>
+        <view class="sex">
+          <!-- <text>{{userInfo.gender == 1 ? '男' : (userInfo.gender == 2 ? '女': '')}}</text> -->
+          <view>
+            <image wx:if="{{userInfo.gender == 1}}" src="../../../images/sex_boy.png" />
+            <image wx:if="{{userInfo.gender == 2}}" src="../../../images/sex_girl.png" />
+          </view>
+        </view>
+        <!-- <navigator class="balance" url="/pages/USER/balance/balance">
+          <text>{{userInfo.user_money}}</text>
+          <text>余额</text>
+        </navigator> -->
+        <view class="kefu_wrap">
+          <image src="../../../images/icon_kefu_02.png"></image>
+          <!-- <contact-button 
+          type="default-light" 
+          size="20"
+          session-from="weapp"> -->
+        <!-- </contact-button> -->
+          
+          <button open-type="contact"></button>
+        </view>
+      </view>
+      <!-- <view class="icon_jump">
+        <image src="../../../images/icon_jump_white.png" />
+      </view> -->
+    </view>
+  </view>
+
+  <view class="list_wrap" style="padding-bottom: 0;">
+    <navigator url="/pages/USER/order/order">
+      <view class="list" style="border-bottom: 0;">
+        <view class="left">
+          <view class="name">全部订单</view>
+        </view>
+        <view class="right">查看全部订单</view>
+        <view class="icon_jump" style="width: 14rpx; height: 27rpx;">
+          <image src="../../../images/icon_jump_small.png" />
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="order_wrap">
+    <view class="order" wx:for="{{waitItems}}" wx:key="{{index}}" data-target="{{item.target}}" bindtap="jumpOrder">
+      <view class="icon">
+        <image src="../../../images/{{item.icon}}" />
+      </view>
+      <text>{{item.text}}</text>
+    </view>
+  </view>
+  <view class="list_wrap">
+    <navigator wx:for="{{jumpItems}}" wx:key="{{index}}" url="{{item.target}}">
+      <view class="list">
+        <view class="left">
+          <view class="icon">
+            <image src="../../../images/{{item.icon}}" />
+          </view>
+          <view class="name">{{item.name}}</view>
+        </view>
+        <view class="icon_jump">
+          <image src="../../../images/icon_jump_small.png" />
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+</view>

@@ -1,0 +1,94 @@
+<view>
+  <view class="address_wrap">
+    <view class="top">
+      <text>{{result.consignee}}</text>
+      <text>{{result.mobile}}</text>
+    </view>
+    <!-- <view class="bottom tx_ov2">{{result.total_address}}</view> -->
+    <view class="bottom tx_ov2">{{result.province}} {{result.city}} {{result.district}} {{result.address}}</view>
+    
+  </view>
+
+  <view class="content_ul">
+    <view class="content_li_wrap">
+      <view class="content_li clearfix" wx:for="{{result.goods_list}}" wx:key>
+        <view class="img">
+          <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+        </view>
+        
+        <view class="con">
+          <view class="tit tx_ov2">{{item.goods_name}}</view>
+          <view class="isbaoy">{{item.spec_key_name}}</view>
+          <navigator url="/pages/USER/refund/refund?order_id={{item.order_id}}&rec_id={{item.rec_id}}">
+            <button wx:if="{{result.order_status_code === 'WAITCCOMMENT'}}" class="weui-btn mini-btn" type="default" size="mini" style="width: 210rpx;">申请售后</button>
+          </navigator>
+          <view class="msg">
+            <text>￥{{item.goods_price}}</text>
+            <text>￥{{item.market_price}}</text>
+            <text>x {{item.goods_num}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="aside">
+        <view class="top">共计{{result.goods_list.length}}件商品 合计：￥{{result.total_amount}}（含运费￥{{result.shipping_price}}）</view>
+        <view class="bottom">
+          <text>实付款：</text>
+          <text class="active">￥{{result.total_amount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="prduct_info_wrap">
+    <view><text>订单状态：</text>{{result.order_status_desc}} </view>
+    <view><text selectable>订单编码：</text>{{result.order_sn}} <text class="copy" bindtap="copy" data-order_sn="{{result.order_sn}}">复制</text></view>
+    <view><text>下单时间：</text>{{result.add_time}}</view>
+    <view><text>收货人：</text>{{result.consignee}}</view>
+    <view><text>配送方式：</text>{{result.shipping_name}}</view>
+    <view><text>运 费：</text>{{result.shipping_price}}</view>
+    <view><text>商品金额：</text>{{result.goods_price}}</view>
+    <view><text>留言：</text>{{result.user_note}}</view>
+  </view>
+
+  <view class="footer">
+    <!-- <text>联系卖家</text> -->
+    <!-- 待支付 -->
+    <block wx:if="{{result.order_status_code === 'WAITPAY'}}">
+      <text bindtap="cancelOrder">取消订单</text>
+      <navigator url="/pages/CART/payment/payment?orderId={{result.order_id}}" style="height: 100%;">
+        <text class="bg_black">立即支付</text>
+      </navigator>
+    </block>
+    <!-- 待发货 -->
+    <block wx:if="{{result.order_status_code === 'WAITSEND'}}">
+      <text bindtap="cancelOrder">撤销订单</text>
+      <!-- <text><contact-button type="default-light" size="20" session-from="weapp">联系卖家</contact-button></text> -->
+    </block>
+    <!-- 待收货-->
+    <block wx:if="{{result.order_status_code === 'WAITRECEIVE'}}">
+      <!-- <navigator url="/pages/USER/refund/refund?order_id={{result.order_id}}" style="height: 100%;">
+        <text>我要退款</text>
+      </navigator> -->
+        <!-- <text>查看物流</text> -->
+        <text><contact-button type="default-light" size="20" session-from="weapp">联系卖家</contact-button></text>
+        <text class="bg_black" bindtap="confirm">确认收货</text>
+      </block>
+    <!-- 已取消 -->
+    <block wx:if="{{result.order_status_code === 'CANCEL'}}">
+      <text bindtap="delOrder" data-order_id="{{result.order_id}}">删除订单</text>
+    </block>
+    <!-- 待评价 -->
+    <block wx:if="{{result.order_status_code === 'WAITCCOMMENT'}}">
+      <view class="call"><contact-button type="default-light" size="40" session-from="weapp"></contact-button>联系卖家</view>
+    </block>
+    <!-- <text>删除订单</text>
+    <navigator url="/pages/USER/refund/refund">
+      <text>我要退款</text>
+    </navigator>
+    <navigator url="/pages/USER/logistics/logistics">
+      <text>查看物流</text>
+    </navigator> -->
+
+  </view>
+
+</view>

@@ -1,0 +1,53 @@
+/* pages/customer/customer.wxss */
+.talkbox{
+  margin:26rpx;
+  font-size: 30rpx;
+}
+.talkbox_item{
+  width: 100%;
+  float:left;
+  margin-bottom: 20rpx;
+}
+.talkbox_header{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+}
+.talkbox_list2 .talkbox_header{
+  float: right;
+}
+.talkbox_list2 .talkbox_list{
+  float: left;
+}
+.talkbox_list{
+  margin: 25rpx 0 0;
+	-webkit-box-shadow:0 4rpx 5rpx 3rpx rgba(80,80,80,0.27);
+  -moz-box-shadow:0 4rpx 5rpx 3rpx rgba(80,80,80,0.27);
+  box-shadow:0 4rpx 5rpx 3rpx rgba(80,80,80,0.27);
+  float:right;
+  width:535rpx;
+  position: relative;
+  padding:20rpx;
+  border-radius: 8rpx;
+}
+.talkbox_list1 .talkbox_list{
+  background: #333;
+  color: #fff;
+}
+.talkbox_list2 .talkbox_list{
+  background: #fff;
+}
+.talkbox_list .talkbox_icon{
+  position: absolute;
+  top: 8rpx;
+  width: 15rpx;
+  height: 20rpx;
+}
+.talkbox_list1 .talkbox_icon{
+  left:-14rpx;
+}
+.talkbox_list2 .talkbox_icon{
+  right: -14rpx;
+}

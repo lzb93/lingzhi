@@ -1,0 +1,87 @@
+<view class="wrap">
+  <view class="navbar_wrap">
+    <view wx:for="{{contents}}" class="{{active == item.type ? 'active' : ''}}" wx:key="{{index}}" data-type="{{item.type}}"
+      bindtap="tabNavbar">{{item.text}}</view>
+  </view>
+
+  <!-- <view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view> -->
+  <view class="content_ul">
+    <view class="content_li_wrap" wx:for="{{items}}" wx:for-item="parentItem" wx:key>
+      <view class="order_sn">
+        <text>订单编号：{{parentItem.order_sn}}</text>
+        <text>{{parentItem.order_status_desc}}</text>
+      </view>
+      <navigator url="/pages/USER/orderDetial/orderDetial?order_id={{parentItem.order_id}}">
+        <view class="content_li clearfix" wx:for="{{parentItem.goods_list}}" wx:key >
+          <view class="img">
+            <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+          </view>
+          <view class="con">
+            <view class="tit tx_ov2">{{item.goods_name}}</view>
+            <view class="isbaoy">{{item.spec_key_name}}</view>
+            <view class="msg">
+              <text>￥{{item.goods_price}}</text>
+              <text>￥{{item.market_price}}</text>
+              <text>x {{item.goods_num}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+      <view class="aside">
+        <view class="top">共计{{parentItem.goods_list.length}}件商品 合计：￥{{parentItem.total_amount}}（含运费￥{{parentItem.shipping_price}}）</view>
+        <view class="bottom" >
+        <!-- wx:if="{{parentItem.order_status_code !== 'WAITCCOMMENT'}}" -->
+          <!-- 待支付 -->
+          <block wx:if="{{parentItem.order_status_code === 'WAITPAY'}}">
+            <text bindtap="cancelOrder" data-order_id="{{parentItem.order_id}}" data-order_status_code="WAITPAY">取消订单</text>
+            <navigator url="/pages/CART/payment/payment?orderId={{parentItem.order_id}}">
+              <text class="active">立即付款</text>
+            </navigator>
+          </block>
+          <!-- 待发货 -->
+          <block wx:if="{{parentItem.order_status_code === 'WAITSEND'}}">
+            <text bindtap="cancelOrder" data-order_id="{{parentItem.order_id}}" data-order_status_code="WAITSEND">撤销订单</text>
+            <!-- <text>查看物流</text> -->
+            <!-- <text bindtap="call">联系客服</text> -->
+          </block>
+          <!-- 待收货 -->
+          <block wx:if="{{parentItem.order_status_code === 'WAITRECEIVE'}}">
+            <!-- <navigator url="/pages/USER/refund/refund?order_id={{parentItem.order_id}}">
+              <text>我要退款</text>
+            </navigator> -->
+            <!-- <text>查看物流</text> -->
+            <!-- <text bindtap="call">联系客服</text> -->
+            <text  class="active" bindtap="confirm" data-order_id="{{parentItem.order_id}}">确认收货</text>
+          </block>
+          <!-- 已完成 -->
+          <block wx:if="{{parentItem.order_status_code === 'COMMENTED'}}">
+            <text  class="active">确认收货</text>
+            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+          </block>
+          <!-- 已取消 -->
+          <block wx:if="{{parentItem.order_status_code === 'CANCEL'}}">
+            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+          </block>
+          <!-- 待评价 -->
+          <block wx:if="{{parentItem.order_status_code === 'WAITCCOMMENT'}}">
+            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+            <text  class="active" bindtap="pinJia" data-order_id="{{parentItem.order_id}}">评价</text>
+          </block>
+      
+          
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据</view>
+  </view>
+
+</view>

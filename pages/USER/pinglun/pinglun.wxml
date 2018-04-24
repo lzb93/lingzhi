@@ -1,0 +1,21 @@
+<!--pages/USER/pinglun/pinglun.wxml-->
+<view class='weui-cell weui-cell_access'>
+  <view class='weui-cell__hd'><image src='../../../images/test.png' class='shophead'></image></view>
+  <view class='weui-cell__bd'>213</view>
+  <view class='weui-cell__ft'>222</view>
+</view> 
+<view class='weui-cell' style='display:block;'>
+<textarea placeholder='请输入你的评价'></textarea>
+<view class='imgul'>
+  <image class='imgli' src='../../../images/test.png'></image>
+  <image class='imgli' src='../../../images/test.png'></image>
+  <image class='imgli' src='../../../images/test.png'></image>
+  <image class='imgli' src='../../../images/test.png'></image>
+  <image class='imgli' src='../../../images/test.png'></image>
+  <image class='imgli' src='../../../images/test.png'></image>
+</view>
+<image src='../../../images/icon_addaddress.png' bindtap='uploadimg' style='width:150rpx;height:150rpx;'></image>
+
+<button bindtap='' class='footer'>发布评论</button>
+
+</view>

@@ -1,0 +1,46 @@
+<view style="padding-bottom: 140rpx;">
+  <view class="form_wrap" style="margin-bottom: 120rpx;">
+    <view class="list">
+      <text>类型</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <input value="{{array[index]}}" disabled="1" type="text" placeholder="" />
+      </picker>
+      <view class="icon_down">
+        <image mode="widthFix" src="../../../images/icon_down_f.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <text>备注</text>
+      <textarea placeholder="可在此补充说明" maxlength="90" />
+    </view>
+    <view class="list">
+      <text>图片</text>
+      <view class="icon_camera" bindtap="chooseImage">
+        <image src="../../../images/icon_camera.png" mode="widthFix" />
+      </view>
+    </view>
+    <view class="list">
+      <text></text>
+      <view class="image_ul">
+        <view>
+          <image src="../../../images/test.png" mode="widthFix" />
+          <icon type="clear" size="20" />
+        </view>
+        <view>
+          <image src="../../../images/test.png" mode="widthFix" />
+          <icon type="clear" size="20" />
+        </view>
+        <view>
+          <image src="../../../images/test.png" mode="widthFix" />
+          <icon type="clear" size="20" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text>确定</text>
+    <text>取消</text>
+  </view>
+
+</view>

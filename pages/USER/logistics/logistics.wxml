@@ -1,0 +1,42 @@
+<view style="padding-bottom: 140rpx;">
+  <view class="info_wrap">
+    <view class="left">
+      <image mode="widthFix" src="../../../images/icon_edit.png" />
+      <text>1件商品</text>
+    </view>
+    <view class="right">
+      <view>物流状态：
+        <text class="blue">未签收</text>
+        <text class="green">已签收</text>
+      </view>
+      <view>承运来源：中通快运 </view>
+      <view>运单编号：58562356 </view>
+    </view>
+  </view>
+
+  <view class="logistic_wrap">
+    <view class="tit">本数据由于
+      <text>是范德萨发的</text>提供</view>
+    <view class="con_wrap">
+      <view class="con_ul">
+        <view class="con_li">
+          <view class="icon"><image mode="widthFix" src="../../../images/icon_logistic_t.png" /></view>
+          <view class="msg tx_ov2">已签收，签收人撒地方第三方似懂非懂撒发生地方电商防守打法是否啥地方撒旦放散撒发生地方电商防守打法是否啥地方撒旦放散撒发生地方电商防守打法是否啥地方撒旦放散阀</view>
+          <text>2017/05/30 15:20:10</text>
+        </view>
+        <view class="con_li">
+          <view class="icon"><image mode="widthFix" src="../../../images/icon_logistic_f.png" /></view>
+          <view class="tx_ov2">已签收，签收人撒地方第三方似懂非</view>
+          <text>2017/05/30 15:20:10</text>
+        </view>
+        <view class="con_li">
+            <view class="icon"><image mode="widthFix" src="../../../images/icon_logistic_f.png" /></view>
+          <view class="tx_ov2">已签收，签收人撒地方第三方似懂非懂撒发生地方电商防守打法是否啥地方撒旦放散阀</view>
+          <text>2017/05/30 15:20:10</text>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+</view>

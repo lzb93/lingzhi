@@ -1,0 +1,97 @@
+/* pages/USER/coupon/coupon.wxss */
+.navbar_wrap {position: fixed; top: 0; padding: 0 26rpx; width: 100%; left: 0; z-index: 2; display: flex; justify-content: space-between; height: 90rpx; background-color:#fff;}
+.navbar_wrap view {display:flex; width: 20%; justify-content: center; align-items: center; color: #a1a5a6;font-size: 28rpx;}
+.navbar_wrap view.active {color: #1EBC72; border-bottom: 1rpx solid #1EBC72;}
+
+
+/* 券 */
+.content_ul{
+  padding: 25rpx;
+  width: 100%;
+  height: auto;
+  margin-top:80rpx;
+
+  
+}
+.content_li_wrap{
+  width: 100%;
+  margin-top: 20rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+  height: 247rpx;
+
+}
+.content_li_left{
+  width: 70%;
+  float: left;
+  height: 100%;
+  padding: 20rpx 5rpx 20rpx  20rpx;
+  border-right:1px dashed #EFEFF4;
+  position: relative;
+}
+.yuan{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 0;
+  z-index: 99;
+  border-radius: 100%;
+  background: #EFEFF4;
+
+}
+.y-top{
+  top: 0;
+  margin-right: -15rpx;
+  margin-top: -15rpx;
+
+}
+.y-btm{
+  bottom: 0;
+  margin-right: -15rpx;
+  margin-bottom: -15rpx;
+  
+}
+.left-head{
+  width: 84rpx;
+  display:inline-block;
+  float: left;
+  margin-bottom: 40rpx;
+
+}
+
+.left-tit{
+  font-size: 28rpx;
+  line-height: 84rpx;
+  padding-left: 10rpx;
+}
+.left-hui{
+  width:95%;
+  overflow: hidden;
+  font-size:24rpx;
+  color:#B3B1B2;
+
+}
+
+.content_li_right{
+  width: 30%;
+  float: right;
+  text-align: center;
+  line-height: 123rpx;
+  padding:20rpx;
+
+}
+.right-btn{
+  width: 148rpx;
+  height: 46rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  border: 1px solid #FF9E14;
+  margin:auto;
+
+
+}
+.fz46{font-size: 46rpx;}
+.guoqi .huang{
+  color: #FF9E14;
+}

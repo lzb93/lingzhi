@@ -1,0 +1,92 @@
+<!--index.wxml-->
+<view style="padding-bottom: 140rpx;" wx:if="{{true}}">
+  <view class='top_bianji' bindtap='bianji' hidden='{{isbianJi? false:true}}'>编辑</view>
+   <view class='top_bianji'  bindtap='wancheng' hidden='{{isbianJi? true:false}}'>完成</view> 
+  <view class="content_ul">
+    <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}" data-index="{{index}}" bindtouchstart="start" bindtouchmove="move"
+      bindtouchend="end" style="{{item.txtStyle}}">
+      <view class="checked" bindtap="checked" data-index="{{index}}">
+        <icon wx:if="{{item.selected == 1}}" type="success" size="20" color="#1EBC72"></icon>
+        <icon wx:else type="circle" size="20" color="#a3a3a3"></icon>
+      </view>
+      <view class="img">
+        <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}" hover-class="navigator-hover">
+          <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+        </navigator>
+      </view>
+      <view class="con">
+        <view class="tit tx_ov2">
+           <navigator class='w80' url="/pages/TYPE/detail/detail?target={{item.goods_id}}" hover-class="navigator-hover">{{item.goods_name}} </navigator>
+           <view class='w20' bindtap="coupondk"  data-goods="{{item.goods_id}}">领券</view>
+        </view>
+
+        <view class="isbaoy tx_ov">{{item.spec_key_name}}</view>
+        <view class="msg">
+          <text>￥{{item.goods_price}}</text>
+          <view class="control_num_wrap">
+            <view catchtap="subtract" data-index="{{index}}">－</view>
+            <input type="number" value="{{item.goods_num}}" maxlength="{{2}}" bindinput="onblur" data-index="{{index}}"/>
+            <view catchtap="add" data-index="{{index}}">＋</view>
+          </view>
+        </view>
+      </view>
+      <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+    </view>
+  </view>
+
+  <view class="footer" wx:if="{{!isNomore}}">
+    <view class="all_checked" bindtap="checkedAll">
+        <icon wx:if="{{isChecked}}" type="success" size="20" color="#1EBC72"></icon>
+        <icon wx:else type="circle" size="20" color="#a3a3a3"></icon>
+        全选
+    </view>
+    <!-- 结算按钮 -->
+    <block wx:if='{{isbianJi? true:false}}'>
+    <view class="total_num">合计：<text>￥{{total_price.total_fee}}</text></view>
+    <view class="btn" bindtap="settlement">结算({{checkedLen}})</view>
+    </block>
+
+    <block wx:else>
+    <view class="btn btnhui">加入收藏夹</view>
+    <view class="btn" catchtap="del">删除</view>
+    </block>
+   <!-- 结算按钮end -->
+  </view>
+</view>
+
+<view class="nomore_wrap" wx:if="{{isNomore}}">
+  <view class="icon_nomore"><image src="../../../images/icon_cart_nomore.png" mode="widthFix"></image></view>
+  <view class="tipls">购物车暂无商品</view>
+  <view class="btn">
+    <navigator url="/pages/HOME/home/home" open-type="switchTab">
+      <button class="weui-btn mini-btn" type="default" size="mini" style="width: 180rpx;">去逛逛</button>
+    </navigator>
+  </view>
+</view>
+
+
+<!-- 优惠券 -->
+<view class="coupon_warp {{iscouPon?'':'none'}}"  >
+   <view class='con_bom'>
+      <view class='cou_head'>
+        领取优惠券
+      </view>
+
+      <scroll-view class='coupon_ul'>
+        <!-- li -->
+        <view class='coupon_li'>
+           <view class='coupon_li_lf'>
+              <view class='hong'><text class='fz46'>10</text>元</view>
+              <view class='fz28'>订单满199元可用（不包含邮费）</view>
+              <view class='fz26'>使用有效日期：2018.03.13-2018.04.23</view>
+           </view>
+           <view class='coupon_li_lr'>
+             <view class='btn_lq'  bindtap="couponlingqu">领取</view>
+           </view>
+        </view>
+        
+
+      </scroll-view>
+      <view class='cou_gb'  bindtap="coupongb">关闭</view>
+   </view>
+</view>

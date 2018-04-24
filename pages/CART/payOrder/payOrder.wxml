@@ -1,0 +1,74 @@
+<view style="padding-bottom: 140rpx;">
+  <navigator url="/pages/USER/address/address?from=payOrder">
+    <view class="address_wrap" wx:if="{{addressList}}">
+      <view class="top">
+        <text>{{addressList.consignee}}</text>
+        <text>{{addressList.mobile}}</text>
+      </view>
+      <view class="bottom tx_ov2">{{addressList.province}} {{addressList.city}} {{addressList.district}} {{addressList.address}}</view>
+      <view class="icon">
+        <image src="../../../images/icon_jump.png"></image>
+      </view>
+    </view>
+    <view wx:else class="address_wrap">
+      <view class="icon_add">
+        <image src="../../../images/icon_addaddress.png" />
+      </view>
+      <view class="text_add">新增地址</view>
+      <view class="icon">
+        <image src="../../../images/icon_jump.png"></image>
+      </view>
+    </view>
+  </navigator>
+
+  <view class="content_ul">
+    <view class="content_li clearfix" wx:for="{{items}}" wx:key>
+      <view class="img">
+        <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+      </view>
+      <view class="con">
+        <view class="tit tx_ov2">{{item.goods_name}}</view>
+        <view class="isbaoy tx_ov">{{item.spec_key_name}}</view>
+        <view class="msg">
+          <text>￥{{item.goods_price}}</text>
+          <text></text>
+          <text>x {{item.goods_num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tipls_wrap">
+    <!-- <view class="list" bindtap='openPeiSong'>
+      <view class="left">
+        <view class="name">运费：{{1111}}</view>
+      </view>
+    </view> -->
+    <view class="list" bindtap='openPeiSong'>
+      <view class="left">
+        <view class="name">配送方式</view>
+      </view>
+      <view class="right">{{peiSong.name}}{{peiSong.postFee ? ('￥' + peiSong.postFee) : '包邮'}}</view>
+      <view class="icon_jump" style="width: 14rpx; height: 27rpx;">
+        <image src="../../../images/icon_jump_small.png" />
+      </view>
+    </view>
+    <!-- <view class="leave_msg">
+      <text>使用余额：</text>
+        <input type="text" placeholder="可用余额{{userInfo.user_money}}（选填）" value="{{balance === 0 ? '' : balance}}" bindblur="useBalance" maxlength="6" type="number"/>
+    </view> -->
+    <view class="leave_msg">
+      <text>卖家留言：</text>
+      <!-- <textarea placeholder="请输入对卖家的留言" maxlength="50" bindblur="getleavemsg"/> -->
+      <input type="text" value="{{user_note}}" bindchange="leaveMsgBlur" maxlength="50" placeholder="请输入对卖家的留言" />
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="all_checked">共{{totalPrice.num}}件商品</view>
+    <view class="total_num">合计：
+      <text>￥{{totalPrice.total_fee}}</text>
+    </view>
+    <view class="btn" bindtap="save">提交订单</view>
+  </view>
+</view>

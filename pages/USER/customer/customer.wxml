@@ -1,0 +1,18 @@
+<view class="talkbox">
+  <view class="talkbox_item talkbox_list1">
+    <image src="../../../images/icon3.jpg" class="talkbox_header"></image>
+    <view class="talkbox_list"><image src="../../../images/icon_horn_t.png" class="talkbox_icon"></image>{{talkInfo}}</view>
+  </view>
+  <view class="talkbox_item talkbox_list2">
+    <image src="../../../images/icon4.jpg" class="talkbox_header"></image>
+    <view class="talkbox_list"><image src="../../../images/icon_horn_f.png" class="talkbox_icon"></image>{{talkInfo1}}</view>
+  </view>
+  <view class="talkbox_item talkbox_list1">
+    <image src="../../../images/icon3.jpg" class="talkbox_header"></image>
+    <view class="talkbox_list"><image src="../../../images/icon_horn_t.png" class="talkbox_icon"></image>{{talkInfo2}}</view>
+  </view>
+  <view class="talkbox_item talkbox_list2">
+    <image src="../../../images/icon4.jpg" class="talkbox_header"></image>
+    <view class="talkbox_list"><image src="../../../images/icon_horn_f.png" class="talkbox_icon"></image>{{talkInfo3}}</view>
+  </view>
+</view>

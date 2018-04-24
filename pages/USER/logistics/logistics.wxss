@@ -1,0 +1,27 @@
+.info_wrap {padding: 22rpx 26rpx; background-color: #fff; display: flex;}
+.info_wrap .left {position: relative; width: 140rpx; height: 140rpx; margin-right: 24rpx; border: 1rpx solid #c4c4c4; overflow: hidden;}
+.info_wrap .left text {position: absolute; width: 100%; bottom: 0; text-align: center; height: 30rpx; line-height: 30rpx; color: #fff; background-color: rgba(0,0,0,0.8);} 
+.info_wrap .right {height: 140rpx; display: flex; flex: 1; align-content: space-around; flex-wrap: wrap;}
+.info_wrap .right view {width: 100%;}
+.info_wrap .right view text {}
+.info_wrap .right view text.bule {color: #1b87f6;}
+.info_wrap .right view text.green {color: #26ad60;}
+
+.logistic_wrap {margin: 26rpx 0 100rpx;}
+.logistic_wrap .tit {margin-bottom: 2rpx; height: 68rpx; line-height: 68rpx; padding: 0 26rpx; background-color: #fff;}
+.logistic_wrap .tit text {color: #1b87f6;}
+.logistic_wrap .con_wrap {background-color: #fff; padding: 0 26rpx 0 40rpx; }
+.logistic_wrap .con_wrap .con_ul {border-left: 1rpx solid #cacaca;}
+.logistic_wrap .con_wrap .con_li {position: relative; border-bottom: 1rpx solid #cacaca; margin-left: 55rpx; padding: 22rpx 0;}
+.logistic_wrap .con_wrap .con_li .icon {position: absolute; top: 50%; z-index: 9; transform: translateY(-50%); left: -70rpx; width: 31rpx; height: 31rpx;}
+.logistic_wrap .con_wrap .con_li .msg {color: #8a8a8a;}
+.logistic_wrap .con_wrap .con_li text {color: #8a8a8a;}
+.logistic_wrap .con_wrap .con_li:nth-child(1) .msg,
+.logistic_wrap .con_wrap .con_li:nth-child(1) text {color: #26ad60;}
+
+.logistic_wrap .con_wrap .con_li:nth-child(1):before {content: ''; position: absolute; top: 0; left: -70rpx; width: 31rpx; background-color:#fff; height: 50%;}
+.logistic_wrap .con_wrap .con_li:last-child:before {content: ''; position: absolute; bottom: 0; left: -70rpx; width: 31rpx; background-color:#fff; height: 50%;}
+
+/* .logistic_wrap .con_wrap .con_li:last-child {background: red;} */
+/* .logistic_wrap .con_wrap .con_li.active view, 
+.logistic_wrap .con_wrap .con_li.active text {color: #26ad60;} */

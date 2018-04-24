@@ -1,0 +1,139 @@
+navigator {width: 100%; height: 100%;}
+.navbar_wrap {position: fixed; top: 0; width: 100%; left: 0; z-index: 9; display: flex; height: 88rpx; background-color: #fff;}
+.navbar_ul {display: flex; width: 100%; padding: 0 26rpx; height: 90rpx; justify-content: space-between; font-size: 32rpx;}
+.navbar_ul view {display:flex; align-items: center; justify-content: center; width: 100rpx; border-bottom: 1px solid #fff; box-sizing: border-box;}
+.navbar_ul view.active {border-color: #E72839; color: #E72839;}
+
+.content_wrap {position: absolute; top: 90rpx; width: 100%; height: calc(100% - 90rpx); overflow: hidden;}
+.content_ul { width: 100%; overflow: hidden;}
+.content_ul .content_li {position: relative; padding: 20rpx 26rpx;margin-bottom: 22rpx; background-color: #fff;}
+.content_ul .checked {float: left; margin-right: 22rpx;line-height:202rpx;}
+
+.content_ul .content_li .img {float: left; width: 180rpx; height: 180rpx;}
+.content_ul .content_li .img image {width: 100%; height: 100%;}
+.content_ul .content_li .con {
+  float: right; width: 428rpx; 
+  /* border-bottom: 1px solid #c4c4c4; */
+  }
+.content_li .con .tit {height: 85rpx;}
+.w80{width: 80%;display: inline-block}.w20{width: 20%;text-align: center;display: inline-block;float:right;color: #1EBC72
+}
+
+.content_li .con .isbaoy {width: 100%; height: 36rpx; margin-top: 5rpx; word-spacing: 0.6em; font-size: 24rpx; color: #a3a3a3;}
+.content_li .con .msg {display: flex; margin: 15rpx 0 10rpx; justify-content: space-between; align-items: baseline;}
+.content_li .con .msg text:nth-child(1) {color: #E72839; font-size: 30rpx; vertical-align: bottom;}
+
+.control_num_wrap {display: flex; width: 180rpx; height: 48rpx; justify-content: space-between;}
+.control_num_wrap view,
+.control_num_wrap input {display: flex; justify-content: center; align-items: center; box-sizing: border-box; border: 1px solid #c4c4c4; border-radius: 3rpx; color: #c4c4c4;}
+.control_num_wrap view {width: 57rpx; font-size: 40rpx;}
+.control_num_wrap input {width: 62rpx; min-height: 100% !important; height: 100%; font-size: 28rpx; text-align: center; color: #2a2a2a;}
+
+.content_li .del {width: 100rpx; height: 100%; position: absolute; top: 0; color:#fff; display: flex; justify-content: center; align-items: center; right: -100rpx; text-align: center; background: #E72839;}
+
+.footer {position: fixed; bottom: 0; z-index: 9; width: 100%; display: flex; justify-content: space-between; height: 88rpx; background-color: #fff; border-top: 1rpx solid #c4c4c4; border-bottom: 1rpx solid #c4c4c4;}
+.footer .all_checked {display: flex; margin-left: 26rpx; justify-content: center; align-items: center;}
+.footer .all_checked icon {margin-right: 26rpx;}
+.footer .total_num {display: flex; margin-right: -5em; justify-content: center; align-items: center;}
+.footer .total_num text {color: #E72839;}
+.footer .btn {display: flex; width: 240rpx; background-color: #1EBC72; justify-content: center; align-items: center; font-size: 34rpx; color: #fff;}
+
+.nomore_wrap {}
+.nomore_wrap .icon_nomore {width: 250rpx; margin: 0 auto; padding-top: 200rpx;}
+.nomore_wrap view {text-align: center;}
+.nomore_wrap .tipls {margin-top: 30rpx; color: #a3a3a3;}
+.nomore_wrap .btn {margin-top: 30rpx;}
+
+/* xiugai */
+.top_bianji{
+  height: 85rpx;
+  width: 100%;
+  text-align: right;
+  font-size: 30rpx;
+  color: #B3B1B2;
+  padding: 20rpx;
+
+}
+
+.coupon_warp{
+display:flex;
+align-items:flex-end;
+position:fixed;
+width:100%;
+height:100%;
+left:0;
+top:0;
+z-index:99;
+background-color:rgba(0,0,0,0.7);
+}
+.con_bom{
+  height:70%; 
+position:relative;
+width:100%;
+background-color:#EFEFF4;
+
+}
+.cou_head{
+  padding: 24rpx;
+  font-size:34rpx; 
+}
+.cou_gb{
+  width: 100%;
+  height: 90rpx;
+  background: #CDCDCD;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 90rpx;
+  position: absolute;
+  bottom: 0;
+
+}
+.coupon_ul{
+
+}
+.coupon_li{
+    background: #FFFFFF;
+    padding: 24rpx; 
+
+}
+.coupon_li_lf{
+
+}
+.fz46{
+  font-size: 46rpx;
+}
+.fz28{
+  font-size: 28rpx;
+  color: #01000F;
+
+}
+.fz26{
+  font-size: 26rpx;
+  color:#969696;
+}
+.hong{
+  color: #E93342;
+}
+.coupon_li_lr{
+  width:25%;
+  position:absolute;
+  right:0;
+  margin-top:-100rpx;
+
+
+}
+.btn_lq{
+  width: 144rpx;
+  border: 1px solid #EFEFF4;
+  border-radius: 8rpx;
+  height: 76rpx;
+  text-align: center;
+  line-height: 76rpx;
+  font-size: 32rpx;
+}
+.footer .btnhui{
+  margin-right:-140rpx;
+  background: #dcdcdc;
+
+}

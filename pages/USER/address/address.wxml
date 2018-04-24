@@ -1,0 +1,37 @@
+<view style="padding-bottom: 140rpx;">
+  <view wx:if="{{isEmpty}}" class="nomore_wrap">
+    <view>
+      <image src="../../../images/nomore_address.png"></image>
+    </view>
+    <text>一个地址都没有快去添加吧</text>
+  </view>
+  <view wx:else class="wrap">
+    <view wx:if="{{true}}" class="address_wrap" wx:for="{{addressItems}}" wx:key>
+      <view class="top" bindtap="checkedAds" data-index="{{index}}">
+        <text>{{item.consignee}}</text>
+        <text>{{item.mobile}}</text>
+      </view>
+      <view class="bottom tx_ov2" bindtap="checkedAds" data-index="{{index}}">{{item.province}} {{item.city}} {{item.district}} {{item.address}}</view>
+      <view class="action_wrap">
+        <view class="checked" catchtap="checked" data-index="{{index}}">
+          <icon wx:if="{{item.is_default}}" type="success" size="20" color="#1EBC72"></icon>
+          <icon wx:else type="circle" size="20" color="#1EBC72"></icon>
+          <text>设为默认</text>
+        </view>
+        <view class="edit" catchtap="edit" data-index="{{index}}">
+          <image src="../../../images/icon_edit.png"></image>
+        </view>
+        <view class="del" catchtap="del" data-id="{{item.address_id}}">
+          <image src="../../../images/icon_del.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer" bindtap="jumpEdit">
+    <view>
+      <image src="../../../images/icon_addaddress1.png"></image>
+    </view>
+    <text>添加地址</text>
+  </view>
+</view>

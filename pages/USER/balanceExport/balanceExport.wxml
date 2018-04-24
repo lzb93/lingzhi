@@ -1,0 +1,34 @@
+
+<view style="padding-bottom: 140rpx;">
+  <view class="list_wrap">
+    <form bindsubmit="save">
+      <view class="list">
+        <text>提现金额</text>
+        <input name="money" value="" type="number" placeholder="可提现金额{{userInfo.user_money}}" maxlength="8"></input>
+      </view>
+      <view class="list">
+        <text>银行名称</text>
+        <input name="bank_name" value="" type="text" placeholder="如建设银行，支付宝，微信" maxlength="10"></input>
+      </view>
+      <view class="list">
+        <text>收款账号</text>
+        <input name="account_bank" value="" type="number" placeholder="收款人账号" maxlength="20"></input>
+      </view>
+      <view class="list">
+        <text>收款人</text>
+        <input name="account_name" value="" type="text" placeholder="收款人姓名" maxlength="4"></input>
+      </view>
+      <view class="list">
+        <text>支付密码</text>
+        <input name="paypwd" value="" type="password" placeholder="支付密码" maxlength="30"></input>
+      </view>
+      <!-- <view class="list">
+        <text>验证码</text>
+        <input name="verify_code" value="" type="text" placeholder="验证码" maxlength="6"></input>
+        <view class="verify_code" bindtap=""><image mode="widthFix" src="{{verifyCode}}"></image></view>
+      </view> -->
+      <button class="footer" formType="submit">提交申请</button>
+    </form>
+  </view>
+  <!-- <button formType="submit">Submit</button> -->
+</view>

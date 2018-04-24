@@ -1,0 +1,15 @@
+<view>
+  <view class="payment_info">
+    <view>
+      <text>订单号：</text>
+      <text class="mark">{{result.order_sn}}</text>
+    </view>
+    <view>
+      <text>订单金额：</text>
+      <text class="mark">{{result.order_amount}}元</text>
+    </view>
+  </view>
+  <view>
+    <button bindtap="submit" class="weui-btn mini-btn" type="primary" size="default" style="width: 80%; margin-top: 100rpx; background-color: #1EBC72;">立即支付</button>
+  </view>
+</view>

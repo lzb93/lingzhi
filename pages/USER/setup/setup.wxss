@@ -1,0 +1,7 @@
+.list_wrap {background-color: #fff; padding: 0 0 0 26rpx; padding-bottom: 100rpx;}
+.list {position: relative; border-bottom: 1rpx solid #c4c4c4; height: 88rpx; display: flex; justify-content: space-between; align-items: center;}
+.list .left {display: flex; align-items: center;}
+.list .left .icon {width: 38rpx; height: 38rpx; margin-right: 14rpx;}
+.list .left .name {font-size: 32rpx;}
+.list .right {margin-right: 66rpx; color: #9c9c9c;}
+.list .icon_jump {position: absolute; right: 26rpx; width: 16rpx; height: 28rpx; top: 50%; transform: translateY(-50%);}

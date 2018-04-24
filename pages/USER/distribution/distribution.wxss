@@ -1,0 +1,7 @@
+.distri_bution image{
+  width: 100%;
+}
+.distri_info{
+  padding: 20rpx;
+  font-size: 30rpx;
+}

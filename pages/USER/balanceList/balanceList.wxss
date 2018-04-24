@@ -1,0 +1,5 @@
+.list_wrap {}
+.list_wrap .list {margin-bottom: 16rpx; background-color: #fff;}
+.list_wrap .list .top {display: flex; justify-content: space-between; align-items: center; height: 112rpx; padding: 0 26rpx; border-bottom: 1px solid #c4c4c4;}
+.list_wrap .list .bottom {padding: 0 26rpx; height: 80rpx; display: flex; justify-content: space-between; align-items: center; color: #b8b8b8;}
+

@@ -1,0 +1,13 @@
+<view class="marginRow">
+  <view class="service_link"><navigator url="/pages/USER/customer/customer">{{service}}<image src="../../../images/icon_jump.png"></image></navigator></view>
+  <view class="service_link"><navigator url="/pages/USER/customer/customer">{{servicea}}<image src="../../../images/icon_jump.png"></image></navigator></view>
+  <view class="help_contact buy-btn cart-btn" bindtap="openSpecModel">{{contact}}</view>
+</view>
+
+<!-- 规格弹框  -->
+<view hidden="{{!openSpecModal}}" class="layer-hidden">
+    <view class="cover-layer" bindtap="closeSpecModal">
+      <icon type="clear" color="#333" size="30"/>
+    </view>
+    <view class="cover_kefu">0592-88888888</view>
+</view>

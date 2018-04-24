@@ -1,0 +1,23 @@
+<view>
+  <view class="list_wrap">
+    <navigator url="/pages/USER/order/order?target=all">
+      <view class="list">
+        <view class="left">
+          <view class="name">关于我们</view>
+        </view>
+        <!-- <view class="right">全部</view> -->
+        <view class="icon_jump" style="width: 14rpx; height: 27rpx;">
+          <image src="../../../images/icon_jump_small.png" />
+        </view>
+      </view>
+    </navigator>
+    <navigator url="/pages/USER/order/order?target=all">
+      <view class="list">
+        <view class="left">
+          <view class="name">退出账户</view>
+        </view>
+        <view class="right"></view>
+      </view>
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,102 @@
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<view style="padding-bottom: 140rpx;">
+  <view class="">
+    <swiper class="loop_wrap" indicator-dots="1" autoplay="1" interval="5000" duration="500">
+      <block wx:for="{{gallery}}" wx:key>
+        <swiper-item>
+          <image src="{{item.image_url}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="con_wrap">
+      <view class="value">￥{{goods.shop_price}} <text class="value2">￥{{goods.market_price}}</text></view>
+      <view class="name tx_ov2">{{goods.goods_name}}</view>
+      <view class="kuaidi">{{goods.is_free_shipping ? '快递：免运费': ''}} </view>
+      <view class="kuaidi tc">销量{{goods.sales_sum}}笔</view>
+      <view class="kuaidi tr">库存（2018件） </view>
+      
+    </view>
+  </view>
+
+  <view class="prudct_info_tit">
+    <view class="{{activeDetail == 0 ? 'active':''}}" bindtap="tabDetail" data-index="{{0}}" >商品详情</view>
+     <view class="{{activeDetail == 1 ? 'active':''}}" bindtap="tabDetail" data-index="{{1}}">宝贝评价</view> 
+  </view>
+  <view class="prudct_info_con">
+    <block wx:if="{{activeDetail == 0}}">
+      <!-- <view wx:for="{{gallery}}" wx:key>
+        <image src="{{item.image_url}}" mode="widthFix"></image>
+      </view> -->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </block>
+    <block wx:if="{{activeDetail == 1}}">
+      <!-- 评论 -->
+      <view class="pinlun_ul" wx:for="{{pinlun}}" wx:key>
+        <view class='pinlun-li'>
+          <image src='{{item.img}}' class="pinlun-head" style='height:60rpx;width:60rpx;'></image>
+          <view><text class='times'>{{item.times}}</text></view>
+          <view class='pinlun-text'>{{item.text}}</view>
+          <view class='plli-img' >
+               <image src='{{item}}' wx:for="{{item.textimg}}" mode="widthFix" wx:key></image>
+          </view>
+        </view>
+   
+      </view>
+    </block>
+  </view>
+  <view class="footer">
+    <view class="kefu" bindtap="collect">
+      <image src="../../../images/fhindex.png"></image>
+      <text>首页</text>
+    </view>
+    <view class="kefu">
+      <image src="../../../images/icon_kefu.png"></image>
+      <text>客服</text>
+      <contact-button 
+      type="default-light" 
+      size="60"
+      session-from="weapp">
+    </contact-button>
+    </view>
+    <view class="kefu" bindtap="collect">
+      <image src="../../../images/{{goods.is_collect ? 'icon_collect_t.png' : 'icon_collect_f.png'}}"></image>
+      <text>收藏</text>
+    </view>
+    <view class="jiaru" bindtap="openPopou" data-ins="addcart">加入购物车</view>
+    <view class="btn" bindtap="openPopou" data-ins="buy">立即购买</view>
+  </view>
+
+  <view class="popou_wrap mask {{isShowPopou?'':'none'}}" catchtap="closePopou">
+    <view class="con" catchtap="stopPopou">
+      <view class="img">
+        <image src="{{specs.imgUrl}}"></image>
+      </view>
+      <view class="value">￥{{specs.price}}</view>
+      <view class="kucun">库存 {{specs.store_count}} 件</view>
+      <view class="guige_wrap">
+        <block wx:for="{{goods_spec_list}}" wx:for-item="specItem" wx:for-index="specIndex" wx:key>
+          <view class="model_wrap">
+            <view class="model_tit">{{specItem.spec_name}}</view>
+            <view class="model_con">
+              <text wx:for="{{specItem.spec_list}}" class="{{item.active == true ? 'active' : ''}}" bindtap="tabSpec" data-spec_index="{{specIndex}}"
+                data-index="{{index}}" wx:key>{{item.item}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="num_wrap">
+        <view class="num_tit">数量</view>
+        <view class="control_num_wrap">
+          <view bindtap="subtract">－</view>
+          <input type="number" value="{{specs.num}}" maxlength="{{2}}" bindinput="onblur" />
+          <view bindtap="add">＋</view>
+        </view>
+      </view>
+      <view class="btn_wrap">
+        <view bindtap="closePopou">取消</view>
+        <view bindtap="save">确定</view>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,63 @@
+<view style="position: relative;">
+    <!-- {{scrollTop > 10?'search_fixed':''}} -->
+  <!-- nav -->
+    <!-- <scroll-view class="" scroll-x bindscroll="scroll" scroll-left="0" scroll-with-animation="1">
+      <view class="navbar_ul scroll_ul">
+        <view class="active">123123</view>
+        <view class="">55555</view>
+        <view class="">123123</view>
+        <view class="">7777</view>
+        <view class="">7777</view>
+        <view class="">7777</view>
+      </view>
+    </scroll-view> -->
+
+
+  <view class="search_wrap "> 
+    <view class="left">
+      <view class="icon_search">
+        <image src="../../../images/icon_search.png"></image>
+      </view>
+      <input value="{{keyword}}" type="text" placeholder="商品搜索" placeholder-class="psection" confirm-type="search" maxlength="20" bindblur="onblur" bindinput="oninput"
+        bindfocus="onfocus" bindconfirm="search"></input>
+      <view class="icon_empt" wx:if="{{isEmpt}}" bindtap="empt">
+        <image src="../../../images/icon_empt.png"></image>
+      </view>
+    </view>
+    <view class="search" bindtap="search">搜索</view>
+  </view>
+
+  <swiper class="loop_wrap" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" circular="{{true}}" duration="{{1000}}" bindchange="onLoop">
+    <block wx:for="{{ad}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item.ad_code}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+<!-- 今日推荐 -->
+<view class='jinrituiji'>
+  <view class='nav-jrtj'>
+    <image src='../../../images/biaoti.png' mode="widthFix"></image>
+  </view>
+  <view class="hot_ul">
+      <view class="hot_li clearfix" wx:for="{{hot_goods}}" wx:key="{{index}}">
+        <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}" class="clearfix">
+          <view class="img"><image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}" class="slide-image" /></view>
+          <view class="info">
+            <view class="">[买二送一]</view>
+            <view class="name tx_ov2">{{item.goods_name}}</view>
+            <view class="price">
+              <text>￥{{item.shop_price}}</text>
+              <text class="fukuan fr">{{item.sales_sum}}人付款</text>
+            </view>
+            
+          </view>
+          </navigator>
+      </view>
+    </view>
+
+</view>
+
+
+</view>

@@ -1,0 +1,14 @@
+<view class="wrap">
+  <view class="list_wrap">
+    <view class="list" wx:for="{{items}}" wx:key>
+      <view class="top">
+        <text style="color: #333; font-size: 40rpx;">￥{{item.money}}</text>
+        <text style="color: {{item.status == '提现成功' ? '#e92839' : ''}}">{{item.status}}</text>
+      </view> 
+      <view class="bottom">
+        <text>编号：{{item.pay_code}}</text>
+        <text>{{item.create_time}}</text>
+      </view>   
+    </view>
+  </view>
+</view>

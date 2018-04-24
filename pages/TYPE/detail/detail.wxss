@@ -1,0 +1,100 @@
+@import "../../../utils/wxParse/wxParse.wxss";
+.loop_wrap {height: 750rpx;}
+.con_wrap {padding: 12rpx 24rpx; background-color: #fff; margin-bottom: 16rpx;}
+.con_wrap .name {font-size: 30rpx; color: #323232;}
+.con_wrap .value {font-size: 34rpx; font-weight: bold; color:#e9283d; margin: 4rpx 0;}
+.con_wrap .value2 {font-size: 26rpx; color: #b7b7b7; margin-left: 10rpx; text-decoration: line-through; font-weight: normal; margin-left: 20rpx;}
+.con_wrap .kuaidi {font-size: 24rpx; color: #a3a3a3; word-spacing: 1em; width: 33%;display: inline-block}
+
+.prudct_info_tit {display: flex; height: 88rpx; justify-content: space-between; background-color: #fff;}
+.prudct_info_tit view {display: flex; justify-content: center; align-items: center; width: 50%; font-size: 30rpx; color: #fff;background: #CDCDCD}
+.prudct_info_tit view.active { font-weight: bold;background: #1EBC72}
+.prudct_info_con {}
+/* .prudct_info_con view image {display: block; width: 100%; height: auto;} */
+.prudct_info_con .params_ul {padding: 0 26rpx;}
+.prudct_info_con .params_ul .params_li {display: flex; align-items: center; padding: 32rpx 0; border-bottom: 1rpx solid #c4c4c4; color: #656565;}
+.prudct_info_con .params_ul .params_li text {width: 160rpx; margin-right: 20rpx; color: #656565;}
+.prudct_info_con .params_ul .params_li view {color: #656565; display: flex; flex: 1; width: 100%; justify-content: center;}
+
+.footer {display: flex; justify-content: space-between; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; height: 98rpx;}
+.footer .kefu {position: relative; display: flex; flex: 1;flex-direction: column; align-items: center; margin-top: 12rpx;}
+.footer .kefu contact-button {position: absolute; opacity: 0; background: red; left: 50%; top: 50%; transform: translate3d(-50%, -60%, 0);}
+.footer .kefu image {width: 44rpx; height: 42rpx;}
+.footer .kefu text {font-size: 20rpx;color: #535457;}
+.footer .jiaru,
+.footer .btn {display: flex; justify-content: center; align-items: center; width: 240rpx; background-color: #dcdcdc; font-size: 34rpx; color: #fff;}
+.footer .btn {background-color: #1EBC72}
+
+.popou_wrap {display: flex; align-items: flex-end;}
+.popou_wrap .con {position: relative; width: 100%; background-color: #fff;}
+.popou_wrap .con .img {position: absolute; left: 26rpx; top: -100rpx; width: 200rpx; height: 200rpx; border-radius: 8rpx; border: 1rpx solid #333; overflow: hidden !important;}
+.popou_wrap .con .value {font-size: 34rpx; color: #e9283d; padding: 15rpx 0 0 248rpx;}
+.popou_wrap .con .kucun {font-size: 24rpx; color: #a3a3a3; padding-left: 248rpx;}
+.popou_wrap .con .guige_wrap {min-width: 100rpx; min-height: 50rpx;}
+.popou_wrap .con .model_wrap {display: flex; margin-left: 26rpx; padding-top: 16rpx; border-bottom: 1px solid #c4c4c4;}
+.popou_wrap .con .model_wrap .model_tit {width: 140rpx; line-height: 66rpx;}
+.popou_wrap .con .model_wrap .model_con {display: flex; flex-wrap: wrap; width: 100%;}
+.popou_wrap .con .model_wrap .model_con text {display: flex; justify-content: center; align-items: center; border: 1px solid #c4c4c4; border-radius: 6rpx; margin: 0 16rpx 16rpx 0; height: 66rpx; padding: 0 24rpx;}
+.popou_wrap .con .model_wrap .model_con text.active {color: #fff; background-color: #333;  border: 1px solid #333;}
+
+.popou_wrap .num_wrap {display: flex; justify-content: space-between; margin: 0 0 20rpx 26rpx; padding: 26rpx 26rpx 26rpx 0; border-bottom: 1px solid #c4c4c4;}
+.popou_wrap .num_wrap .num_tit {}
+.control_num_wrap {display: flex; width: 180rpx; height: 48rpx; justify-content: space-between;}
+.control_num_wrap view,
+.control_num_wrap input {display: flex; justify-content: center; align-items: center; box-sizing: border-box; border: 1px solid #c4c4c4; border-radius: 3rpx; color: #c4c4c4;}
+.control_num_wrap view {width: 57rpx; font-size: 40rpx;}
+.control_num_wrap input {width: 62rpx; min-height: 100% !important; height: 100%; font-size: 28rpx; text-align: center; color: #2a2a2a;}
+
+.btn_wrap {display: flex; height: 98rpx;}
+.btn_wrap view {display: flex; width: 50%; height: 100%; font-size: 32rpx; color: #fff; justify-content: center; align-items: center; background-color:#CDCDCD;}
+.btn_wrap view:nth-child(2) {background-color: #1EBC72;}
+
+
+/* 评论 */
+.pinlun_ul{
+
+}
+.pinlun-li{
+  background: #fff;
+  height: auto;
+  min-height: 200rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+
+}
+.pinlun-head{
+  border-radius:100%;
+  width: 120rpx;
+  height: 120rpx; 
+
+}
+.pinlun_ul .times{
+  color: #9D9D9D;
+  line-height:60rpx;
+}
+.pinlun-text{
+  font-size: 32rpx;
+  line-height:50rpx;
+
+}
+.plli-img{
+  display: inline-block;
+  
+  width: 100%;
+  height: auto
+}
+.plli-img image{
+  width:33.3333%;
+  box-sizing: border-box;
+  padding: 4rpx;
+  display: inline-block;
+  
+
+  
+
+  
+
+}
+.wxParse-img{
+  width: 100% !important;
+}

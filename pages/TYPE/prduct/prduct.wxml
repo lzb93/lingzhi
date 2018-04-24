@@ -1,0 +1,54 @@
+<!--index.wxml-->
+<!-- <import src="../../template/template.wxml" /> -->
+<view>
+  <view class="sortbar_wrap">
+    <view class="sortbar_ul">
+      <view class="{{activeSort == 0 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_default}}" data-index="0">综合</view>
+      <view class="{{activeSort == 1 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_sales_sum}}" data-index="1">销量</view>
+      <view class="{{activeSort == 2 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_price}}" data-index="2">价格
+        <image class="icon_sort" src="{{allData.sort != 'shop_price' ? '../../../images/icon_sort_d.png':(allData.sort_asc == 'asc' ? '../../../images/icon_sort_b.png' : '../../../images/icon_sort_t.png')}}"></image>
+      </view>
+      <view class="{{activeSort == 3 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_is_new}}" data-index="3">最新</view>
+    </view>
+  </view>
+  <view class="content_ul">
+    <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}">
+      <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}">
+        <view class="img">
+          <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+        </view>
+        <view class="con">
+          <view class="tit tx_ov2">{{item.goods_name}}</view>
+          <view class="isbaoy">包邮</view>
+          <view class="msg">
+            <text>￥{{item.shop_price}}</text>
+            <text>{{item.sales_sum}}人付款</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore && items.length > 0}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+
+  <view class="nomore_wrap" wx:if="{{isNoSearch}}">
+    <view class="icon_nomore">
+      <image src="../../../images/icon_cart_nomore.png" mode="widthFix"></image>
+    </view>
+    <view class="tipls">没有此商品</view>
+
+    <view class="btn">
+      <navigator url="/pages/HOME/home/home" open-type="switchTab">
+        <button class="weui-btn mini-btn" type="default" size="mini">再搜搜别的吧</button>
+      </navigator>
+    </view>
+  </view>
+
+</view>
