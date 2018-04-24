@@ -1,4 +1,4 @@
-import { cartList, delCart, getGoodscoupons } from '../../../services/API'
+import { cartList, delCart, getGoodscoupons, collectGoods } from '../../../services/API'
 import config from '../../../utils/config'
 const App = getApp()
 Page({
@@ -218,6 +218,25 @@ Page({
     this.setData({
       isbianJi: true
     })
+  },
+  // 加入收藏
+  collect() {
+    const is_collect = this.data.goods.is_collect ? 0 : 1
+    collectGoods({
+      goods_id: this.data.goods.goods_id,
+      type: is_collect,
+      user_id: App.userInfo.user_id
+    })
+      .then(({ status, result, msg }) => {
+        if (status === 1) {
+          let goods = this.data.goods
+          goods.is_collect = is_collect
+          if (is_collect) {
+            App.wxAPI.toast("已收藏")
+          }
+          this.setData({ goods })
+        }
+      })
   },
 
 })

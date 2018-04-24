@@ -139,7 +139,7 @@ export function getGoodsCollect(params) {
 }
 //优惠券列表   
 export function getGoodscoupons(params) {
-  return get(config.host + '/api/user/cart_coupons', params)
+  return get(config.host + '?m=api&c=Activity&a=coupon_list', params)
 }
 // 申请提现
 export function withdrawals(params) {

@@ -1,4 +1,4 @@
-import { getOrderList, cancelOrder1, cancelOrder2, orderConfirm, delOrder } from '../../../services/API.js'
+import {getGoodscoupons} from '../../../services/API.js'
 import { dalay } from '../../../utils/utils'
 const App = getApp()
 Page({
@@ -31,6 +31,8 @@ Page({
     })
     const type = e.target || ''
     this.setData({ active: type })
+
+    return getGoodscoupons({ type:0})
 
     // this.reset()
     // if (type){

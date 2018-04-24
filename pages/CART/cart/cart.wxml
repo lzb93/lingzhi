@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view style="padding-bottom: 140rpx;" wx:if="{{true}}">
-  <view class='top_bianji' bindtap='bianji' hidden='{{isbianJi? false:true}}'>编辑</view>
+   <view class='top_bianji' bindtap='bianji' hidden='{{isbianJi? false:true}}'>编辑</view>
    <view class='top_bianji'  bindtap='wancheng' hidden='{{isbianJi? true:false}}'>完成</view> 
   <view class="content_ul">
     <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}" data-index="{{index}}" bindtouchstart="start" bindtouchmove="move"
@@ -47,7 +47,7 @@
     </block>
 
     <block wx:else>
-    <view class="btn btnhui">加入收藏夹</view>
+    <!-- <view class="btn btnhui">加入收藏夹</view> -->
     <view class="btn" catchtap="del">删除</view>
     </block>
    <!-- 结算按钮end -->
