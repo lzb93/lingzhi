@@ -14,8 +14,8 @@
   <image class='imgli' src='../../../images/test.png'></image>
   <image class='imgli' src='../../../images/test.png'></image>
 </view>
-<image src='../../../images/icon_addaddress.png' bindtap='uploadimg' style='width:150rpx;height:150rpx;'></image>
+<image src='../../../images/icon_addaddress.png' bindtap='chooseImage' style='width:150rpx;height:150rpx;'></image>
 
-<button bindtap='' class='footer'>发布评论</button>
+<button bindtap='pinglunFabu' class='footer'>发布评论</button>
 
 </view>

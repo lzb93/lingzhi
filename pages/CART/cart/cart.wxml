@@ -1,7 +1,10 @@
 <!--index.wxml-->
 <view style="padding-bottom: 140rpx;" wx:if="{{true}}">
+   
    <view class='top_bianji' bindtap='bianji' hidden='{{isbianJi? false:true}}'>编辑</view>
    <view class='top_bianji'  bindtap='wancheng' hidden='{{isbianJi? true:false}}'>完成</view> 
+
+   <view class='top_bianji' bindtap='coupondk' style=' color: #1EBC72;'>领券</view>
   <view class="content_ul">
     <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}" data-index="{{index}}" bindtouchstart="start" bindtouchmove="move"
       bindtouchend="end" style="{{item.txtStyle}}">
@@ -16,8 +19,8 @@
       </view>
       <view class="con">
         <view class="tit tx_ov2">
-           <navigator class='w80' url="/pages/TYPE/detail/detail?target={{item.goods_id}}" hover-class="navigator-hover">{{item.goods_name}} </navigator>
-           <view class='w20' bindtap="coupondk"  data-goods="{{item.goods_id}}">领券</view>
+           <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}" hover-class="navigator-hover">{{item.goods_name}} </navigator>
+
         </view>
 
         <view class="isbaoy tx_ov">{{item.spec_key_name}}</view>
@@ -67,21 +70,22 @@
 
 <!-- 优惠券 -->
 <view class="coupon_warp {{iscouPon?'':'none'}}"  >
-   <view class='con_bom'>
+   <view class='con_bom' >
       <view class='cou_head'>
         领取优惠券
       </view>
 
       <scroll-view class='coupon_ul'>
         <!-- li -->
-        <view class='coupon_li'>
+        <view class='coupon_li'  wx:for="{{coupons}}" wx:key="{{index}}">
            <view class='coupon_li_lf'>
-              <view class='hong'><text class='fz46'>10</text>元</view>
-              <view class='fz28'>订单满199元可用（不包含邮费）</view>
-              <view class='fz26'>使用有效日期：2018.03.13-2018.04.23</view>
+              <view class='hong'><text class='fz46'>{{item.money}}</text>元</view>
+              <view class='fz28'>订单满{{item.condition}}元可用（不包含邮费）</view>
+              <view class='fz26'>使用有效日期：{{item.use_start_time}}-{{item.use_end_time}}</view>
+               <!-- <view class='fz26'>使用有效日期：2018.03.13-2018.04.23</view> -->
            </view>
            <view class='coupon_li_lr'>
-             <view class='btn_lq'  bindtap="couponlingqu">领取</view>
+             <view class='btn_lq'  bindtap="couponlingqu"  data-id="{{item.id}}">领取</view>
            </view>
         </view>
         

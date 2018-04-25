@@ -1,3 +1,5 @@
+
+@import '../cart/cart.wxss';
 .address_wrap {position: relative; display: flex; flex-wrap: wrap; padding: 20rpx 90rpx 20rpx 26rpx; margin-bottom: 16rpx; background-color: #fff; font-size: 34rpx;min-height:90rpx;}
 .address_wrap .top {display: flex; width: 100%; justify-content: space-between;}
 .address_wrap .bottom {}

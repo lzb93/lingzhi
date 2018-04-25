@@ -22,7 +22,8 @@ Page({
   chooseImage() {
     App.wxAPI.chooseImage()
     .then(({ tempFiles }) => {
-      return uploadFileQueue(App.host + '?m=Api&c=User&a=add_comment', tempFiles)
+      console.log(tempFiles)
+      return uploadFileQueue(App.host + '?m=api&c=User&a=upload_headpic', tempFiles)
     })
     .then(res => {
       console.log(res)

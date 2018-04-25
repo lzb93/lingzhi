@@ -8,22 +8,21 @@
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
   </view> -->
   <view class="content_ul">
-    <view class="content_li_wrap" >
+    <view class="content_li_wrap" wx:for="{{coupons}}" >
 
 
        <view class='content_li_left'>
            <view class='yuan y-top'></view> <view class='yuan y-btm'></view>       
            <view>
-              <image class='left-head' src='../../../images/icon4.jpg' mode='widthFix'></image>
-              <text class='left-tit'>舒泊尔专卖店</text>
+              <text class='left-tit'>{{item.name}}</text>
            </view>
-           <view class='left-hui'>满1000可用</view>
-           <view class='left-hui'>使用有效日期：2018.03.13-2018.04.23</view>
+           <view class='left-hui'>满{{item.condition}}可用</view>
+           <view class='left-hui'>使用有效日期：{{item.use_start_time}}-{{item.use_end_time}}</view>
 
        </view>
 
        <view class='content_li_right '>
-          <view class='right-text huang'>￥<text class='fz46'>100</text></view>
+          <view class='right-text huang'>￥<text class='fz46'>{{item.money}}</text></view>
           <view class='right-btn huang'>去使用</view>
           
 

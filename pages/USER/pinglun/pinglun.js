@@ -1,7 +1,7 @@
 // pages/USER/pinglun/pinglun.js
-import { orderDetail, cancelOrder1, cancelOrder2, orderConfirm, delOrder } from '../../../services/API.js'
+import { orderDetail, cancelOrder1, cancelOrder2, orderConfirm, delOrder, getGoodsaddcomment} from '../../../services/API.js'
 import { format } from '../../../utils/utils'
-import { uploadFileQueue } from '../../../utils/request'
+// import { uploadFileQueue } from '../../../utils/request'
 const App = getApp()
 Page({
 
@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tempFiles:[],
   
   },
 
@@ -22,7 +23,11 @@ Page({
   chooseImage() {
     App.wxAPI.chooseImage()
       .then(({ tempFiles }) => {
-        return uploadFileQueue(App.host + '?m=Api&c=User&a=add_comment', tempFiles)
+        this.setData({
+          tempFiles: tempFiles
+        })
+        console.log(tempFiles)
+        
       })
       .then(res => {
         console.log(res)
@@ -30,6 +35,11 @@ Page({
       .catch(e => {
         console.log(e)
       })
+  },
+  pinglunFabu() {
+    var ids={}
+
+    return getGoodsaddcomment({ ids });
   }
 
 

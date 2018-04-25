@@ -1,5 +1,6 @@
-import { cartList, delCart, getGoodscoupons, collectGoods } from '../../../services/API'
+import { cartList, delCart, getGoodscoupons, getGoodsgetcoupon, collectGoods } from '../../../services/API'
 import config from '../../../utils/config'
+import { format } from '../../../utils/utils'
 const App = getApp()
 Page({
   data: {
@@ -10,6 +11,7 @@ Page({
     disX: 0,
     host: config.host,
     items: [],
+    coupons:[],         //youhuiquan
     total_price: {},
     num: 1,
     checkedLen: 0,
@@ -189,17 +191,47 @@ Page({
 
   // 领券
   coupondk(e){
-    this.setData({
-      iscouPon: true
-    })
-    let goods = e.currentTarget.dataset.goods;
+   
+    // let goods = e.currentTarget.dataset.goods;    { store_id: goods }
     // 返回优惠券列表
-    return getGoodscoupons({ store_id: goods })
-    
-
+    return getGoodscoupons()
+      .then(({ status, result, msg }) => {
+        if (status === 1) {
+          result.forEach(item => {
+            item.use_start_time = format(item.use_start_time * 1000, 'yyyy-MM-dd');
+            item.use_end_time = format(item.use_end_time * 1000, 'yyyy-MM-dd');
+          })
+          this.setData({
+            iscouPon: true,
+            coupons: result
+          })
+        } else {
+          App.wxAPI.alert(msg)
+        }
+      })
+      .catch(e => {
+        App.wxAPI.alert(e)
+        // App.wxAPI.toast("暂时没有优惠券！")
+      })
   },
   couponlingqu(e) {
-    App.wxAPI.toast("领券成功")
+    let couponid = e.currentTarget.dataset.id;
+    return getGoodsgetcoupon({ id: couponid })
+      .then(res => {
+        if (status === 1) {
+          console.log(res)
+          App.wxAPI.toast("领券成功")
+        } else {
+          App.wxAPI.alert(msg)
+        }
+       
+      })
+      .catch(e => {
+        App.wxAPI.alert(e)
+
+        console.log(e)
+      })
+
 
   },
   coupongb(e) {

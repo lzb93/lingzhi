@@ -197,7 +197,7 @@ Page({
   pinJia(e) {
     const order_id = e.currentTarget.dataset.order_id
     wx.navigateTo({
-      url: "../opinion/opinion?order_id=" + order_id
+      url: "../pinglun/pinglun?order_id=" + order_id
     });
   },
 

@@ -60,7 +60,7 @@
 }
 
 .left-tit{
-  font-size: 28rpx;
+  font-size: 50rpx;
   line-height: 84rpx;
   padding-left: 10rpx;
 }

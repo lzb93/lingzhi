@@ -20,7 +20,7 @@ Page({
       console.log(e)
     })
   },
-  submit() {
+  submit(){
     doPay({ 
       order_sn: this.data.result.order_sn,
       account: this.data.result.order_amount,

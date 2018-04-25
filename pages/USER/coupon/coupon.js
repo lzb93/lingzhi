@@ -1,9 +1,10 @@
 import {getGoodscoupons} from '../../../services/API.js'
-import { dalay } from '../../../utils/utils'
+import { format } from '../../../utils/utils'
 const App = getApp()
 Page({
   data: {
     host: App.host,
+    coupons:[],
     contents: [
       {
         text: '未使用',
@@ -32,7 +33,30 @@ Page({
     const type = e.target || ''
     this.setData({ active: type })
 
-    return getGoodscoupons({ type:0})
+
+    // 返回优惠券列表
+    return getGoodscoupons({ type: 1 })
+      .then(({ status, result, msg }) => {
+
+        if (status === 1) {
+          result.forEach(item => {
+
+            item.use_start_time = format(item.use_start_time * 1000, 'yyyy.MM.dd');
+            item.use_end_time = format(item.use_end_time * 1000, 'yyyy.MM.dd');
+          })
+          console.log(12)
+          this.setData({
+            iscouPon: true,
+            coupons: result
+          })
+        } else {
+          App.wxAPI.alert(msg)
+        }
+      })
+      .catch(e => {
+        App.wxAPI.alert(e)
+        // App.wxAPI.toast("暂时没有优惠券！")
+      })
 
     // this.reset()
     // if (type){
