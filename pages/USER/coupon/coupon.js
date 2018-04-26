@@ -1,4 +1,4 @@
-import {getGoodscoupons} from '../../../services/API.js'
+import { getCouponList} from '../../../services/API.js'
 import { format } from '../../../utils/utils'
 const App = getApp()
 Page({
@@ -35,7 +35,7 @@ Page({
 
 
     // 返回优惠券列表
-    return getGoodscoupons({ type: 1 })
+    return getCouponList({ type: 0 })
       .then(({ status, result, msg }) => {
 
         if (status === 1) {
@@ -44,7 +44,7 @@ Page({
             item.use_start_time = format(item.use_start_time * 1000, 'yyyy.MM.dd');
             item.use_end_time = format(item.use_end_time * 1000, 'yyyy.MM.dd');
           })
-          console.log(12)
+          
           this.setData({
             iscouPon: true,
             coupons: result
@@ -92,11 +92,37 @@ Page({
       type = e.currentTarget.dataset.type
     }
     this.setData({ active: type })
+
+    return getCouponList({ type: e.currentTarget.dataset.index })
+      .then(({ status, result, msg }) => {
+
+        if (status === 1) {
+          result.forEach(item => {
+
+            item.use_start_time = format(item.use_start_time * 1000, 'yyyy.MM.dd');
+            item.use_end_time = format(item.use_end_time * 1000, 'yyyy.MM.dd');
+          })
+
+          this.setData({
+            iscouPon: true,
+            coupons: result
+          })
+        } else {
+          App.wxAPI.alert(msg)
+        }
+      })
+      .catch(e => {
+        App.wxAPI.alert(e)
+        // App.wxAPI.toast("暂时没有优惠券！")
+      })
     // this.getOrderList({
     //   user_id: this.data.user_id,
     //   type: type,
     //   p: this.data.p,
     // })
+  },
+  lingquan(){
+    wx.switchTab({ url: '/pages/CART/cart/cart'})
   }
 
 })

@@ -142,6 +142,11 @@ export function getGoodscoupons(params) {
   return get(config.host + '?m=api&c=Activity&a=coupon_list', params)
 }
 
+//优惠券-个人中心 
+export function getCouponList(params) {
+  return get(config.host + '?m=Api&c=User&a=getCouponList', params)
+}
+
 //优惠券领取 
 export function getGoodsgetcoupon(params) {
   return get(config.host + '?m=api&c=Activity&a=get_coupon', params)
@@ -152,6 +157,10 @@ export function getGoodsaddcomment(params) {
   return post(config.host + '?m=Api&c=User&a=add_comment', params)
 }
 
+//加载评论 
+export function getGoodsComment(params) {
+  return post(config.host + '?m=Api&c=Goods&a=getGoodsComment', params)
+}
 
 // 申请提现
 export function withdrawals(params) {

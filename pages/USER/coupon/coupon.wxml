@@ -1,6 +1,6 @@
 <view class="wrap">
   <view class="navbar_wrap">
-    <view wx:for="{{contents}}" class="{{active == item.type ? 'active' : ''}}" wx:key="{{index}}" data-type="{{item.type}}"
+    <view wx:for="{{contents}}" class="{{active == item.type ? 'active' : ''}}" wx:key="{{index}}" data-index="{{index}}" data-type="{{item.type}}"
       bindtap="tabNavbar">{{item.text}}</view>
   </view>
 
@@ -23,7 +23,7 @@
 
        <view class='content_li_right '>
           <view class='right-text huang'>￥<text class='fz46'>{{item.money}}</text></view>
-          <view class='right-btn huang'>去使用</view>
+          <view class='right-btn huang' bindtap='lingquan'>去使用</view> 
           
 
        </view>

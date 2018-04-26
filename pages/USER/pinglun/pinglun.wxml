@@ -1,20 +1,25 @@
 <!--pages/USER/pinglun/pinglun.wxml-->
 <view class='weui-cell weui-cell_access'>
-  <view class='weui-cell__hd'><image src='../../../images/test.png' class='shophead'></image></view>
-  <view class='weui-cell__bd'>213</view>
-  <view class='weui-cell__ft'>222</view>
+  <view class='weui-cell__hd'><image src='{{host}}/api/goods/goodsThumImages?goods_id={{goods_id}}' class='shophead'></image></view>
+  <view class='weui-cell__bd'>{{goods_list[0].goods_name}}</view>
+  <!-- <view class='weui-cell__ft'>{{item.goods_name}}</view> -->
 </view> 
-<view class='weui-cell' style='display:block;'>
-<textarea placeholder='请输入你的评价'></textarea>
+<view class='weui-cell' style='display:block;margin-bottom:200rpx;'>
+<textarea placeholder='请输入你的评价' bindblur="setpingjia" type="text"></textarea>
 <view class='imgul'>
-  <image class='imgli' src='../../../images/test.png'></image>
-  <image class='imgli' src='../../../images/test.png'></image>
-  <image class='imgli' src='../../../images/test.png'></image>
-  <image class='imgli' src='../../../images/test.png'></image>
-  <image class='imgli' src='../../../images/test.png'></image>
-  <image class='imgli' src='../../../images/test.png'></image>
+  <image class='imgli'  wx:for="{{tempFiles}}" wx:key src='{{item.path}}'></image>
 </view>
 <image src='../../../images/icon_addaddress.png' bindtap='chooseImage' style='width:150rpx;height:150rpx;'></image>
+
+<view class='weui-cell xingji' >
+  <view class='weui-cell__hd'>评价：</view>
+  <view class='weui-cell__bd' >
+      <image wx:for="{{xingji}}" wx:key src='{{item}}' bindtap='xingji' data-index="{{index}}" class='xingjiimg'></image>
+
+
+  </view>
+ 
+</view> 
 
 <button bindtap='pinglunFabu' class='footer'>发布评论</button>
 

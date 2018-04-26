@@ -206,7 +206,7 @@ Page({
             coupons: result
           })
         } else {
-          App.wxAPI.alert(msg)
+          App.wxAPI.alert(res.msg)
         }
       })
       .catch(e => {
@@ -216,13 +216,13 @@ Page({
   },
   couponlingqu(e) {
     let couponid = e.currentTarget.dataset.id;
-    return getGoodsgetcoupon({ id: couponid })
+    return getGoodsgetcoupon({ coupon_id: couponid })
       .then(res => {
         if (status === 1) {
-          console.log(res)
           App.wxAPI.toast("领券成功")
+          
         } else {
-          App.wxAPI.alert(msg)
+          App.wxAPI.alert(res.msg)
         }
        
       })

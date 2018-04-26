@@ -196,8 +196,10 @@ Page({
   },
   pinJia(e) {
     const order_id = e.currentTarget.dataset.order_id
+    const goods_list = JSON.stringify(e.currentTarget.dataset.goods_list)
+    console.log(goods_list)
     wx.navigateTo({
-      url: "../pinglun/pinglun?order_id=" + order_id
+      url: "../pinglun/pinglun?order_id=" + order_id +'&goods_list='+ goods_list
     });
   },
 

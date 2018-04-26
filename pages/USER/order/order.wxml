@@ -66,9 +66,10 @@
             <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
           </block>
           <!-- 待评价 -->
+          <!--  FINISH-->
           <block wx:if="{{parentItem.order_status_code === 'WAITCCOMMENT'}}">
             <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
-            <text  class="active" bindtap="pinJia" data-order_id="{{parentItem.order_id}}">评价</text>
+            <text  class="active" bindtap="pinJia" data-order_id="{{parentItem.order_id}}"  data-goods_list="{{parentItem.goods_list}}">评价</text>
           </block>
       
           

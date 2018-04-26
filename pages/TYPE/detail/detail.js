@@ -1,4 +1,4 @@
-import { goodsInfo, goodsContent, addCart, collectGoods } from '../../../services/API.js'
+import { goodsInfo, goodsContent, addCart, collectGoods, getGoodsComment } from '../../../services/API.js'
 import { dalay } from '../../../utils/utils'
 const WxParse = require('../../../utils/wxParse/wxParse.js')
 const App = getApp()
@@ -52,6 +52,19 @@ Page({
     // target = 1
     this.goodsInfo(target)
     this.goodsContent(target)
+
+    // 加载评论
+    return getGoodsComment({goods_id:target})
+      .then(({ status, result, msg }) => {
+        if (status === 1) {
+          this.setData({
+            pinlun: result
+          })
+
+        } else {
+          App.wxAPI.alert(msg)
+        }
+      })
     // var article = '&lt;p style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;/public/upload/goods/2016/03-09/56e01a6586cd0.jpg&quot; title=&quot;4.jpg&quot;/&gt;&lt;/p&gt;';
     
   },

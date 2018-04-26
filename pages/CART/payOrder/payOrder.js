@@ -1,4 +1,4 @@
-import { orderEdit, saveOrder, dopay, getGoodscoupons } from '../../../services/API'
+import { orderEdit, saveOrder, dopay, getCouponList } from '../../../services/API'
 import { format } from '../../../utils/utils'
 const App = getApp()
 Page({
@@ -90,7 +90,7 @@ Page({
       act: 'order_price',
       address_id: this.data.address_id,
       // user_money: this.data.balance,
-      cart_form_data: JSON.stringify({shipping_code: this.data.peiSong.shipping_code})
+      cart_form_data: JSON.stringify({ shipping_code: this.data.peiSong.shipping_code, coupon_id: this.data.promid})
       // cart_form_data: JSON.stringify({"shipping_code":"shentong","user_note":"","coupon_id":0,"couponCode":""})
     }
     saveOrder(params)
@@ -116,8 +116,9 @@ Page({
       act: 'submit_order', // order_price 为价格变动submit_order为提交订单
       address_id: this.data.address_id,
       // user_money: this.data.balance,
-      cart_form_data: JSON.stringify({ shipping_code: this.data.peiSong.shipping_code, user_note: this.data.user_note }),
-      order_prom_id: this.data.promid    //活动优惠ID
+      cart_form_data: JSON.stringify({
+        shipping_code: this.data.peiSong.shipping_code, user_note: this.data.user_note, coupon_id: this.data.promid }),
+
       // cart_form_data: JSON.stringify({"shipping_code":"shentong","user_note":"","coupon_id":0,"couponCode":""})
     }
     saveOrder(params)
@@ -141,7 +142,7 @@ Page({
   // 领券
   coupondk() { 
     // 返回优惠券列表
-    return getGoodscoupons()
+    return getCouponList()
       .then(({ status, result, msg }) => {
      
         if (status === 1) {
@@ -150,7 +151,6 @@ Page({
             item.use_start_time = format(item.use_start_time * 1000, 'yyyy-MM-dd');
             item.use_end_time = format(item.use_end_time * 1000, 'yyyy-MM-dd');
           })
-          console.log(12)
           this.setData({
             iscouPon: true,
             coupons: result
@@ -176,8 +176,9 @@ Page({
     this.setData({
       iscouPon: false,
       promid: promid,
-      coupons_mony:'优惠'+ money + '元'
+      coupons_mony:'优惠'+ money + '元' 
     })
+    this.change()
   }
 
 })

@@ -14,7 +14,7 @@
       <view class="kuaidi">{{goods.is_free_shipping ? '快递：免运费': ''}} </view>
       <view class="kuaidi tc">销量{{goods.sales_sum}}笔</view>
       <view class="kuaidi tr">库存（2018件） </view>
-      
+       
     </view>
   </view>
 
@@ -34,10 +34,10 @@
       <view class="pinlun_ul" wx:for="{{pinlun}}" wx:key>
         <view class='pinlun-li'>
           <image src='{{item.img}}' class="pinlun-head" style='height:60rpx;width:60rpx;'></image>
-          <view><text class='times'>{{item.times}}</text></view>
-          <view class='pinlun-text'>{{item.text}}</view>
+          <view><text class='times'>{{item.add_time}}</text></view>
+          <view class='pinlun-text'>{{item.content}}</view>
           <view class='plli-img' >
-               <image src='{{item}}' wx:for="{{item.textimg}}" mode="widthFix" wx:key></image>
+               <image src='{{item}}' wx:for="{{item.img}}" mode="widthFix" wx:key></image>
           </view>
         </view>
    
