@@ -49,7 +49,7 @@ export function auth() {
     return wxAPI.login()
   })
   .then((res) => {
-    return thirdLogin({ code: res.code, from: 'miniapp' })
+    return thirdLogin({ code: res.code, from: 'miniapp', head_pic: getApp().userInfo.avatarUrl})
   })
   .then(({ status, result, msg }) => {
     wxAPI.hideLoading()

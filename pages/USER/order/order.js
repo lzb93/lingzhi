@@ -22,8 +22,8 @@ Page({
         type: 'WAITRECEIVE'
       },
       {
-        text: '已完成',
-        type: 'COMMENTED',
+        text: '待评价',
+        type: 'WAITCCOMMENT',
       },
       // {
       //   text: '退款售后',

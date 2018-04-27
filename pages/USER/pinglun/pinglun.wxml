@@ -7,7 +7,7 @@
 <view class='weui-cell' style='display:block;margin-bottom:200rpx;'>
 <textarea placeholder='请输入你的评价' bindblur="setpingjia" type="text"></textarea>
 <view class='imgul'>
-  <image class='imgli'  wx:for="{{tempFiles}}" wx:key src='{{item.path}}'></image>
+  <image class='imgli' mode='aspectFit'  wx:for="{{tempFiles}}" wx:key src='{{item.path}}'></image>
 </view>
 <image src='../../../images/icon_addaddress.png' bindtap='chooseImage' style='width:150rpx;height:150rpx;'></image>
 

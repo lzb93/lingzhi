@@ -18,11 +18,11 @@ Page({
     anonymous:0, //是否密名1或0
     content:'',//内容
     xingji:[
-      "../../../images/xin1.png",
-      "../../../images/xin1.png",
-      "../../../images/xin1.png",
-      "../../../images/xin1.png",
-      "../../../images/xin1.png",
+      "../../../images/xin2.png",
+      "../../../images/xin2.png",
+      "../../../images/xin2.png",
+      "../../../images/xin2.png",
+      "../../../images/xin2.png",
     ]
 
   },
@@ -68,6 +68,7 @@ Page({
     var ids={}
     if (this.data.content.length<10){
       App.wxAPI.alert("评论字数不能少于10个字")
+      return
     }
     return getGoodsaddcomment({
       order_id: this.data.order_id,    //订单id
@@ -77,7 +78,19 @@ Page({
       is_anonymous: this.data.anonymous, //是否密名1或0
       comment_img_file: this.data.tempFiles,//上传晒单图片 后面 [0]表示第一张 [1]第二张[2]第三章 一次类推,可以多张图片
       // user_id: getApp().userInfo.user_id
-    });
+    })
+      .then(({ status, result, msg }) => {
+        wxAPI.hideLoading()
+        if (status === 1) {
+          App.wxAPI.alert(msg)
+     
+        } else {
+          App.wxAPI.alert(msg)
+        }
+      })
+      .catch((e) => {
+        App.wxAPI.alert(e)
+      });
 
   },
   setpingjia(e){

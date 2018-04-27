@@ -1,5 +1,6 @@
 import { goodsInfo, goodsContent, addCart, collectGoods, getGoodsComment } from '../../../services/API.js'
-import { dalay } from '../../../utils/utils'
+import { dalay, format} from '../../../utils/utils'
+
 const WxParse = require('../../../utils/wxParse/wxParse.js')
 const App = getApp()
 Page({
@@ -57,6 +58,10 @@ Page({
     return getGoodsComment({goods_id:target})
       .then(({ status, result, msg }) => {
         if (status === 1) {
+          result.forEach(item => {
+
+            item.add_time = format(item.add_time * 1000, 'yyyy.MM.dd hh:mm:ss');
+          })
           this.setData({
             pinlun: result
           })

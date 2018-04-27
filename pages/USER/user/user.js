@@ -15,9 +15,9 @@ Page({
         icon: 'icon_wait_receipt.png',
         target: 'WAITRECEIVE',
       }, {
-        text: '已完成',
+        text: '待评价',
         icon: 'icon_wait_end.png',
-        target: 'COMMENTED',
+        target: 'WAITCCOMMENT',
       }
     ],
     jumpItems: [

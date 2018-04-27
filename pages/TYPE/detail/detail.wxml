@@ -13,7 +13,7 @@
       <view class="name tx_ov2">{{goods.goods_name}}</view>
       <view class="kuaidi">{{goods.is_free_shipping ? '快递：免运费': ''}} </view>
       <view class="kuaidi tc">销量{{goods.sales_sum}}笔</view>
-      <view class="kuaidi tr">库存（2018件） </view>
+      <view class="kuaidi tr">库存（{{goods.store_count}}） </view>
        
     </view>
   </view>
