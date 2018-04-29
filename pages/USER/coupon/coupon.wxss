@@ -71,6 +71,9 @@
   color:#B3B1B2;
 
 }
+.hui{
+    color:#B3B1B2;
+}
 
 .content_li_right{
   width: 30%;
@@ -95,3 +98,9 @@
 .guoqi .huang{
   color: #FF9E14;
 }
+
+.nomore_wrap {}
+.nomore_wrap .icon_nomore {width: 250rpx; margin: 0 auto; padding-top: 200rpx;}
+.nomore_wrap view {text-align: center;}
+.nomore_wrap .tipls {margin-top: 30rpx; color: #a3a3a3;}
+.nomore_wrap .btn {margin-top: 30rpx;}

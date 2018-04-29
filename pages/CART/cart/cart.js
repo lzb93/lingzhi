@@ -206,7 +206,7 @@ Page({
             coupons: result
           })
         } else {
-          App.wxAPI.alert(res.msg)
+          App.wxAPI.alert(msg)
         }
       })
       .catch(e => {

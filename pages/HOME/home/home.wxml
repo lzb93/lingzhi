@@ -45,7 +45,7 @@
         <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}" class="clearfix">
           <view class="img"><image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}" class="slide-image" /></view>
           <view class="info">
-            <view class="">[买二送一]</view>
+            <!-- <view class="">[买二送一]</view> -->
             <view class="name tx_ov2">{{item.goods_name}}</view>
             <view class="price">
               <text>￥{{item.shop_price}}</text>

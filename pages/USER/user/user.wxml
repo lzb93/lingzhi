@@ -2,12 +2,17 @@
   <view class="userinfo_wrap">
     <view class="userinfo">
       <view class="img">
-        <image src="{{userInfo.avatarUrl}}" />
+           <image src="{{userInfo.avatarUrl}}" />
+     
+
       </view>
       <view class="info">
-        <view class="name"> {{userInfo.nickName}}
+       <navigator url='/pages/USER/opinion/opinion'>
+               <view class="name"> {{userInfo.nickName}}
         <!-- <image src='../../../images/bianji.png' style='width:31rpx;height:31rpx;display: inline-block;margin-left:15rpx;'></image> -->
         </view>
+        </navigator>
+       
         <view class="name" wx:if="{{!userInfo}}" catchtap="login">登录</view>
         <view class="sex">
           <!-- <text>{{userInfo.gender == 1 ? '男' : (userInfo.gender == 2 ? '女': '')}}</text> -->

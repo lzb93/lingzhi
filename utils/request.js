@@ -97,7 +97,7 @@ export function uploadFileQueue(url, arr) {
   function upload(resolve) {
     uploadFile(url, {
       filePath: arr[i].path,
-      name: 'head_pic'
+      name: 'comment_img_file[]'
     })
     .then(res => {
       const { status, result, msg } = JSON.parse(res)

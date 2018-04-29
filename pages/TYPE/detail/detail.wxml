@@ -45,10 +45,10 @@
     </block>
   </view>
   <view class="footer">
-    <view class="kefu" bindtap="collect">
+    <navigator class="kefu" url="/pages/HOME/home/home" open-type="switchTab">
       <image src="../../../images/fhindex.png"></image>
       <text>首页</text>
-    </view>
+    </navigator>
     <view class="kefu">
       <image src="../../../images/icon_kefu.png"></image>
       <text>客服</text>

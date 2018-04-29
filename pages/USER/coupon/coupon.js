@@ -25,6 +25,9 @@ Page({
     // params
     type: '',
     p: 1,
+    isAgain: true,
+    isNomore: false,
+    isNoSearch: false
   },
   onLoad(e) {
     wx.setNavigationBarTitle({
@@ -44,10 +47,18 @@ Page({
             item.use_start_time = format(item.use_start_time * 1000, 'yyyy.MM.dd');
             item.use_end_time = format(item.use_end_time * 1000, 'yyyy.MM.dd');
           })
+          if (result.length < 1) {
+            this.setData({
+              isNoSearch: true,
+            })
+            return
+
+          }
           
           this.setData({
             iscouPon: true,
-            coupons: result
+            coupons: result,
+            isNomore: true
           })
         } else {
           App.wxAPI.alert(msg)
@@ -91,7 +102,7 @@ Page({
     } else {
       type = e.currentTarget.dataset.type
     }
-    this.setData({ active: type })
+    this.setData({ active: type, isNoSearch: false })
 
     return getCouponList({ type: e.currentTarget.dataset.index })
       .then(({ status, result, msg }) => {
@@ -103,9 +114,20 @@ Page({
             item.use_end_time = format(item.use_end_time * 1000, 'yyyy.MM.dd');
           })
 
+          if (result.length < 1) {
+            this.setData({
+              isNoSearch: true,
+              iscouPon: true,
+              coupons: result,
+            })
+            return
+
+          }
+
           this.setData({
             iscouPon: true,
-            coupons: result
+            coupons: result,
+            isNomore: true
           })
         } else {
           App.wxAPI.alert(msg)

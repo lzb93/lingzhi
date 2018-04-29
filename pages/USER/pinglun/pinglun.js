@@ -1,5 +1,6 @@
 // pages/USER/pinglun/pinglun.js
 import { orderDetail, cancelOrder1, cancelOrder2, orderConfirm, delOrder, getGoodsaddcomment} from '../../../services/API.js'
+import { uploadFileQueue } from '../../../utils/request'
 import { format } from '../../../utils/utils'
 // import { uploadFileQueue } from '../../../utils/request'
 const App = getApp()
@@ -53,6 +54,7 @@ Page({
   
   
   },
+  
   chooseImage() {
     App.wxAPI.chooseImage()
       .then(({ tempFiles }) => {
@@ -64,12 +66,72 @@ Page({
         App.wxAPI.alert(e)
       })
   },
+
+
   pinglunFabu() {
     var ids={}
-    if (this.data.content.length<10){
-      App.wxAPI.alert("评论字数不能少于10个字")
+    // var imgs =[]
+    // this.data.tempFiles.forEach(item => {
+    //   imgs.push(item.path)
+
+    // })
+    if (this.data.content.length<5){
+      App.wxAPI.alert("评论字数不能少于10个字节")
       return
     }
+
+    if (this.data.tempFiles.length>0){
+      console.log(this.data.tempFiles)
+      // 上传图片
+
+      // wx.uploadFile({
+      //   url: App.host + '?m=Api&c=User&a=add_comment', //仅为示例，非真实的接口地址
+      //   filePath: JSON.stringify(this.data.tempFiles),
+      //   name: 'comment_img_file',
+      //   formData: {
+      //       user_id: 3058,
+      //   },
+      //   success: function (res) {
+      //     console.log(213123)
+      //     //do something
+      //   }
+      // })
+      
+
+      return uploadFileQueue(App.host + '?m=Api&c=User&a=add_comment', this.data.tempFiles)
+        .then(({ status, result, msg }) => {
+          console.log(1123123)
+          console.log(result)
+          return
+      
+          if (status === 1) {
+            this.setData({
+              tempFiles: result
+            })
+            this.fabutijiao();
+          } else {
+            App.wxAPI.alert(msg)
+          }
+
+        })
+        .catch(e => {
+          App.wxAPI.alert(e)
+        })
+    }else{
+      this.fabutijiao();
+    }
+   
+
+
+  
+
+  },
+  
+  // 发布提交
+  fabutijiao(){
+    console.log(this.data.tempFiles)
+    return
+    // 执行发布
     return getGoodsaddcomment({
       order_id: this.data.order_id,    //订单id
       goods_id: this.data.goods_id,   //商品id
@@ -83,16 +145,17 @@ Page({
         wxAPI.hideLoading()
         if (status === 1) {
           App.wxAPI.alert(msg)
-     
+
         } else {
           App.wxAPI.alert(msg)
         }
       })
       .catch((e) => {
         App.wxAPI.alert(e)
-      });
-
+      })
   },
+
+
   setpingjia(e){
     this.setData({
 
