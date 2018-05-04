@@ -40,7 +40,7 @@
     "navigationBarBackgroundColor": "#1EBC72",
     "navigationBarTitleText": "首页",
     "navigationBarTextStyle":"white",
-    "backgroundColor": "#f7f7f7"
+    "backgroundColor": "#efeff4"
   },
   "tabBar": {
     "color": "#969696",

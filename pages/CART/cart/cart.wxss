@@ -74,7 +74,7 @@ z-index:99;
 background-color:rgba(0,0,0,0.7);
 }
 .con_bom{
-  height:70%; 
+  height:auto; 
 position:relative;
 width:100%;
 background-color:#EFEFF4;
@@ -92,12 +92,12 @@ background-color:#EFEFF4;
   color: #FFFFFF;
   text-align: center;
   line-height: 90rpx;
-  position: absolute;
+  position:relative;
   bottom: 0;
 
 }
 .coupon_ul{
-
+  height: 600rpx;
 }
 .coupon_li{
     background: #FFFFFF;

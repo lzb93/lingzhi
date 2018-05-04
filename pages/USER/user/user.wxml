@@ -7,11 +7,9 @@
 
       </view>
       <view class="info">
-       <navigator url='/pages/USER/opinion/opinion'>
-               <view class="name"> {{userInfo.nickName}}
+        <view class="name"> {{userInfo.nickName}}
         <!-- <image src='../../../images/bianji.png' style='width:31rpx;height:31rpx;display: inline-block;margin-left:15rpx;'></image> -->
         </view>
-        </navigator>
        
         <view class="name" wx:if="{{!userInfo}}" catchtap="login">登录</view>
         <view class="sex">

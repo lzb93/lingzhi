@@ -90,32 +90,8 @@
          
            </view>
         </view>
-         <view class='coupon_li'  wx:for="{{coupons}}" wx:key="{{index}}">
-           <view class='coupon_li_lf'>
-              <view class='hong'><text class='fz46'>{{item.money}}</text>元</view>
-              <view class='fz28'>订单满{{item.condition}}元可用（不包含邮费）</view>
-              <view class='fz26'>使用有效日期：{{item.use_start_time}}-{{item.use_end_time}}</view>
-               <!-- <view class='fz26'>使用有效日期：2018.03.13-2018.04.23</view> -->
-           </view>
-           <view class='coupon_li_lr'>
-            <view class='btn_lq' wx:if="{{item.isget==1}}" >已领取</view>
-             <view class='btn_lq'  style='border:1px solid #1EBC72;color:#1EBC72;'  wx:else bindtap="couponlingqu"  data-id="{{item.id}}">领取</view>
-         
-           </view>
-        </view>
-         <view class='coupon_li'  wx:for="{{coupons}}" wx:key="{{index}}">
-           <view class='coupon_li_lf'>
-              <view class='hong'><text class='fz46'>{{item.money}}</text>元</view>
-              <view class='fz28'>订单满{{item.condition}}元可用（不包含邮费）</view>
-              <view class='fz26'>使用有效日期：{{item.use_start_time}}-{{item.use_end_time}}</view>
-               <!-- <view class='fz26'>使用有效日期：2018.03.13-2018.04.23</view> -->
-           </view>
-           <view class='coupon_li_lr'>
-            <view class='btn_lq' wx:if="{{item.isget==1}}" >已领取</view>
-             <view class='btn_lq'  style='border:1px solid #1EBC72;color:#1EBC72;'  wx:else bindtap="couponlingqu"  data-id="{{item.id}}">领取</view>
-         
-           </view>
-        </view>
+
+
         
 
       </scroll-view>
