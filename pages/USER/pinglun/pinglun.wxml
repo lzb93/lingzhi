@@ -5,7 +5,7 @@
   <!-- <view class='weui-cell__ft'>{{item.goods_name}}</view> -->
 </view> 
 <view class='weui-cell' style='display:block;margin-bottom:200rpx;'>
-<textarea placeholder='请输入你的评价' bindblur="setpingjia" type="text"></textarea>
+<textarea placeholder='请输入你的评价' bindinput="setpingjia" type="text"></textarea>
 <view class='imgul'>
   <image class='imgli' mode='aspectFit'  wx:for="{{tempFiles}}" wx:key src='{{item.path}}'></image>
 </view>

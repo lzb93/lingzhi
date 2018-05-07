@@ -34,8 +34,9 @@ export function goodsContent(params) {
   return get(config.host + '/api/goods/goodsContent', params)
 }
 // 排序 默认
+// return get(config.hosts + url, params)
 export function orderbyDefault(url, params) {
-  return get(config.hosts + url, params)
+  return get(config.host + url, params)
 }
 // 获取最新商品列表
 

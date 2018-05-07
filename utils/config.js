@@ -1,5 +1,5 @@
 	export default {
-  host: 'https://shop.meilashidai.com/index.php',
-  hosts: 'https://shop.meilashidai.com',
-  resourceUrl: 'https://shop.meilashidai.com/template/mobile/new2',
+  host: 'https://api.meilashidai.cn',
+  // hosts: 'https://api.meilashidai.cn',
+  resourceUrl: 'https://api.meilashidai.cn/template/mobile/new2',
 	}

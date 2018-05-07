@@ -98,7 +98,7 @@ Page({
       // })
       
 
-      return uploadFileQueue(App.host + '?m=Api&c=User&a=add_comment', this.data.tempFiles)
+      return uploadFileQueue(App.host + '?m=Api&c=User&a=uploadImg', this.data.tempFiles)
         .then(({ status, result, msg }) => {
           console.log(1123123)
           console.log(result)
