@@ -59,23 +59,23 @@
           <!-- 已完成 -->
           <block wx:if="{{parentItem.order_status_code === 'COMMENTED'}}">
             <text  class="active">确认收货</text>
-            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+            <!-- <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text> -->
           </block>
           <!-- 已取消 -->
           <block wx:if="{{parentItem.order_status_code === 'CANCEL'}}">
-            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+            <!-- <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text> -->
           </block>
           <!-- 待评价 -->
         
 
           <block wx:if="{{parentItem.order_status_code === 'WAITCCOMMENT'}}">
-            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+            <!-- <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text> -->
             <text  class="active" bindtap="pinJia" data-order_id="{{parentItem.order_id}}"  data-goods_list="{{parentItem.goods_list}}">评价</text>
           </block>
 
             <!--  FINISH-->
           <block wx:if="{{parentItem.order_status_code === 'FINISH'}}">
-            <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text>
+            <!-- <text bindtap="delOrder" data-order_id="{{parentItem.order_id}}">删除订单</text> -->
           </block>
       
           

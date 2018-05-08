@@ -35,7 +35,7 @@
 .popou_wrap .con .model_wrap .model_tit {width: 140rpx; line-height: 66rpx;}
 .popou_wrap .con .model_wrap .model_con {display: flex; flex-wrap: wrap; width: 100%;}
 .popou_wrap .con .model_wrap .model_con text {display: flex; justify-content: center; align-items: center; border: 1px solid #c4c4c4; border-radius: 6rpx; margin: 0 16rpx 16rpx 0; height: 66rpx; padding: 0 24rpx;}
-.popou_wrap .con .model_wrap .model_con text.active {color: #fff; background-color: #333;  border: 1px solid #333;}
+.popou_wrap .con .model_wrap .model_con text.active {color: #fff; background-color: #1EBC72;  border: 1px solid #1EBC72;}
 
 .popou_wrap .num_wrap {display: flex; justify-content: space-between; margin: 0 0 20rpx 26rpx; padding: 26rpx 26rpx 26rpx 0; border-bottom: 1px solid #c4c4c4;}
 .popou_wrap .num_wrap .num_tit {}
@@ -88,11 +88,7 @@
   box-sizing: border-box;
   padding: 4rpx;
   display: inline-block;
-  
-
-  
-
-  
+  margin-top:20rpx;
 
 }
 .wxParse-img{

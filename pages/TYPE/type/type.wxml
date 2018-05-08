@@ -5,7 +5,7 @@
     <!-- <view class="navbar_ul"> -->
     <scroll-view class="" scroll-x bindscroll="scroll" scroll-left="{{scrollLeft}}" scroll-with-animation="1">
       <view class="navbar_ul scroll_ul">
-        <view class="{{activeNav === index ? 'active': ''}}" wx:for="{{navbars}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="tabNavbar" wx:key>{{item.mobile_name}}</view>
+        <view class="{{activeNav === index ? 'active': ''}}" wx:for="{{navbars}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="tabNavbar" wx:key>{{item.name}}</view>
       </view>
     </scroll-view>
     <!-- </view> -->

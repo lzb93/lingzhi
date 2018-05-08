@@ -1,6 +1,6 @@
 // pages/USER/pinglun/pinglun.js
 import { orderDetail, cancelOrder1, cancelOrder2, orderConfirm, delOrder, getGoodsaddcomment} from '../../../services/API.js'
-import { uploadFileQueue } from '../../../utils/request'
+import { uploadFile } from '../../../utils/request'
 import { format } from '../../../utils/utils'
 // import { uploadFileQueue } from '../../../utils/request'
 const App = getApp()
@@ -11,6 +11,7 @@ Page({
    */
   data: {
     host: App.host,
+    tempimg:[],
     tempFiles:[],
     order_id:"",
     goods_list:[],
@@ -56,11 +57,27 @@ Page({
   },
   
   chooseImage() {
-    App.wxAPI.chooseImage()
+    App.wxAPI.chooseImage({num:9})
       .then(({ tempFiles }) => {
         this.setData({
           tempFiles: tempFiles
-        })     
+        })
+        const arr=[];
+        const length = tempFiles.length;
+        for (let i = 0; i < length;i++){
+          uploadFile(App.host + '?m=Api&c=User&a=uploadImg', tempFiles[i]).then(res =>{
+            if(JSON.parse(res).status ==1){
+              arr.push(JSON.parse(res).result);
+              if (arr.length == length){
+                this.setData({
+                  tempimg: arr
+                })
+              }
+            }
+          })
+
+        }
+        
       })
       .catch(e => {
         App.wxAPI.alert(e)
@@ -69,6 +86,9 @@ Page({
 
 
   pinglunFabu() {
+    console.log(this.data.tempimg)
+    return
+
     var ids={}
     // var imgs =[]
     // this.data.tempFiles.forEach(item => {
@@ -81,32 +101,19 @@ Page({
     }
 
     if (this.data.tempFiles.length>0){
-      console.log(this.data.tempFiles)
+    
       // 上传图片
 
-      // wx.uploadFile({
-      //   url: App.host + '?m=Api&c=User&a=add_comment', //仅为示例，非真实的接口地址
-      //   filePath: JSON.stringify(this.data.tempFiles),
-      //   name: 'comment_img_file',
-      //   formData: {
-      //       user_id: 3058,
-      //   },
-      //   success: function (res) {
-      //     console.log(213123)
-      //     //do something
-      //   }
-      // })
+ 
       
-
+      var tempimg
       return uploadFileQueue(App.host + '?m=Api&c=User&a=uploadImg', this.data.tempFiles)
         .then(({ status, result, msg }) => {
-          console.log(1123123)
-          console.log(result)
-          return
+          tempimg.push(result)
       
           if (status === 1) {
             this.setData({
-              tempFiles: result
+              tempFiles: tempimg
             })
             this.fabutijiao();
           } else {
@@ -129,29 +136,30 @@ Page({
   
   // 发布提交
   fabutijiao(){
-    console.log(this.data.tempFiles)
-    return
+    // console.log(this.data.tempimg)
+    if (this.data.content.length < 5) {
+      App.wxAPI.alert("评论字数不能少于5个字")
+      return
+    }
+ 
+   
     // 执行发布
-    return getGoodsaddcomment({
+    getGoodsaddcomment({
       order_id: this.data.order_id,    //订单id
       goods_id: this.data.goods_id,   //商品id
       goods_score: this.data.score,//星级
       content: this.data.content,//内容
       is_anonymous: this.data.anonymous, //是否密名1或0
-      comment_img_file: this.data.tempFiles,//上传晒单图片 后面 [0]表示第一张 [1]第二张[2]第三章 一次类推,可以多张图片
+      img: this.data.tempimg,//上传晒单图片 后面 [0]表示第一张 [1]第二张[2]第三章 一次类推,可以多张图片
       // user_id: getApp().userInfo.user_id
-    })
-      .then(({ status, result, msg }) => {
-        wxAPI.hideLoading()
+    }).then(({ status, result, msg }) => {
         if (status === 1) {
-          App.wxAPI.alert(msg)
+          App.wxAPI.alert(msg);
+          wx.navigateBack();
 
         } else {
           App.wxAPI.alert(msg)
         }
-      })
-      .catch((e) => {
-        App.wxAPI.alert(e)
       })
   },
 

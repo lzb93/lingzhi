@@ -21,6 +21,6 @@
  
 </view> 
 
-<button bindtap='pinglunFabu' class='footer'>发布评论</button>
+<button bindtap='fabutijiao' class='footer'>发布评论</button>
 
 </view>

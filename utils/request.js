@@ -57,35 +57,65 @@ export default function request(url, data = {}, methods = 'GET') {
     }
   })
 }
+
 // 上传图片（文件）
-export function uploadFile(url, { filePath, name }) {
+export function uploadFile(url, file) {
   // 附加鉴权参数
-  url = modifyUrl(url, {
-    is_anonymous: 1,
-    // unique_id: getUniqueId(),
-    token: getToken()
-  })
+  // url = modifyUrl(url, {
+  // is_json: 1,
+  // unique_id: getUniqueId(),
+  // token: getToken()
+  // })
   return new Promise((resolve, reject) => {
     wx.uploadFile({
       url,
-      filePath,
-      name,
-      success (res) {
+      filePath: file.path,
+      name: 'file',
+      success(res) {
         resolve(res)
       },
-      fail (e) {
+      fail(e) {
         reject(e)
       }
     })
   })
-  .then(({ data, statusCode, errMsg}) => {
-    if (statusCode != 200) {
-      return Promise.reject(errMsg)
-    } else {
-      return data
-    }
-  })
+    .then(({ data, statusCode, errMsg }) => {
+      if (statusCode != 200) {
+        return Promise.reject(errMsg)
+      } else {
+        return data
+      }
+    })
 }
+
+// export function uploadFile(url, { filePath, name }) {
+//   // 附加鉴权参数
+//   url = modifyUrl(url, {
+//     is_anonymous: 1,
+//     // unique_id: getUniqueId(),
+//     token: getToken()
+//   })
+//   return new Promise((resolve, reject) => {
+//     wx.uploadFile({
+//       url,
+//       filePath,
+//       name,
+//       success (res) {
+//         resolve(res)
+//       },
+//       fail (e) {
+//         reject(e)
+//       }
+//     })
+//   })
+//   .then(({ data, statusCode, errMsg}) => {
+//     if (statusCode != 200) {
+//       return Promise.reject(errMsg)
+//     } else {
+//       return data
+//     }
+//   })
+// }
 // 队列上传图片
 export function uploadFileQueue(url, arr) {
   let i = 0
@@ -94,11 +124,11 @@ export function uploadFileQueue(url, arr) {
   return new Promise((resolve, reject) => {
     upload(resolve)
   })
+  // comment_img_file[]
   function upload(resolve) {
     uploadFile(url, {
       filePath: arr[i].path,
       name: 'file'
-      // comment_img_file[]
     })
     .then(res => {
       const { status, result, msg } = JSON.parse(res)

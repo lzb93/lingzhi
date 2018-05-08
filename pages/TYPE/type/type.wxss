@@ -6,9 +6,9 @@
 .sortbar_ul view {display:flex; align-items: center; justify-content: center; color: #a2a3a5; width: 100rpx; border-bottom: 1px solid #fff; box-sizing: border-box;}
 .navbar_ul view.active,
 .sortbar_ul view.active,
-.navbar_scorll_ul view.active {color: #333;}
+.navbar_scorll_ul view.active {color: #1EBC72;}
 
-.navbar_ul view.active {border-bottom: 1rpx solid #333;}
+.navbar_ul view.active {border-bottom: 1rpx solid #1EBC72;}
 
 .scroll_ul {flex-wrap: nowrap; width: auto;}
 .scroll_ul view {flex: 1 0 auto; min-width: 140rpx;}
