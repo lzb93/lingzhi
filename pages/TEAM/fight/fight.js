@@ -54,9 +54,9 @@ Page({
   },
   onShareAppMessage(res) {
     return {
-      url: 'https://cc.meilashidai.cn',
+      url: 'https://api.meilashidai.cn',
       share: {
-        title: '拼团分享',
+        title: '提兴灵芝',
       }
     }
   },

@@ -1,5 +1,7 @@
 @import './style/weui.wxss';
-
+.wxParse-p image{
+  width: 100% !important; 
+}
 page {
    background: #f2f3f4;
 }
