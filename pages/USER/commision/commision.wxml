@@ -1,0 +1,16 @@
+
+<view>
+  <view class='container'>
+    <view>
+      <view class='icon_money'>
+        <image src='../../../images/icon_money.png'></image>
+      </view>
+    </view>
+    <view class='commision'>我的余额( 元 )</view>
+    <view class='money'>￥{{money}}</view>
+    <navigator class='look_record color_gray' url='/pages/USER/record/record'>查看提现记录 ></navigator>
+  </view>
+
+  <navigator class='footer_btn' url='/pages/USER/putForward/putForward?money={{money}}'>立即提现</navigator>
+</view>
+

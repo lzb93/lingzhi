@@ -1,0 +1,161 @@
+/* pages/EXPRESS/express/express.wxss */
+
+page {
+  background-color: #EFEFF4;
+}
+.nav {
+  background-color: #fff;
+}
+.nav .nav_item {
+  width: 49.5%; 
+  padding: 27rpx 0;
+  font-size: 36rpx;
+  text-align: center;
+}
+.nav .nav_item.active {
+  border-bottom: 4rpx solid #1EBC72; 
+}
+.left_border {
+  width: 1px;
+  height: 46rpx;
+  background-color: #B3B1B2;
+}
+.nav_border {
+  margin-top: 30rpx;
+}
+
+.round {
+  width: 55rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  border-radius: 50%;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+}
+.round.ji {
+  margin-right: 25rpx;
+  background-color: #1E1D1D;
+}
+.round.shou {
+  margin-right: 25rpx;
+  background-color: #1EBC72;
+}
+.alert {
+  padding: 35rpx 35rpx 0;
+  font-size: 28rpx;
+}
+.express_wrap {
+  line-height: 55rpx;
+  padding: 20rpx 25rpx 46rpx;
+  font-size: 28rpx;
+}
+.express_wrap .express_item {
+  padding: 22rpx 0 22rpx 25rpx;
+  border: 1rpx solid #A7A7A7;
+  border-bottom: 0;
+  background-color: #fff;
+}
+.express_wrap .express_item:last-child {
+  border-bottom: 1rpx solid #A7A7A7;
+}
+.express_wrap .name {
+  width: 105rpx;
+  color: #1E1D1D;
+}
+.express_wrap .ji_add {
+  width: 350rpx;
+  padding: 0 15rpx;
+  color: #2F2F2F;
+}
+.none_add {
+  width: 455rpx;
+}
+.express_wrap .add_book {
+  width: 137rpx;
+  border-left: 1rpx solid #B3B1B2;
+  color: #1EBC72;
+  text-align: center;
+}
+.express_wrap .add_input {
+  width: 455rpx;
+}
+.express_wrap .express_item.door_time {
+  padding: 22rpx 25rpx;
+  font-size: 28rpx;
+}
+
+.clause_wrap {
+  padding: 0 25rpx;
+  font-size: 28rpx;
+}
+.clause_img {
+  width: 25rpx;
+  height: 25rpx;
+  margin: 8rpx 25rpx 0;
+}
+.clause_img image {
+  display: block;
+  width: 100%;
+  height: 100%;  
+}
+.color_red {
+  color: #1EBC72;
+}
+
+.ex_btn {
+  width: 400rpx;
+  margin: 210rpx auto 0;
+  border: 0;
+  /* border-radius: 60rpx; */
+  background-color: #1EBC72;
+  color: #fff;
+  text-align: center;
+}
+.ex_btn[disabled] {
+  background-color: #CDCDCD;
+}
+.ex_btn image {
+  width: 60rpx;
+  height: 28rpx;
+}
+
+.query {
+  margin-top: 25rpx;
+  padding: 25rpx 25rpx 40rpx;
+  background-color: #fff;
+}
+.line {
+  width: 4rpx;
+  height: 25rpx;
+  margin-top: 8rpx;
+}
+.icon_right {
+  width: 14rpx;
+  height: 24rpx;
+  margin-top: 10rpx;
+}
+.title {
+  width: 20%;
+  font-size: 28rpx;
+}
+.query_body {
+  margin-top: 40rpx;
+}
+.query_input {
+  width: 80%;
+}
+.input {
+  display: block;
+  width: 100%;
+  font-size: 28rpx;
+  text-align: right;
+}
+.query_btn {
+  width: 400rpx;
+  margin: 210rpx auto;
+  background-color: #1EBC72;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+}

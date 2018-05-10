@@ -1,100 +1,137 @@
-<!--index.wxml-->
-<view style="padding-bottom: 140rpx;" wx:if="{{true}}">
-   
-   <view class='top_bianji' bindtap='bianji' hidden='{{isbianJi? false:true}}'>编辑</view>
-   <view class='top_bianji luse'  bindtap='wancheng' hidden='{{isbianJi? true:false}}'>完成</view> 
-
-   <view class='top_bianji  {{iscouPon==true? "luse":""}}'  bindtap='coupondk' >领券</view>
-  <view class="content_ul">
-    <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}" data-index="{{index}}" bindtouchstart="start" bindtouchmove="move"
-      bindtouchend="end" style="{{item.txtStyle}}">
-      <view class="checked" bindtap="checked" data-index="{{index}}">
-        <icon wx:if="{{item.selected == 1}}" type="success" size="20" color="#1EBC72"></icon>
-        <icon wx:else type="circle" size="20" color="#a3a3a3"></icon>
+<!--pages/CART/cart/cart.wxml-->
+<view>
+  <!-- <view class='coupon flex_between' bindtap='openCouponPop'>
+    <view class='color_gray1'>优惠卷</view>
+    <view class='icon_right'>
+      <image src='../../../images/icon_right.png'></image>
+    </view>
+  </view> -->
+  <!-- 购物车没商品的情况 -->
+  <view class='cart_wrap_empty {{items.length == 0 ? "":"none"}}'>
+    <view class='empty_cart'>
+      <image src="../../../images/empty_cart.png"></image>
+    </view>
+    <view class='cart_none'>购物车竟然是空的</view>
+    <view class='cart_text'>在忙也记得买点东西赏犒自己~</view>
+  </view>
+  <!-- 购物车有商品的情况 -->
+  <view class='cart_wrap_have {{items.length == 0 ? "none":""}}'>
+    <view class='cart_item flex_row' wx:for="{{items}}" wx:key>
+      <view class='icon_select' bindtap='checked' data-index="{{index}}">
+        <image src='../../../images/{{item.selected ? "cart_selected.png":"unchecked.png"}}'></image> 
       </view>
-      <view class="img">
-        <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}" hover-class="navigator-hover">
-          <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
-        </navigator>
-      </view>
-      <view class="con">
-        <view class="tit tx_ov2">
-           <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}" hover-class="navigator-hover">{{item.goods_name}} </navigator>
+      <image class='seller_img' mode="aspectFill" 
+      src='{{host}}&c=Goods&a=goodsThumImages&width=190&height=190&goods_id={{item.goods_id}}'></image>
+      <view>
 
+        <view class='flex_between'>
+          <view class='cart_item_inner'>
+            <view class='tx_ov2'>{{item.goods_name}}</view>
+            <view class='cart_type tx_ov color_gray'>{{item.spec_key_name}}</view>
+          </view>
+          <image src='../../../images/icon_cart_delete.png' class='cart_item_delete' 
+          data-index="{{index}}" bindtap='del'></image>
         </view>
 
-        <view class="isbaoy tx_ov">{{item.spec_key_name}}</view>
-        <view class="msg">
-          <text>￥{{item.goods_price}}</text>
-          <view class="control_num_wrap">
-            <view catchtap="subtract" data-index="{{index}}">－</view>
-            <input type="number" value="{{item.goods_num}}" maxlength="{{2}}" bindinput="onblur" data-index="{{index}}"/>
-            <view catchtap="add" data-index="{{index}}">＋</view>
+        <view class='cart_price flex_between'>
+          <view class='price color_red'>￥{{item.goods_price}}</view>
+          <view class='cart_num flex_row'>
+            <view class='color_gray' data-index="{{index}}" bindtap='subtract'>－</view>
+            <input class='input' type="number" value="{{item.goods_num}}" maxlength='{{3}}'
+            data-index="{{index}}" bindinput="onblur"/>
+            <view class='color_gray' data-index="{{index}}" bindtap='add'>＋</view>
           </view>
         </view>
       </view>
-      <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+
     </view>
   </view>
-
-  <view class="footer" wx:if="{{!isNomore}}">
-    <view class="all_checked" bindtap="checkedAll">
-        <icon wx:if="{{isChecked}}" type="success" size="20" color="#1EBC72"></icon>
-        <icon wx:else type="circle" size="20" color="#a3a3a3"></icon>
-        全选
-    </view>
-    <!-- 结算按钮 -->
-    <block wx:if='{{isbianJi? true:false}}'>
-    <view class="total_num">合计：<text>￥{{total_price.total_fee}}</text></view>
-    <view class="btn" bindtap="settlement">结算({{checkedLen}})</view>
-    </block>
-
-    <block wx:else>
-    <!-- <view class="btn btnhui">加入收藏夹</view> -->
-    <view class="btn" catchtap="del">删除</view>
-    </block>
-   <!-- 结算按钮end -->
-  </view>
-</view>
-
-<view class="nomore_wrap" wx:if="{{isNomore}}">
-  <view class="icon_nomore"><image src="../../../images/icon_cart_nomore.png" mode="widthFix"></image></view>
-  <view class="tipls">购物车暂无商品</view>
-  <view class="btn">
-    <navigator url="/pages/HOME/home/home" open-type="switchTab">
-      <button class="weui-btn mini-btn" type="default" size="mini" style="width: 180rpx;">去逛逛</button>
-    </navigator>
-  </view>
-</view>
-
-
-<!-- 优惠券 -->
-<view class="coupon_warp {{iscouPon?'':'none'}}"  >
-   <view class='con_bom' >
-      <view class='cou_head'>
-        领取优惠券
+  <!-- 底部结算 -->
+  <view class='footer flex_between'>
+    <view style='position: relative;'>
+      <view class='footer_all_select flex_row' bindtap='checkedAll'>
+        <view>
+          <image class='icon_footer {{isChecked?"none":""}}' src='../../../images/unchecked.png'></image>
+          <image class='icon_footer {{isChecked?"":"none"}}' src='../../../images/cart_selected.png'></image>
+        </view>
+        <view class='color_gray1'>全选</view>
       </view>
+    </view>
+    
+    <view class='flex_row'>
+      <view style='margin-right: 30rpx;'>
+        <view class='flex_row' style='min-width: 150rpx; padding: 30rpx 0;'>
+          <view class='color_gray1'>总计：</view>
+          <view class='color_red'>{{total_price.total_fee}}</view>
+        </view>
+        <!-- <view class='color_gray1'>不包含运费</view> -->
+      </view>
+      <view style='position: relative; width: 180rpx; background-color: #1EBC72;'>
+        <view class='footer_btn' bindtap='settlement'>去结算( {{checkedLen}} )</view>
+      </view>
+    </view>
+  </view>
 
-      <scroll-view class='coupon_ul' scroll-y>
-        <!-- li -->
-        <view class='coupon_li'  wx:for="{{coupons}}" wx:key="{{index}}">
-           <view class='coupon_li_lf'>
-              <view class='hong'><text class='fz46'>{{item.money}}</text>元</view>
-              <view class='fz28'>订单满{{item.condition}}元可用（不包含邮费）</view>
-              <view class='fz26'>使用有效日期：{{item.use_start_time}}-{{item.use_end_time}}</view>
-               <!-- <view class='fz26'>使用有效日期：2018.03.13-2018.04.23</view> -->
-           </view>
-           <view class='coupon_li_lr'>
-            <view class='btn_lq' wx:if="{{item.isget==1}}" >已领取</view>
-             <view class='btn_lq'  style='border:1px solid #1EBC72;color:#1EBC72;'  wx:else bindtap="couponlingqu"  data-id="{{item.id}}">领取</view>
-         
-           </view>
+  <!-- <view class='pop {{isShowCoupon ? "":"none"}}'>
+    <view class='mask'></view> 
+    <view>
+      <view class='pop_header'>领取优惠券</view>
+      <scroll-view scroll-y class='pop_body'>
+        <view class='item flex_between'>
+          <view class='item_left'>
+            <view class='item_money flex_row align_items'>
+              <view class='color_red'>10</view>
+              <view class='icon_money color_red'>元</view>
+            </view>
+            <view class='item_title'>订单满199使用（不含邮费）</view>
+            <view class='item_remark color_gray'>使用期限2018.02.28-2018.04.12</view>
+          </view>
+          <view class='item_right'>
+            <view class='btn_receive'>领取</view>
+          </view>
         </view>
 
-
-        
-
+        <view class='item flex_between'>
+          <view class='item_left'>
+            <view class='item_money flex_row align_items'>
+              <view class='color_red'>10</view>
+              <view class='icon_money color_red'>元</view>
+            </view>
+            <view class='item_title'>订单满199使用（不含邮费）</view>
+            <view class='item_remark color_gray'>使用期限2018.02.28-2018.04.12</view>
+          </view>
+          <view class='item_right'>
+            <view class='btn_receive'>领取</view>
+          </view>
+        </view>
+        <view class='item flex_between'>
+          <view class='item_left'>
+            <view class='item_money flex_row align_items'>
+              <view class='color_red'>10</view>
+              <view class='icon_money color_red'>元</view>
+            </view>
+            <view class='item_title'>订单满199使用（不含邮费）</view>
+            <view class='item_remark color_gray'>使用期限2018.02.28-2018.04.12</view>
+          </view>
+          <view class='item_right'>
+            <view class='btn_receive'>领取</view>
+          </view>
+        </view>
+        <view class='item flex_between'>
+          <view class='item_left'>
+            <view class='item_money flex_row align_items'>
+              <view class='color_red'>10</view>
+              <view class='icon_money color_red'>元</view>
+            </view>
+            <view class='item_title'>订单满199使用（不含邮费）</view>
+            <view class='item_remark color_gray'>使用期限2018.02.28-2018.04.12</view>
+          </view>
+          <view class='item_right'>
+            <view class='btn_receive'>领取</view>
+          </view>
+        </view>
       </scroll-view>
-      <view class='cou_gb'  bindtap="coupongb">关闭</view>
-   </view>
+      <view class='pop_footer' bindtap='closePop'>关闭</view>
+    </view>
+  </view> -->
 </view>

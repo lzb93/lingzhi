@@ -152,7 +152,7 @@ function html2json(html, bindName) {
                     imgUrl.splice(0, 1);
                 }
                 imgUrl = wxDiscode.urlToHttpUrl(imgUrl, __placeImgeUrlHttps);
-                node.attr.src = 'http://www.meilashidai.net'+imgUrl;
+                node.attr.src = 'https://cc.meilashidai.cn'+imgUrl;
                 node.from = bindName;
                 results.images.push(node);
                 results.imageUrls.push(imgUrl);

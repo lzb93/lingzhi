@@ -9,7 +9,7 @@ view{
 
 .shophead{
   width:100rpx;height:100rpx;
-  padding-right: 20rpx;
+  margin-right: 20rpx;
 }
 textarea{
   width: 100%
@@ -37,4 +37,18 @@ textarea{
   margin-right: 10rpx;
 }
 
-.footer {display: flex; position: fixed; z-index: -1; bottom: 0; left: 0; width: 100%; font-size: 32rpx; color: #fff; height: 88rpx; background-color: #1EBC72; justify-content: center; align-items: center;}
+.footer {
+  display: flex; 
+  position: fixed; 
+  z-index: -1; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  font-size: 32rpx; 
+  color: #fff; 
+  height: 98rpx; 
+  border-radius: 0;
+  background-color: #1EBC72; 
+  justify-content: center; 
+  align-items: center;
+}

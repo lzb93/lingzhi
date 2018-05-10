@@ -1,0 +1,47 @@
+
+page {
+  padding-top: 50rpx;
+}
+.color_21 {
+  color: #2173AC;
+}
+.item {
+  margin-bottom: 20rpx; 
+  background-color: #fff;
+}
+.item_btn {
+  width: 32%;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 25rpx;
+  border-left: 1rpx solid #EFEFF4;
+  font-size: 30rpx;
+}
+.item_input {
+  display: block;
+  width: 68%;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 25rpx;
+  font-size: 30rpx;
+}
+.btn_confirm {
+  width: 95%;
+  margin: 100rpx auto 0;
+  padding: 20rpx 0;
+  text-align: center;
+  color: #fff;
+  border-radius: 8rpx;
+  background-color: #1EBC72;
+}
+.content {
+  margin-top: 20rpx;
+  padding: 0 25rpx;
+  font-size: 28rpx;
+}
+.icon_unchecked {
+  display: block;
+  width: 32rpx;
+  height: 32rpx;
+  margin: 6rpx 20rpx 0 0;
+}

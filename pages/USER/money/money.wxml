@@ -1,0 +1,21 @@
+<view>
+  <view class='layout flex_row'>
+    <view class='title'>提现金额：</view>
+    <view class='input'>{{price}}</view>
+  </view>
+  <view class='layout flex_row'>
+    <view class='title'>持卡人：</view>
+    <view class='input'>{{card.name}}</view>
+  </view>
+  <view class='layout flex_row'>
+    <view class='title'>银行卡号：</view>
+    <view class='input'>{{card.card_number}}</view>
+  </view>
+  <view class='layout flex_row'>
+    <view class='title'>提现密码：</view>
+    <input class='input' placeholder='请输入支付密码' value="{{pwd}}" bindblur='pwdBlur' password></input>
+  </view>
+  <navigator class='color_21 forget_pwd' url="/pages/USER/pwd/pwd">忘记密码</navigator>
+
+  <view class='footer_btn' bindtap='submit'>提现</view>
+</view>

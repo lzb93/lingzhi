@@ -1,0 +1,41 @@
+
+<view>
+
+  <!-- <swiper class='swiper_wrap' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" circular="{{true}}">
+    <block wx:for="{{banners}}" wx:key>
+      <swiper-item>
+        <image src="{{http}}{{item.img}}" class="slide_image" />
+      </swiper-item>
+    </block>
+  </swiper> -->
+
+  <view class='product_wrap'>
+    <view class='product_item' wx:for="{{products}}" wx:key>
+      <view>
+        <image src="{{host}}c=Goods&a=goodsThumImages&width=400&height=240&goods_id={{item.goods_id}}"></image>
+      </view>
+      <view class='product_item_c'>
+        <view class='product_c tx_ov2'>{{item.act_name}}</view>
+        <view class='flex_between product_item_i'>
+          <view class='flex_row align_items' style='margin-top: 8px;'>
+            <view>{{item.needer}}人拼团</view>
+            <view class='product_m_i'>￥</view>
+            <view class='product_m'>{{item.team_price}}</view>
+            <view>单买 ￥{{item.goods.shop_price}}</view>
+          </view>
+          <navigator class='product_btn' url='/pages/TEAM/detail/detail?id={{item.goods_id}}&team_id={{item.team_id}}'>
+            <image src='../../../images/team-btn.png'></image>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+</view>

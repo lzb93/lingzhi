@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "重置提现密码",
+  "usingComponents": {
+    "paySix": "../../../utils/component/component"
+  }
+}

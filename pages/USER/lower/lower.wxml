@@ -1,0 +1,10 @@
+<view>
+  <navigator class='item flex_between' url='/pages/USER/lowerList/lowerList'>
+    <view>我的下级</view>
+    <view class='color_gray'> > </view>
+  </navigator>
+  <view class='item flex_between' bindtap='jumpCom'>
+    <view>我的余额</view>
+    <view class='color_gray'> > </view>
+  </view>
+</view>

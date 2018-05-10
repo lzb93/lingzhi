@@ -1,3 +1,16 @@
-.payment_info view {display: flex; justify-content: space-between; padding: 0 16px; background-color: #fff;}
-.payment_info view text {display: flex; line-height: 90rpx; align-items: center; font-size: 32rpx;}
-.payment_info view text.mark {color: #E72839;}
+
+.payment_item {
+  padding: 15rpx 25rpx;
+  background-color: #fff;
+  font-size: 28rpx;
+}
+.payment_btn {
+  width: 80%;
+  margin: 60rpx auto 0;
+  padding: 15rpx 0;
+  border-radius: 8rpx;
+  background-color: #1EBC72;
+  font-size: 32rpx;
+  text-align: center;
+  color: #fff;
+}

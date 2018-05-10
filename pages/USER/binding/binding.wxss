@@ -1,0 +1,7 @@
+
+.item {
+  margin-top: 20rpx;
+  padding: 20rpx 25rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}

@@ -1,66 +1,74 @@
-const App = getApp()
-import { getGoodsCollect, collectGoods } from '../../../services/API.js'
+import { getGoodsCollect, collectGoods } from '../../../services/API';
 import { dalay } from '../../../utils/utils'
+
+const app = getApp();
 Page({
   data: {
-    host: App.host,
+    http: app.http,
+    host: app.host,
     items: [],
-    p: 1,
+    p: 0,
     isAgain: true,
-    isNomore: false, 
-    isNoSearch: false, 
+    isNomore: false,
   },
   onLoad() {
-    wx.setNavigationBarTitle({title: '我的收藏'})
-    this.getGoodsCollect({ p: 1 })
+    this.goodsCollect();
   },
-  getGoodsCollect(params) {
-    getGoodsCollect(params)
-    .then(({status, result, msg}) => {
-      if (status === 1) {
-        if (this.data.p == 1 && result.length == 0) {
-          return this.setData({ 
-            isNoSearch: true,
-            isNomore: true
-          })
-        }
-        let arr = this.data.items.concat(result)
+  goodsCollect(params) {
+    getGoodsCollect(params).then(({status, result, msg}) => {
+      if (status == 1) {
+        const products = result || [];
+        const arr = this.data.items.concat(products);
         this.setData({
           items: arr,
           p: ++this.data.p,
           isAgain: true
         })
-        if (result.length < 10) {
-          this.setData({ isAgain: false, isNomore: true })
-        }
+        this.finish(products);
       } else {
-        App.wxAPI.alert(msg)
+        app.wxAPI.alert(msg)
       }
     })
   },
   onReachBottom() {
-    if (!dalay(500)) return
-    if (!this.data.isAgain) return
-    this.setData({ isAgain: false })
-    this.getGoodsCollect({ p: this.data.p })
+    if (!dalay(1000)) return;
+    if (!this.data.isAgain) return;
+    this.setData({ isAgain: false });
+    this.goodsCollect({ p: this.data.p });
   },
-  collect(e) {
-    const index = e.currentTarget.dataset.index
-    let items = this.data.items
-    const type = items[index].is_on_sale ? 0 : 1
-    const goods_id = items[index].goods_id
+  //结束处理
+  finish(arr) {
+    if (arr.length < 10) {
+      this.setData({
+        isAgain: false,
+        isNomore: true
+      })
+    }
+  },
+  collectFn(e) {
+    const index = e.currentTarget.dataset.index;
+    const arr = this.data.items;
+    const type = arr[index].is_on_sale ? 0 : 1
+    const goods_id = arr[index].goods_id
     collectGoods({
       goods_id: goods_id,
       type: type,
-      user_id: App.userInfo.user_id
+      user_id: app.userInfo.user_id
     })
-    .then(({status, result, msg}) => {
+    .then(({ status, result, msg }) => {
       if (status === 1) {
-        items[index].is_on_sale = type
-        this.setData({ items })
-
-      } 
+        arr[index].is_on_sale = type
+        this.setData({ items: arr })
+      } else {
+        app.wxAPI.alert(msg)
+      }
+    })
+  },
+  openDetail(e) {
+    const index = e.currentTarget.dataset.index;
+    const arr = this.data.items;
+    wx.navigateTo({
+      url: '/pages/HOME/detail/detail?id=' + arr[index].goods_id
     })
   }
-
 })

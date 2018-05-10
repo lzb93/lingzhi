@@ -1,0 +1,11 @@
+<view>
+  <view class='item flex_between'>
+    <view class='item_input'>{{mobile}}</view>
+    <view class='item_btn {{countDown?"color_gray":"color_red"}}' bindtap='getCode'>{{btn}}</view>
+  </view>
+  <view class='item {{isShowCode?"":"none"}}'>
+    <input class='item_input' style='width: 100%' placeholder='请输入验证码' value="{{code}}" bindblur="blurCode"></input>
+  </view>
+
+  <view class='footer_btn' bindtap='submit'>下一步</view>
+</view>

@@ -1,4 +1,4 @@
-// 获取code 
+// 获取code
 export function login() {
   return new Promise((resolve, reject) => {
     wx.login({
@@ -19,10 +19,10 @@ export function login() {
 export function checkSession() {
   return new Promise((resolve, reject) => {
     wx.checkSession({
-      success () {
+      success() {
         resolve(true)
       },
-      fail (e) {
+      fail(e) {
         resolve(false)
       }
     })
@@ -45,10 +45,10 @@ export function getSetting() {
 export function openSetting(scope) {
   return new Promise((resolve, reject) => {
     wx.openSetting({
-      success (res) {
+      success(res) {
         resolve(res)
       },
-      fail (e) {
+      fail(e) {
         reject(e)
       }
     })
@@ -74,10 +74,10 @@ export function getUserInfo() {
   return new Promise((resolve, reject) => {
     wx.getUserInfo({
       lang: 'zh_CN',
-      success (res) {
+      success(res) {
         resolve(res)
       },
-      fail (e) {
+      fail(e) {
         reject(e)
       }
     })
@@ -85,15 +85,15 @@ export function getUserInfo() {
 }
 export function requestPayment(obj) {
   return new Promise((resolve, reject) => {
-    wx.requestPayment({ 
+    wx.requestPayment({
       ...obj,
-      success (res) {
+      success(res) {
         resolve({
           status: 1,
           msg: res
         })
       },
-      fail (e) {
+      fail(e) {
         resolve({
           status: -1,
           msg: e
@@ -111,9 +111,9 @@ export function alert(msg = '') {
       content: msg,
       showCancel: false,
       success(res) {
-        if(res.confirm) {
+        if (res.confirm) {
           resolve()
-        } 
+        }
       }
     })
   })
@@ -127,7 +127,7 @@ export function confirm(msg = '') {
       success(res) {
         if (res.confirm) {
           resolve()
-        } else if(res.cancel) {
+        } else if (res.cancel) {
           reject()
         }
       }
@@ -162,31 +162,32 @@ export function hideLoading() {
   return wx.hideLoading()
 }
 // 从本地相册选择图片或使用相机拍照
-export function chooseImage() {
+export function chooseImage(options) {
   return new Promise((resolve, reject) => {
     wx.chooseImage({
-      success (res) {
+      count: options.num || '',
+      success(res) {
         resolve(res)
       },
-      fail (e) {
+      fail(e) {
         reject(e)
       }
     })
   })
 }
 // 从本地相册选择图片或使用相机拍照
-export function uploadFile(url, { filePath, name }) {
-  return new Promise((resolve, reject) => {
-    wx.uploadFile({
-      url,
-      filePath,
-      name,
-      success (res) {
-        resolve(res)
-      },
-      fail (e) {
-        reject(e)
-      }
-    })
-  })
-}
+// export function uploadFile(url, { filePath, name }) {
+//   return new Promise((resolve, reject) => {
+//     wx.uploadFile({
+//       url,
+//       filePath,
+//       name,
+//       success (res) {
+//         resolve(res)
+//       },
+//       fail (e) {
+//         reject(e)
+//       }
+//     })
+//   })
+// }

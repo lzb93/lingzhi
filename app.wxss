@@ -1,11 +1,76 @@
 @import './style/weui.wxss';
 
-page {background: #efeff4;}
-view {font-size: 24rpx; color: #2A2A2A; box-sizing: border-box;}
-image {display: block; width: 100%; height: 100%;}
-.tx_ov{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-.tx_ov2 {display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;}
-.clearfix:after{content:"\200B";display:block;height:0;clear:both;}
+page {
+   background: #f2f3f4;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+view, navigator, image, input, scroll-view {
+  box-sizing: border-box;
+  color: #2A2A2A;
+}
+.clearfix:after{
+  content:"\200B";
+  display:block;
+  height:0;
+  clear:both;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.none {
+  display: none !important;
+}
+.tx_ov{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.tx_ov2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden;
+}
+
+.flex_row {
+  display: flex;
+  flex-direction: row wrap;
+}
+.flex_between {
+  display: flex;
+  justify-content: space-between; 
+  flex-flow: row wrap;
+}
+.align_items {
+  display: flex;
+  align-items: baseline;
+}
+.color_red {
+  color: #B61313 !important;
+}
+.main_color {
+  color: #FF5858 !important;
+}
+.main_bg {
+  background: #FF5858 !important;
+}
+.color_gray {
+  color: #B3B1B2 !important;
+}
+.color_7a {
+  color: #7A7A7C !important;
+}
 .tr{text-align: right}
 .tc{text-align: center}
 .tl{text-align: left}
@@ -14,5 +79,3 @@ image {display: block; width: 100%; height: 100%;}
 .huang{
   color: #FF9E14;
 }
-.none{display:none !important;}
-.mask{position:fixed;width:100%;height:100%;left:0;top:0;z-index:99;background-color:rgba(0,0,0,0.7);}

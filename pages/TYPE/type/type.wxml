@@ -10,7 +10,7 @@
     </scroll-view>
     <!-- </view> -->
   </view>
-  <view class="sortbar_wrap">
+  <!-- <view class="sortbar_wrap">
     <view class="sortbar_ul" style="height: 70rpx;">
       <view class="{{activeSort == 0 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_default}}" data-index="0">综合</view>
       <view class="{{activeSort == 1 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_sales_sum}}" data-index="1">销量</view>
@@ -19,10 +19,10 @@
       </view>
       <view class="{{activeSort == 3 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_is_new}}" data-index="3">最新</view> 
     </view>
-  </view>
+  </view> -->
   <view class="content_ul">
     <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}">
-      <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}">
+      <navigator url="/pages/HOME/detail/detail?id={{item.goods_id}}">
         <view class="img">
           <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
         </view>

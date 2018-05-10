@@ -1,82 +1,62 @@
-import { getOrderList, cancelOrder1, cancelOrder2, orderConfirm, delOrder }from '../../../services/API.js'
+import { getOrderList, orderConfirm, cancelOrder, returnGodds, getExpress, getQueryExpress } from '../../../services/API';
 import { dalay } from '../../../utils/utils'
-const App = getApp()
+
+const app = getApp();
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    host: App.host,
-    contents: [
-      {
-        text: '全部',
-        type: '',
-      },
-      {
-        text: '待付款',
-        type: 'WAITPAY',
-      },
-      {
-        text: '待发货',
-        type: 'WAITSEND',
-      },
-      {
-        text: '待收货',
-        type: 'WAITRECEIVE'
-      },
-      {
-        text: '待评价',
-        type: 'WAITCCOMMENT',
-      },
-      // {
-      //   text: '退款售后',
-      //   type: '',
-      // }
-    ],
+    http: app.http,
+    host: app.host,
     items: [],
-    active: '',
-    // params
-    user_id: App.userInfo.user_id,
-    type: '',
-    p: 1,
+    navs: [
+      {
+        title: '全部',
+        type: 'ALL',
+        id: ''
+      },
+      {
+        title: '待付款',
+        type: 'WAITPAY',
+        id: 0
+      },
+      {
+        title: '待发货',
+        type: 'WAITSEND',
+        id: 1
+      },
+      {
+        title: '待收货',
+        type: 'WAITRECEIVE',
+        id: 2
+      },
+      {
+        title: '待评论',
+        type: 'WAITCCOMMENT',
+        id: 3
+      }
+    ],
+    activeType: 'All',
+    activeId: '',
+    isAgain: true,
+    isNomore: false,
+    p: 1
   },
   onLoad(e) {
-    wx.setNavigationBarTitle({
-      title: "订单管理"
+    const type = e.type;
+    this.setData({
+      activeType: type
     })
-    const type = e.target || ''
-    this.setData({active: type})
-    
-    // this.reset()
-    // if (type){
-    //   this.tabNavbar(type)
-    // } else{
-    //   this.setData({ active: type })
-    //   this.getOrderList({
-    //     user_id: this.data.user_id,
-    //     type: '',
-    //     p: this.data.p,
-    //   })
-    // }
-    
   },
   onShow() {
-    const type = this.data.active || ''
-    this.reset()
-    if (type){
-      this.tabNavbar(type)
-    } else{
-      this.setData({ active: type })
-      this.getOrderList({
-        user_id: this.data.user_id,
-        type: '',
-        p: this.data.p,
-      })
-    }
+    const type = this.data.activeType;
+    this.tabNavBar(type);
   },
-  getOrderList(params) {
-    if (!this.data.isAgain) return
-    this.setData({ isAgain: false })
-    getOrderList(params)
-    .then(({ status, result, msg }) => {
-      if (status === 1) {
+  getOrderList (params) {
+    getOrderList(params).then(({ status, result, msg }) => {
+      if(status == 1) {
         let items = this.data.items
         this.setData({
           items: items.concat(result),
@@ -90,117 +70,123 @@ Page({
           })
         }
       } else {
-        App.wxAPI.alert(msg)
+        app.wxAPI.alert(msg)
       }
     })
   },
   onReachBottom() {
     if (!dalay(500)) return
+    if (!this.data.isAgain) return;
+    this.setData({ isAgain: false });
     this.getOrderList({
-      user_id: this.data.user_id,
-      type: this.data.active,
+      type: this.data.activeType,
       p: this.data.p,
     })
   },
-  tabNavbar(e) {
+  tabNavBar(e) {
     let type = ''
-    if (typeof e === 'string') {
-      type = e
+    if(typeof e === 'string') {
+      type = e;
     } else {
-      type = e.currentTarget.dataset.type
+      type = e.currentTarget.dataset.type;
     }
-    this.reset()
-    this.setData({ active: type })
+    this.reset();
+    this.setData({ activeType: type })
     this.getOrderList({
-      user_id: this.data.user_id,
-      type: type,
+      type: (type == 'All'?'':type),
       p: this.data.p,
     })
+  },
+  confirm(e) {
+    const order_id = e.currentTarget.dataset.order_id;
+    app.wxAPI.confirm('确定收货吗？')
+      .then(() => {
+        return orderConfirm({ order_id })
+      })
+      .then(({ status, result, msg }) => {
+        if (status === 1) {
+          // 输入支付密码
+          this.onShow()
+          app.wxAPI.toast("确认收货成功")
+        } else {
+          app.wxAPI.alert(msg)
+        }
+      })
+  },
+  cancelOrder(e) {
+    const index = e.currentTarget.dataset.index;
+    const arr = this.data.items;
+    if(arr[index].order_button.pay_btn) {
+      app.wxAPI.confirm('确定取消订单吗？')
+        .then(() => {
+          return cancelOrder({ order_id: arr[index].order_id })
+        })
+        .then(({ status, result, msg }) => {
+          if (status === 1) {
+            app.wxAPI.toast("取消成功");
+            const type = this.data.activeType;
+            this.tabNavBar(type);
+          } else {
+            app.wxAPI.alert(msg)
+          }
+        })
+    } else {
+      app.cancelOrder = arr[index];
+      wx.navigateTo({
+        url: `/pages/USER/order-cancel/order-cancel`
+      })
+    }
+  },
+  navigatorDetail(e) {
+    const id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/pages/HOME/detail/detail?id=${id}`
+    })
+  },
+  saleAfter(e) {
+    const index = e.currentTarget.dataset.index;
+    const arr = this.data.items;
+    app.cancelOrder = arr[index];
+    wx.navigateTo({
+      url: `/pages/USER/returnGoods/returnGoods`
+    })
+  },
+  comment(e) {
+    const index = e.currentTarget.dataset.index;
+    const arr = this.data.items;
+    app.cancelOrder = arr[index];
+    wx.navigateTo({
+      url: `/pages/USER/pinglun/pinglun`
+    })
+  },
+  lookExpress(e) {
+    const id = e.currentTarget.dataset.id;
+    getExpress({order_id: id})
+      .then(({status, result, msg}) => {
+        if(status == 1) {
+          wx.navigateTo({
+            url: `/pages/USER/order-logistic/order-logistic?no=${result.invoice_no}&code=${result.shipping_code}`
+          })
+          // let params = {
+          //   invoice_no: result.invoice_no,
+          //   shipping_code: result.shipping_code
+          // }
+          // return getQueryExpress(params);
+        }
+      })
+      // .then(({ status, result, msg}) => {
+      //   if(status == 1) {
+
+      //   }
+      // })
   },
   reset() {
     this.setData({
       items: [],
-      user_id: App.userInfo.user_id,
-      type: '',
       p: 1,
+      activeType: 'All',
       isAgain: true,
       isNomore: false
     })
-  },
-  cancelOrder(e) {
-    const order_id = e.currentTarget.dataset.order_id
-    const order_status_code = e.currentTarget.dataset.order_status_code
-    App.wxAPI.confirm(order_status_code === 'WAITPAY' ? '确定取消此订单？': '此订单已支付，确定撤销此订单？')
-    .then(() => {
-      if (order_status_code === 'WAITPAY') {
-        return cancelOrder1({ order_id: order_id })
-      } else {
-        return cancelOrder2({ order_id: order_id })
-      }
-    })
-    .then(({ status, result, msg }) => {
-      if (status === 1) {
-        App.wxAPI.toast(msg)
-        this.reset()
-        const type = this.data.active
-        // this.tabNavbar(type)
-        this.getOrderList({
-          user_id: this.data.user_id,
-          type: type,
-          p: 1
-        })
-      } else {
-        App.wxAPI.alert(msg)
-        return Promise.reject(msg)
-      }
-    })
-    .catch(e => {
-      console.log(e)
-    })
-  },
-  delOrder(e) {
-    // App.wxAPI.alert("无删除订单接口")
-    const order_id = e.currentTarget.dataset.order_id
-    App.wxAPI.confirm('确定删除此订单？')
-    .then(() => {
-      return delOrder({ order_id, user_id: this.data.user_id })
-    })
-    .then(({ status, result, msg }) => {
-      if (status === 1) {
-        this.onShow()
-        App.wxAPI.toast("删除成功")
-      } else {
-        App.wxAPI.alert(msg)
-      }
-    })
-
-  },
-  call() {
-    wx.makePhoneCall({ phoneNumber: '10000' })
-  },
-  confirm(e) {
-    const order_id = e.currentTarget.dataset.order_id
-    App.wxAPI.confirm('确定收货吗？')
-    .then(() => {
-      return orderConfirm({ order_id })
-    })
-    .then(({status, result, msg}) => {
-      if (status === 1) {
-        // 输入支付密码
-        this.onShow()
-        App.wxAPI.toast("确认收货成功")
-      } else {
-        App.wxAPI.alert(msg)
-      }
-    })
-  },
-  pinJia(e) {
-    const order_id = e.currentTarget.dataset.order_id
-    const goods_list = JSON.stringify(e.currentTarget.dataset.goods_list)
-    console.log(goods_list)
-    wx.navigateTo({
-      url: "../pinglun/pinglun?order_id=" + order_id +'&goods_list='+ goods_list
-    });
-  },
-
+  }
 })

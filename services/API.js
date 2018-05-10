@@ -1,183 +1,276 @@
-import request, { get, post} from '../utils/request' 
+import request, { get, post } from '../utils/request'
 import config from '../utils/config'
 // 登录（获取token）
 export function thirdLogin(params) {
-  return post(config.host + '/api/user/thirdLogin', params)
+  return post(config.host + 'c=User&a=thirdLogin', params)
 }
 // 首页数据
 export function homePage() {
-  return get(config.host + '/api/index/homePage')
+  return get(config.host + 'c=Index&a=home')
 }
-// 最热门数据(分页)
-export function favourite(params) {
-  return get(config.host + '/api/index/favourite', params)
+//今日推荐
+export function goodsList(params) {
+  return get(config.host + 'c=Index&a=homeRecommend', params)
 }
-// 搜索
-export function search(params) {
-  return get(config.host + '/api/goods/search', params)
+//首页加载更多
+export function cacheLoading(url, params) {
+  return get(config.host + url, params)
 }
+
+// 根据分类获取产品列表    旧分类
+export function goodsListx(params) {
+  return get(config.host + 'm=Api&c=Goods&a=goodsList', params)
+}
+
+// 新分类列表
+export function getCategory(params) {
+  return get(config.host + 'm=Api&c=index&a=getCategory', params)
+}
+// 新分类列表_商品
+export function getGoodsList(params) {
+  return get(config.host + 'm=Api&c=index&a=getGoodsList', params)
+}
+
 // 获取所有商品分类
 export function goodsCategoryList() {
   return post(config.host + '/index.php?m=Api&c=Goods&a=goodsCategoryList')
 }
-// 根据分类获取产品列表
-export function goodsList(params) {
-  return get(config.host + '/index.php?m=Api&c=Goods&a=goodsList', params)
-}
 
-// 根据id获取商品详情
+//一级类型产品数据
+export function categoryList(params) {
+  return get(config.host + 'c=Index&a=goodsCategory', params)
+}
+//获取商品详情
 export function goodsInfo(params) {
-  return post(config.host + '/index.php?m=Api&c=Goods&a=goodsInfo', params)
+  return post(config.host + 'c=Goods&a=goodsInfo', params)
 }
-// 根据id获取商品详情规格
-export function goodsContent(params) {
-  return get(config.host + '/api/goods/goodsContent', params)
+//二级类型数据获取
+export function loadMoreGoods(params) {
+  return get(config.host + 'c=Index&a=loadMoreGoods', params)
 }
-// 排序 默认
-// return get(config.hosts + url, params)
-export function orderbyDefault(url, params) {
-  return get(config.host + url, params)
+//收藏商品
+export function collectGoods(params) {
+  return post(config.host + 'c=Goods&a=collectGoodsOrNo', params)
 }
-// 获取最新商品列表
-
-export function newinfo(url, params) {
-  return get(config.host + '/api/goods/newinfo', params)
+//获取商品详情内容
+export function goodsdetail(params) {
+  return get(config.host + 'c=Goods&a=goodsContent', params)
 }
-
-// 获取热门商品列表
-export function hotinfo(url, params) {
-  return get(config.host + '/api/goods/hotinfo', params)
+//获取商品评价
+export function getGoodsComment(params) {
+  return post(config.host + 'c=Goods&a=getGoodsComment', params)
 }
 
-// 将商品加入购物车
+//拼团首页
+export function teamList(params) {
+  return get(config.host + 'c=Team&a=AjaxTeamList', params)
+}
+//拼团首页轮播
+export function teamBanner() {
+  return get(config.host + 'c=index&a=teamBanner')
+}
+//拼团详情
+export function teamDetail(params) {
+  return get(config.host + 'c=Team&a=info', params)
+}
+//获取拼团队伍信息
+export function teamInfo(params) {
+  return get(config.host + 'c=Team&a=ajaxTeamFound', params)
+}
+//拼团下单
+export function addOrder(params) {
+  return post(config.host + 'c=Team&a=addOrder', params)
+}
+//拼团订单结算页
+export function teamOrder (params) {
+  return post(config.host + 'c=Team&a=order', params)
+}
+//拼团获取订单详情
+export function getOrderInfo(params) {
+  return post(config.host + 'c=Team&a=getOrderInfo', params)
+}
+//获取更多拼团订单
+export function getMoreTeam(params) {
+  return get(config.host + 'c=order&a=team_list', params)
+}
+//获取分享页
+export function getTeamFound(params) {
+  return get(config.host + 'c=Team&a=found', params)
+}
+
+//加入购物车
 export function addCart(params) {
-  return post(config.host + '/index.php?m=Api&c=Cart&a=addCart', params)
+  return post(config.host + 'c=Cart&a=addCart', params)
 }
-// 购物车列表
+//购物车列表
 export function cartList(params) {
-  return post(config.host + '/index.php?m=Api&c=Cart&a=cartList', params)
+  return post(config.host + 'c=Cart&a=cartList', params)
 }
-// 获取订单表格
+//删除购物车产品
+export function delCart(params) {
+  return post(config.host + 'c=Cart&a=delCart', params)
+}
+//获取订单表格
 export function orderEdit(params) {
-  return post(config.host + '/index.php?m=Api&c=Cart&a=cart2', params)
+  return post(config.host + 'c=Cart&a=cart2', params)
 }
-// 获取订单列表
-export function getOrderList(params) {
-  return get(config.host + '/index.php?m=Api&c=User&a=getOrderList', params)
-}
-// 获取退款退货订单列表
-export function returnGoodsList(params) {
-  return get(config.host + '/api/user/return_goods_list', params)
-}
-// 提交订单
+//提交订单
 export function saveOrder(params) {
-  return post(config.host + '/index.php?m=Api&c=Cart&a=cart3', params)
+  return post(config.host + 'c=Cart&a=cart3', params)
 }
 // 获取微信支付需要的信息
 export function getPaymentOrder(params) {
-  return get(config.host + '/api/cart/cart4', params)
+  return get(config.host + 'c=Cart&a=cart4', params)
 }
-// 订单详情
-export function orderDetail(params) {
-  return get(config.host + '/api/order/order_detail', params)
+//支付
+export function doPay(params) {
+  return post(config.host + 'c=Wxpay&a=dopay', params)
 }
-// 取消订单（在未支付未发货的时候使用）
-export function cancelOrder1(params) {
-  return post(config.host + '/api/user/cancelOrder', params)
+//确定收货
+export function orderConfirm(params) {
+  return post(config.host + 'c=User&a=orderConfirm', params)
 }
-// 删除订单
-export function delOrder(params) {
-  return get(config.host + '/index.php?m=Api&c=Order&a=del_order', params)
+//取消订单
+export function cancelOrder(params) {
+  return get(config.host + 'c=User&a=cancelOrder', params)
+}
+//取消订单(已支付)
+export function refundOrder(params) {
+  return post(config.host + 'c=Order&a=refund_order', params)
+}
+//申请售后
+export function returnGoods(params) {
+  return post(config.host + 'c=Order&a=return_goods', params)
+}
+//订单退款
+export function returnGodds(params) {
+  return get(config.host + 'c=order&a=return_goods_info', params)
+}
+//售后列表
+export function refundGoodsList(params) {
+  return post(config.host + 'c=user&a=return_goods_list', params)
+}
+//退款列表
+export function refundOrderList(params) {
+  return post(config.host + 'c=order&a=return_goods_list', params)
+}
+//查看物流
+export function getExpress(params) {
+  return get(config.host + 'c=user&a=express', params)
+}
+//获取物流
+export function getQueryExpress(params) {
+  return get(config.host + 'c=user&a=queryExpress', params)
+}
+//评价
+export function getGoodsaddcomment(params) {
+  return post(config.host + 'c=User&a=add_comment', params)
 }
 
-// 取消订单（在已支付未发货的时候使用）
-export function cancelOrder2(params) {
-  return post(config.host + '/api/order/refund_order', params)
+//快递下单
+export function expressOrder(params) {
+  return post(config.host + 'c=User&a=expressOrder', params)
 }
-// 确定收货
-export function orderConfirm(params) {
-  return post(config.host + '/index.php?m=Api&c=User&a=orderConfirm', params)
+//查询快递
+export function expressQuery(params) {
+  return post(config.host + 'c=User&a=expressQuery', params)
 }
-// 退换,货申请
-export function refundOrder(params) {
-  return post(config.host + '/index.php?m=Api&c=Order&a=return_goods', params)
+//获取收货地址列表
+export function getAddressList() {
+  return get(config.host + 'c=User&a=getAddressList')
 }
-// 获取支付信息
-export function doPay(params) {
-  return post(config.host + '/index.php?m=api&c=Wxpay&a=dopay', params)
-}
-// 删除商品
-export function delCart(params) {
-  return post(config.host + '/index.php?m=Api&c=Cart&a=delCart', params)
-}
-// 获取收货地址列表
-export function getAddressList(params) {
-  return get(config.host + '/api/user/getAddressList', params)
-}
-// 新增收货地址
+//编辑或添加收货地址
 export function addAddress(params) {
-  return post(config.host + '/api/user/addAddress', params)
+  return post(config.host + 'c=User&a=addAddress', params)
+}
+//设置默认收货地址
+export function setDefaultAddress(params) {
+  return post(config.host + 'c=User&a=setDefaultAddress', params)
 }
 // 删除收货地址
 export function delAddress(params) {
-  return post(config.host + '/api/user/del_address', params)
+  return post(config.host + 'c=User&a=del_address', params)
 }
-// 设置默认地址（暂时未使用）
-export function setDefaultAddress(params) {
-  return post(config.host + '/index.php?m=Api&c=User&a=setDefaultAddress', params)
+
+//获取订单列表
+export function getOrderList(params) {
+  return get(config.host + 'c=User&a=getOrderList', params)
 }
-// 设置默认地址（暂时未使用）
-export function uploadHeadpic(params) {
-  return post(config.host + '/index.php?m=api&c=User&a=upload_headpic', params)
-}
-// 收藏/取消收藏 商品
-export function collectGoods(params) {
-  return post(config.host + '/index.php?m=Api&c=Goods&a=collectGoodsOrNo', params)
-}
-// 收藏列表
+//获取收藏商品列表
 export function getGoodsCollect(params) {
-  return get(config.host + '/api/user/getGoodsCollect', params)
+  return get(config.host + 'c=User&a=getGoodsCollect', params)
 }
-//优惠券列表   
-export function getGoodscoupons(params) {
-  return get(config.host + '?m=api&c=Activity&a=coupon_list', params)
-}
-
-//优惠券-个人中心 
+//获取我的优惠卷
 export function getCouponList(params) {
-  return get(config.host + '?m=Api&c=User&a=getCouponList', params)
+  return get(config.host + 'c=User&a=getCouponList', params)
+}
+//领劵中心
+export function couponList(params) {
+  return get(config.host + 'c=Activity&a=coupon_list', params)
+}
+//领取优惠券
+export function getCoupon(params) {
+  return post(config.host + 'c=Activity&a=get_coupon', params)
 }
 
-//优惠券领取 
-export function getGoodsgetcoupon(params) {
-  return get(config.host + '?m=api&c=Activity&a=get_coupon', params)
+//我的下级
+export function getLowerLevel(params) {
+  return get(config.host + 'c=User&a=lower_level', params)
 }
 
-//写评论 
-export function getGoodsaddcomment(params) {
-  return post(config.host + '?m=Api&c=User&a=add_comment', params)
+//省市区获取
+export function getRegion(params) {
+  return get(config.host + 'c=index&a=get_region', params)
 }
-
-//加载评论 
-export function getGoodsComment(params) {
-  return post(config.host + '?m=Api&c=Goods&a=getGoodsComment', params)
+//获取手机验证码
+export function getTelCode(params) {
+  return get(config.host + 'c=User&a=getCode', params)
 }
-
-// 申请提现
-export function withdrawals(params) {
-  return post(config.host + '/api/user/withdrawals', params)
+//绑定手机号
+export function bindingMobile(params) {
+  return post(config.host + 'c=User&a=binding_mobile', params)
 }
-// 提现列表
-export function getWithdrawalsList(params) {
-  return get(config.host + '/index.php?m=api&c=user&a=withdrawals_list', params)
+//获取手机号
+export function getUserMobile(params) {
+  return post(config.host + 'c=User&a=getUserMobile', params)
 }
-
-// 获取验证码
-export function getVerifyCode(params) {
-  // return post(config.host + `/api/user/verify?is_image=1&t=${+new Date()}`, params)
-  return config.host + `/api/user/verify?is_image=1&t=${+new Date()}`
+//验证手机号
+export function verifMobile(params) {
+  return post(config.host + 'c=User&a=verifMobile', params)
 }
-// 设置支付密码
-export function setPassword(params) {
-  return post(config.host + `/index.php?m=api&c=user&a=paypwd`, params)
+//绑定提现密码
+export function bindingpwd(params) {
+  return post(config.host + 'c=User&a=binding_cipher', params)
+}
+//获取银行卡
+export function getUserCard(params) { 
+  return post(config.host + 'c=User&a=getUserCard', params)
+}
+//绑定银行卡
+export function bindingBankCard(params) {
+  return get(config.host + 'c=User&a=binding_card', params)
+}
+//提现记录
+export function getRecord(params) {
+  return get(config.host + 'c=User&a=withdrawalsRecord', params)
+}
+//获取余额
+export function getMoney(params) {
+  return get(config.host + 'c=User&a=getMoney', params)
+}
+//小程序提现
+export function miniwithdrawals(params) {
+  return post(config.host + 'c=User&a=miniwithdrawals', params)
+}
+//商品搜索
+export function search(params) {
+  return get(config.host + 'c=Goods&a=search', params)
+}
+// 排序 默认
+export function orderbyDefault(url, params) {
+  return get(config.hosts + url, params)
+}
+//下级/余额开关
+export function getButton(params) {
+  return get(config.host + 'c=User&a=open_button', params)
 }

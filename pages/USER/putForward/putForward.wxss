@@ -1,0 +1,41 @@
+page {
+  padding-top: 76rpx;
+}
+.money_wrap {
+  width: 686rpx;
+  margin: 0 auto;
+  padding: 50rpx 60rpx 0;
+  border-radius: 8rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+.title {
+  font-weight: bold;
+}
+.icon_money {
+  font-size: 80rpx;
+  font-weight: bold;
+}
+.money_input {
+  display: block;
+  width: 100%;
+  font-size: 50rpx;
+  border-bottom: 2rpx solid #EFEFF4;
+}
+.money_footer {
+  padding: 40rpx 0;
+}
+.all_btn {
+  color: #2173AC;
+}
+
+.footer_btn {
+  width: 80%;
+  margin: 95rpx auto 0;
+  padding: 35rpx 0;
+  border-radius: 60rpx;
+  background-color: #1EBC72;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+<view>
+  <view class='com_wrap'>
+    <image class='icon_finish' src='../../../images/icon_finish.png'></image>
+    <view class='text'>提现申请已提交</view>
+  </view>
+
+  <navigator class='footer_btn' url='/pages/USER/user/user'>完成</navigator>
+</view>

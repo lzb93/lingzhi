@@ -1,0 +1,51 @@
+<!--pages/USER/order-detail/order-detail.wxml-->
+
+<view>
+  <view class='add flex_between' bindtap='changeAddress'>
+    <image class='icon_add' src='../../../images/icon_address.png'></image>
+    <view class='add_detail'>
+      <view class='flex_between'>
+        <view>收货人：{{address.consignee}}</view>
+        <view>{{address.mobile}}</view>
+      </view>
+      <view class='tx_ov2' style='margin-top: 20rpx;'>
+        收货地址：{{address.province}}{{address.city}}{{address.district}}{{address.address}}
+      </view>
+    </view>
+    <image class='add_line' src='../../../images/add_line.png'></image>
+  </view>
+
+  <view>
+    <view class='order_item'>
+      <view class='user_order_body'>
+        <view class='seller_content flex_row' wx:for="{{items}}" wx:key>
+          <image src='../../../images/seller.jpg'></image>
+          <view class='seller_text flex_between'>
+            <view class='seller_text_inner_left' style='font-size: 24rpx;'>
+              <view class='tx_ov2' style='line-height: 36rpx;'>{{item.goods_name}}</view>
+              <view style='margin-top: 20rpx; color: #B3B1B2;' wx:if="{{item.spec_key_name}}">{{item.spec_key_name}}</view>
+            </view>
+            <view style='font-size: 22rpx; text-align: right;'>
+              <view>￥{{item.goods_price}}</view>
+              <view style='margin-top: 18rpx; color: #B3B1B2; text-decoration: line-through;' 
+              wx:if="{{item.market_price}}">￥{{item.market_price}}</view>
+              <view style='margin-top: 18rpx; color: #B3B1B2;'>X {{item.goods_num}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='seller_m'>共 {{totalPrice.goods_num}} 件商品  合计：￥{{totalPrice.total_fee}} </view>
+      </view>
+
+      <view class='order_item_footer clearfix'>
+        <view class='color_red right'>￥<b>{{totalPrice.total_fee}}</b></view>
+        <view class='right'>实付款：</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='footer flex_between'>
+    <view class='footer_btn remind' bindtap='save'>提交订单</view>
+    <!-- <navigator url='/pages/USER/order-cancel/order-cancel' class='footer_btn'>取消订单</navigator>
+    <view class='footer_btn remind'>提醒发货</view> -->
+  </view>
+</view>

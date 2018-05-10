@@ -1,0 +1,19 @@
+
+<view class='wrap'>
+  <view class='item flex_between'>
+    <view class='title'>持卡人：</view>
+    <input class='input' placeholder='请输入持卡人姓名' value="{{name}}" bindblur='bindName'></input>
+  </view>
+
+  <view class='item flex_between'>
+    <view class='title'>银行卡号：</view>
+    <input class='input' placeholder='请输入银行卡号' value="{{cardNumber}}" bindblur='bindCardNum'></input>
+  </view>
+
+  <view class='imgul'>
+    <image class='imgli' mode='aspectFit' wx:if="{{card_img}}" src='{{http + card_img}}'></image>
+  </view>
+  <image src='../../../images/icon_add_img.png' class='{{card_img?"none":""}}' bindtap='chooseImage' style='width:150rpx;height:150rpx;margin: 20rpx 25rpx;'></image> 
+</view>
+
+<view class='footer_btn' bindtap='submit'>确定</view>

@@ -1,46 +1,56 @@
 {
   "pages":[
     "pages/HOME/home/home",
+    "pages/HOME/detail/detail",
+    "pages/HOME/comment/comment",
+    "pages/HOME/type/type",
 
     "pages/TYPE/type/type",
-    "pages/TYPE/prduct/prduct",
-    "pages/TYPE/detail/detail",
-    
+
     "pages/CART/cart/cart",
     "pages/CART/payOrder/payOrder",
     "pages/CART/payment/payment",
+
+    "pages/EXPRESS/express/express",
+    "pages/EXPRESS/address/address",
+    "pages/EXPRESS/add-write/add-write",
+
     "pages/USER/user/user",
+    "pages/USER/order-logistic/order-logistic",
+    "pages/USER/order-detail/order-detail",
+    "pages/USER/order-cancel/order-cancel",
+    "pages/USER/returnGoods/returnGoods",
     "pages/USER/order/order",
-    "pages/USER/pinglun/pinglun",
-    "pages/USER/orderDetial/orderDetial",
-    "pages/USER/refund/refund",
-
-    "pages/USER/logistics/logistics",
-    
-    "pages/USER/address/address",
-    "pages/USER/addressEdit/addressEdit",
-
-    "pages/USER/setup/setup",
-    "pages/USER/opinion/opinion",
-    "pages/USER/coupon/coupon",
-
-    "pages/USER/distribution/distribution",
-    "pages/USER/customer/customer",
-    "pages/USER/help/help",
     "pages/USER/collect/collect",
-    "pages/USER/returnOrder/returnOrder",
-    "pages/USER/balance/balance",
-    "pages/USER/balanceExport/balanceExport",
-    "pages/USER/balanceList/balanceList",
-    "pages/USER/editPassword/editPassword"
+    "pages/USER/notused/notused",
+    "pages/USER/refund/refund",
+    "pages/USER/afterSale/afterSale",
+    "pages/USER/pinglun/pinglun",
+
+    "pages/USER/lower/lower",
+    "pages/USER/lowerList/lowerList",
+    "pages/USER/commision/commision",
+    "pages/USER/putForward/putForward",
+    "pages/USER/record/record",
+    "pages/USER/comFinish/comFinish",
+    "pages/USER/binding/binding",
+    "pages/USER/bindTel/bindTel",
+    "pages/USER/pwd/pwd",
+    "pages/USER/bindPwd/bindPwd",
+    "pages/USER/verMoblie/verMoblie",
+    "pages/USER/bindBankList/bindBankList",
+    "pages/USER/bindBankCard/bindBankCard",
+    "pages/USER/money/money",
+    "pages/USER/refundOrder/refundOrder"
     
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1EBC72",
     "navigationBarTitleText": "首页",
-    "navigationBarTextStyle":"white",
-    "backgroundColor": "#efeff4"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f2f3f4"
   },
   "tabBar": {
     "color": "#969696",

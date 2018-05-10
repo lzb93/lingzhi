@@ -1,0 +1,19 @@
+<view>
+  <view wx:if="{{card}}">
+    <view class='color_gray' style='padding: 20rpx 25rpx; font-size: 26rpx;'>解绑需联系客服</view>
+    <view class='card flex_between'>
+      <view>银行卡号：</view>
+      <view>{{card.card_number}}</view>
+    </view>
+    <view class='card flex_between'>
+      <view>审核状态：</view>
+      <view class='{{state.state == 3?"color_red":""}}'>{{state.name}}</view>
+    </view>
+  </view>
+  
+
+  <navigator class='edit_card flex_between' wx:if="{{state.state == 3 || !card}}" url='/pages/USER/bindBankCard/bindBankCard'>
+    <view>更换/添加银行卡</view>
+    <view class='color_gray'> > </view>
+  </navigator>
+</view> 

@@ -1,0 +1,14 @@
+<view>
+  <navigator class='item flex_between' url='/pages/USER/bindBankList/bindBankList'>
+    <view class='title'>银行卡</view>
+    <view class='color_gray'> > </view>
+  </navigator>
+  <navigator class='item flex_between' url='/pages/USER/bindTel/bindTel'>
+    <view class='title'>绑定手机号码</view>
+    <view class='color_gray'> > </view>
+  </navigator>
+  <navigator class='item flex_between' url='/pages/USER/verMoblie/verMoblie'>
+    <view class='title'>绑定提现密码</view>
+    <view class='color_gray'> > </view>
+  </navigator>
+</view>

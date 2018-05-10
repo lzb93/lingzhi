@@ -1,89 +1,43 @@
-<view style="padding-bottom: 140rpx;">
-  <view class="form_wrap">
-    <view class="list">
-      <text>服务类型</text>
-      <picker bindchange="typeBindPickerChange" value="{{typeIndex}}" range="{{typeList}}">
-        <input style="width: 100%;" value="{{typeList[typeIndex]}}" disabled="1" type="text" placeholder="" />
-      </picker>
-      <view class="icon_down">
-        <image mode="widthFix" src="../../../images/icon_down_f.png"></image>
+
+<view>
+<view class='order_item' wx:for="{{items}}" wx:key>
+    <view class='user_order_body'>
+      <view class='seller_content flex_row' bindtap='remindGood'>
+        <image src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{item.goods_id}}'></image>
+        <view class='seller_text flex_between'>
+          <view class='seller_text_inner_left' style='font-size: 24rpx;'>
+            <view class='tx_ov2' style='height: 72rpx; line-height: 36rpx;'>{{item.goods_name}}</view>
+             <view style='margin-top: 20rpx; color: #B3B1B2;'>{{item.reason}}</view> 
+          </view>
+          <view style='font-size: 22rpx; text-align: right;'>
+            <view class='color_red' style='margin-bottom: 18rpx;' wx:if="{{item.refund_money != 0}}">
+              退还￥{{item.refund_money}}
+            </view>
+            <view style='margin-bottom: 18rpx; color: #B3B1B2;'>{{item.typeName}}</view>
+            <view style='color: #B3B1B2;'>X {{item.goods_num}}</view>
+          </view>
+        </view>
       </view>
     </view>
-    <view class="list">
-      <text>提交原因</text>
-      <picker bindchange="reasonBindPickerChange" value="{{reasonIndex}}" range="{{reasonList}}">
-        <input style="width: 100%;" value="{{reasonList[reasonIndex]}}" disabled="1" type="text" placeholder="" />
-      </picker>
-      <view class="icon_down">
-        <image mode="widthFix" src="../../../images/icon_down_f.png"></image>
+
+    <view class='order_item_footer flex_between align_items'>
+      <view class='order_sn flex_row'>
+        <view class='color_gray1'>订单号：</view>
+        <view class='color_gray'>{{item.order_sn}}</view>
       </view>
-    </view>
-    <view class="list">
-      <text>货物状态</text>
-      <radio-group class="radio-group" bindchange="swiperChange">
-        <radio value="{{0}}" color="#E72839" checked/>未收到货物   
-        <radio value="{{1}}" color="#E72839"/>已收到货
-      </radio-group>
-    </view>
-    
-    <view class="list">
-      <text>提交数量</text>
-      <input type="text" placeholder="请输入数量" value="{{num}}" bindblur="" maxlength="4" type="number"/>
-    </view>
-    <view class="list">
-      <text>问题描述</text>
-      <textarea placeholder="可在此补充说明" value="{{remarks}}" bindinput="remarksBlur" maxlength="90" />
+      <view class='tx_ov {{item.status == -1 ? "color_red":""}}'>
+        <text>{{item.statusDetailName}}</text>
+      </view>
+      
     </view>
   </view>
+  
 
-
-  <view class="content_ul">
-      <view class="content_li_wrap">
-        <view class="content_li clearfix">
-          <view class="img">
-            <image src="{{host}}/api/goods/goodsThumImages?goods_id={{goods_list.goods_id}}"></image>
-          </view>
-          <view class="con">
-            <view class="tit tx_ov2">{{goods_list.goods_name}}</view>
-            <view class="isbaoy">{{goods_list.spec_key_name}}</view>
-            <view class="msg">
-              <text>￥{{goods_list.goods_price}}</text>
-              <text>￥{{goods_list.market_price}}</text>
-              <text>x {{goods_list.goods_num}}</text>
-            </view>
-          </view>
-        </view>
-        <view class="aside">
-          <!-- <view class="top">共计{{result.goods_list.length}}件商品 合计：￥{{result.total_amount}}（含运费￥{{result.shipping_price}}）</view> -->
-          <view class="bottom">
-            <text>可退款：</text>
-            <text class="active">￥{{goods_list.goods_price}}</text>
-          </view>
-        </view>
-      </view>
-    </view>
-<!-- 
-  <view class="form_wrap" style="margin-bottom: 120rpx;">
-    <view class="list">
-      <text>单号</text>
-      <input value="" type="number" placeholder="请输入快递单号" />
-    </view>
-    <view class="list">
-      <text>图片</text>
-      <view class="icon_camera"><image src="../../../images/icon_camera.png" mode="widthFix" /></view>
-    </view>
-    <view class="list">
-        <text></text>
-        <view class="image_ul">
-          <view><image src="../../../images/test.png" mode="widthFix" /><icon type="clear" size="20"/></view>
-          <view><image src="../../../images/test.png" mode="widthFix" /><icon type="clear" size="20"/></view>
-          <view><image src="../../../images/test.png" mode="widthFix" /><icon type="clear" size="20"/></view>
-        </view>
-      </view>
-  </view> -->
-
-  <view class="footer">
-    <text bindtap="save">确定</text>
-    <text bindtap="cancel">取消</text>
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
   </view>
 </view>

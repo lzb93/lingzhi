@@ -1,0 +1,26 @@
+
+.item {
+  padding: 30rpx 25rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #EFEFF4;
+  font-size: 24rpx;
+}
+.item:last-child {
+  border-bottom: 0;
+}
+.icon_img {
+  display: block;
+  width: 84rpx;
+  height: 84rpx;
+  margin-top: 20rpx;
+}
+.content {
+  width: 496rpx;
+  padding: 0 25rpx;
+}
+.money {
+  width: 120rpx;
+  margin-top: 6rpx;
+  font-size: 36rpx;
+  text-align: right;
+}

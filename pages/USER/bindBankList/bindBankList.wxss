@@ -1,0 +1,13 @@
+
+
+.card {
+  margin-bottom: 20rpx;
+  padding: 20rpx 25rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+.edit_card {
+  padding: 20rpx 25rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}

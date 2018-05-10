@@ -3,14 +3,14 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"postcss": false,
+		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.9",
-	"appid": "wxae783c6c81557293",
-	"projectname": "%E7%81%B5%E8%8A%9D",
+	"libVersion": "1.9.91",
+	"appid": "wxebc4116bdd6855b5",
+	"projectname": "git%E7%87%95%E7%AA%9D",
 	"condition": {
 		"search": {
 			"current": -1,

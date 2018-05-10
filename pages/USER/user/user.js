@@ -1,90 +1,126 @@
-const App = getApp()
+import { teamList, getButton } from '../../../services/API';
+
+const app = getApp();
 Page({
   data: {
     userInfo: '',
-    waitItems: [{
-        text: '待付款',
-        icon: 'icon_wait_pay.png',
-        target: 'WAITPAY',
-      }, {
-        text: '待发货',
-        icon: 'icon_wait_send.png',
-        target: 'WAITSEND',
-      }, {
-        text: '待收货',
-        icon: 'icon_wait_receipt.png',
-        target: 'WAITRECEIVE',
-      }, {
-        text: '待评价',
-        icon: 'icon_wait_end.png',
-        target: 'WAITCCOMMENT',
+    isShowButton: false,
+    userNav: [
+      {
+        type: 'WAITPAY',
+        src: '../../../images/pay.png',
+        name: '待付款'
+      },
+      {
+        type: 'WAITSEND',
+        src: '../../../images/pend.png',
+        name: '待发货'
+      },
+      {
+        type: 'WAITRECEIVE',
+        src: '../../../images/good.png',
+        name: '待收货'
+      },
+      {
+        type: 'WAITCCOMMENT',
+        src: '../../../images/finish.png',
+        name: '待评论'
+      },
+      {
+        type: 'RETURN',
+        src: '../../../images/icon_refund.png',
+        name: '退款'
       }
     ],
-    jumpItems: [
-      {
-        icon: 'icon_user1.png',
-        name: '售后/退款',
-        target: `/pages/USER/returnOrder/returnOrder`
-      }, 
-      {
-        icon: 'icon_user2.png', 
-        name: '收货地址',
-        target: '/pages/USER/address/address'
-      },
-     
-      {
-        icon: 'icon_user3.png',
-        name: '我的优惠券',
-        target: '/pages/USER/coupon/coupon'
-      }, 
-      {
-        icon: 'icon_user4.png',
-        name: '常见问题',
-        target: '/pages/USER/help/help'
-      }, 
+    items: [
       // {
-      //   icon: 'icon_user_ps.png',
-      //   name: '配送说明',
-      //   target: '/pages/USER/distribution/distribution'
-      // }, 
-      // {
-      //   icon: 'icon_user_sz.png',
-      //   name: '设置',
-      //   target: '/pages/USER/setup/setup'
-      // }, 
+      //   id: 1,
+      //   flag: true,
+      //   name: '拼团订单',
+      //   src: '../../../images/icon_user_team.png',
+      //   url: '/pages/TEAM/order/order'
+      // },
       {
-        icon: 'icon_user5.png',
-        name: '我的收藏',
-        target: '/pages/USER/collect/collect'
+        id: 2,
+        flag: true,
+        name: '售后列表',
+        src: '../../../images/icon_user1.png',
+        url: '/pages/USER/refund/refund'
       },
+      {
+        id: 3,
+        flag: true,
+        name: '我的地址',
+        src: '../../../images/icon_user2.png',
+        url: '/pages/EXPRESS/address/address'
+      },
+      {
+        id: 4,
+        flag: true,
+        name: '商品收藏',
+        src: '../../../images/icon_user5.png',
+        url: '/pages/USER/collect/collect'
+      },
+      // {
+      //   id: 5,
+      //   flag: true,
+      //   name: '余额/下级',
+      //   src: '../../../images/icon_user1.png',
+      //   url: '/pages/USER/lower/lower'
+      // },
+      {
+        id: 6,
+        flag: true,
+        name: '领劵中心',
+        src: '../../../images/icon_user3.png',
+        url: '/pages/USER/notused/notused'
+      },
+      // {
+      //   id: 7,
+      //   flag: true,
+      //   name: '信息绑定',
+      //   src: '../../../images/icon_user_bind.png',
+      //   url: '/pages/USER/binding/binding'
+      // }
     ]
   },
   onLoad() {
-    this.setData({ userInfo: App.userInfo })
+    this.setData({ userInfo: app.userInfo })
   },
   onShow() {
-    let token = App.token
-    if ( !token ) {
+    let token = app.token;
+    if (!token) {
       // 没登录处理....
-      App.getUserInfo(() => {
-        this.setData({ userInfo: App.userInfo })
+      app.getUserInfo(() => {
+        this.setData({ userInfo: app.userInfo })
       })
       return
     }
-    this.setData({ userInfo: App.userInfo })
+    this.setData({ userInfo: app.userInfo })
+    getButton().then(({status, result, msg}) => {
+      if(status == 1) {
+        let arr = this.data.items;
+        arr.forEach(item => {
+          if(item.id == 5) {
+            item.flag = result == 2 ? true : false
+          }
+        })
+        this.setData({
+          items: arr
+        })
+      }
+    })
   },
-  login() {
-
-  },
-  // getUserInfo() {
-  //   App.getUserInfo((userInfo) => {
-  //     this.setData({ userInfo })
-  //     console.log('setsuccess')
-  //   })
-  // },
-  jumpOrder(e) {
-    const target = e.currentTarget.dataset.target
-    wx.navigateTo( {url: `/pages/USER/order/order?target=${target}`})
+  openUserNav(e) {
+    const type = e.currentTarget.dataset.type;
+    if (type == 'RETURN') {
+      wx.navigateTo({
+        url: `/pages/USER/refundOrder/refundOrder`
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/USER/order/order?type=${type}`
+      })
+    }
   }
-
 })

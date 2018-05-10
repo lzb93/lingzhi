@@ -1,0 +1,13 @@
+<view>
+  <view class='money_wrap'>
+    <view class='title'>提现金额</view>
+    <view class='icon_money'>￥</view>
+    <input class='money_input' value="{{price}}" bindblur='priceBlur' type='number'></input>
+    <view class='money_footer flex_row'>
+      <view>当前余额{{money}}元，</view>
+      <view class='all_btn' bindtap='allMoney'>全部提现</view>
+    </view>
+  </view>
+
+  <view class='footer_btn' bindtap='submit'>立即提取</view>
+</view>

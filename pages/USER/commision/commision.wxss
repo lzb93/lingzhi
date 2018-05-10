@@ -1,0 +1,47 @@
+
+.container {
+  padding: 80rpx 40rpx;
+  background-color: #fff;
+}
+.icon_money {
+  position: relative;
+  width: 178rpx;
+  height: 178rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #EBC532;
+}
+.icon_money image {
+  position: absolute;
+  width: 82rpx;
+  height: 94rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.commision {
+  margin: 35rpx 0 25rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.money {
+  font-size: 65rpx;
+  font-weight: bold;
+  text-align: center;
+}
+.look_record {
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.footer_btn {
+  width: 80%;
+  margin: 100rpx auto 0;
+  padding: 23rpx 0;
+  border-radius: 50rpx;
+  background-color: #1EBC72;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+}
