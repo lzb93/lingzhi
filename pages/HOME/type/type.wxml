@@ -1,25 +1,7 @@
 <!--index.wxml-->
 <!-- <import src="../../template/template.wxml" /> -->
 <view>
-  <view class="navbar_wrap">
-    <!-- <view class="navbar_ul"> -->
-    <scroll-view class="" scroll-x bindscroll="scroll" scroll-left="{{scrollLeft}}" scroll-with-animation="1">
-      <view class="navbar_ul scroll_ul">
-        <view class="{{activeNav === index ? 'active': ''}}" wx:for="{{navbars}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="tabNavbar" wx:key>{{item.mobile_name}}</view>
-      </view>
-    </scroll-view>
-    <!-- </view> -->
-  </view>
-  <view class="sortbar_wrap">
-    <view class="sortbar_ul" style="height: 70rpx;">
-      <view class="{{activeSort == 0 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_default}}" data-index="0">综合</view>
-      <view class="{{activeSort == 1 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_sales_sum}}" data-index="1">销量</view>
-      <view class="{{activeSort == 2 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_price}}"data-index="2">价格
-        <image class="icon_sort" src="{{allData.sort != 'shop_price' ? '../../../images/icon_sort_d.png':(allData.sort_asc == 'asc' ? '../../../images/icon_sort_b.png' : '../../../images/icon_sort_t.png')}}"></image>
-      </view>
-      <view class="{{activeSort == 3 ? 'active': ''}}" bindtap="tabSortbar" data-url="{{allData.orderby_is_new}}" data-index="3">最新</view> 
-    </view>
-  </view>
+
   <view class="content_ul">
     <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}">
       <navigator url="/pages/TYPE/detail/detail?target={{item.goods_id}}">

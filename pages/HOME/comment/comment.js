@@ -49,7 +49,7 @@ Page({
     const navs = this.data.navs;
     let arr = navs.map((item, key) => {
       return {
-        type: key + 1,
+        type: item.type,
         name: item.name,
         sum: statistics[item.id]
       }
@@ -84,6 +84,7 @@ Page({
     const type = e.currentTarget.dataset.type;
     this.reset();
     dalay(500); // 防止触发 到底
+    console.log(type)
     this.setData({ navType: type });
     this.getGoodsComment({ goods_id: this.data.goodsId, p: this.data.p, type: this.data.navType });
   },
