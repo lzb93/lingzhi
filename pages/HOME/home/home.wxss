@@ -133,7 +133,7 @@
 
 /* 今日推荐 */
 .hot_wrap {margin: 14rpx 0;}
-.hot_ul {box-sizing:border-box;}
+.hot_ul {box-sizing:border-box;overflow:hidden;}
 
 .jinrituiji image{
   width: 100%;

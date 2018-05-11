@@ -23,7 +23,7 @@
     <block>
       <swiper-item wx:for="{{banners}}" wx:key>
         <navigator url='/pages/HOME/detail/detail?id={{item.goods_id}}'>
-          <image src="../../../images/team-btn.png"></image>
+          <image src="{{http + item.img}}"></image>
         </navigator>
       </swiper-item>
     </block>
@@ -37,7 +37,7 @@
     <image src='../../../images/biaoti.png' mode="widthFix"></image>
   </view>
   <view class="hot_ul">
-      <view class="hot_li clearfix" wx:for="{{goodsList}}" wx:key wx:if='{{index < 2}}'>
+      <view class="hot_li clearfix" wx:for="{{goodsList}}" wx:key >
         <navigator class='clearfix'  url='/pages/HOME/detail/detail?id={{item.goods_id}}'>
 
           <view class="img"><image src='{{host}}&c=Goods&a=goodsThumImages&width=185&height=185&goods_id={{item.goods_id}}' class="slide-image" /></view>
@@ -62,3 +62,10 @@
 
 
 </view>
+ <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>

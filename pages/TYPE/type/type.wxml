@@ -24,7 +24,7 @@
     <view class="content_li clearfix" wx:for="{{items}}" wx:key="{{index}}">
       <navigator url="/pages/HOME/detail/detail?id={{item.goods_id}}">
         <view class="img">
-          <image src="{{host}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
+          <image src="{{http}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}"></image>
         </view>
         <view class="con">
           <view class="tit tx_ov2">{{item.goods_name}}</view>

@@ -31,7 +31,7 @@ Page({
         this.setData({
           // categorys: categorys,
           banners: result.banner,
-          // page: ++this.data.page
+          page: ++this.data.page
         })
       } else {
         app.wxAPI.alert(msg)
@@ -92,7 +92,9 @@ Page({
   getGoodsList() {
     goodsList({ page: this.data.page }).then(({ status, result, msg }) => {
       this.setData({
-        goodsList: result
+        goodsList: result,
+        isAgain: true
+
       })
       this.finish(result)
     })
@@ -103,15 +105,19 @@ Page({
       this.setData({
         goodsList: result.goods,
         secondCategorys: secondCategorys,
-        secondCategory: secondCategorys[0].id
+        secondCategory: secondCategorys[0].id,
+        isAgain: true
       })
 
       this.finish(result.goods);
     })
   },
   onReachBottom() {
+    console.log(this.data.isAgain)
     // if (!dalay(1000)) return;
-    if (!this.data.isAgain) return;
+
+    // if (!this.data.isAgain) return;
+
     this.setData({ isAgain: false });
     const secondCategorys = this.data.secondCategorys;
     if (secondCategorys.length == 0) {
@@ -160,7 +166,7 @@ Page({
 
   //结束处理
   finish(arr) {
-    if (arr.length < 10) {
+    if (arr.length < 8) {
       this.setData({
         isAgain: false,
         isNomore: true
@@ -206,7 +212,7 @@ Page({
   },
   onShareAppMessage(res) {
     return {
-      title: '蚂蚁家云超市',
+      title: '提兴灵芝',
       path: '/pages/HOME/home/home?userId=' + app.userInfo.user_id,
     }
   }

@@ -4,6 +4,7 @@ const App = getApp()
 Page({
   data: {
     host: App.host,
+    http:App.http,
     navbars: [],
     items: [],
     activeNav: 0,
@@ -54,7 +55,8 @@ Page({
     this.setData({ activeNav: index, id: id })
     App.typeMsg = {
       id: id,
-      index: index
+      index: index,
+      p: 0,
     }
     // this.data.id = id
     this.getGoodsList()
@@ -68,7 +70,7 @@ Page({
           let arr = this.data.items.concat(goods_list)
 
           // ...
-          if (this.data.p === 0 && goods_list.length < 10) {
+          if (this.data.p === 0 && goods_list.length < 8) {
             this.setData({ isNomore: true })
           }
           this.setData({
@@ -98,7 +100,8 @@ Page({
     if (!dalay(500)) return
     if (!this.data.isAgain) return
     this.setData({ isAgain: false })
-    this.sort(this.data.url, { p: this.data.p })
+    this.getGoodsList()
+    // this.sort(this.data.url, { p: this.data.p })
   },
   tabSortbar(e) {
     if (!dalay(500)) return

@@ -1,3 +1,7 @@
+page{
+  font-size:28rpx;
+
+}
 .navbar_wrap,
 .sortbar_wrap {position: fixed; top: 0; width: 100%; left: 0; z-index: 9; display: flex; background-color: #fff;}
 .navbar_ul,
