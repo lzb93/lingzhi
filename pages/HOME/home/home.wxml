@@ -40,7 +40,7 @@
       <view class="hot_li clearfix" wx:for="{{goodsList}}" wx:key >
         <navigator class='clearfix'  url='/pages/HOME/detail/detail?id={{item.goods_id}}'>
 
-          <view class="img"><image src='{{host}}&c=Goods&a=goodsThumImages&width=185&height=185&goods_id={{item.goods_id}}' class="slide-image" /></view>
+          <view class="img"><image src='{{host}}&c=Goods&a=goodsThumImages&width=240&height=240&goods_id={{item.goods_id}}' class="slide-image" /></view>
           <view class="info">
             <!-- <view class="">[买二送一]</view> -->
             <view class="name tx_ov2">{{item.goods_name}}</view>

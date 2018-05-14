@@ -11,7 +11,7 @@
     <view class='user_order_body'>
       <view class='seller_content flex_row' bindtap='navigatorDetail'
       data-id="{{good.goods_id}}" wx:for="{{item.order_goods}}" wx:for-item="good" wx:key>
-        <image src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{good.goods_id}}'></image>
+        <image src='{{host}}&c=Goods&a=goodsThumImages&width=180&height=180&goods_id={{good.goods_id}}'></image>
         <view class='seller_text flex_between'>
           <view class='seller_text_inner_left' style='font-size: 24rpx;'>
             <view class='tx_ov2' style='line-height: 36rpx;'>{{good.goods_name}}</view>

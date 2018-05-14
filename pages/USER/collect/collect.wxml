@@ -1,7 +1,7 @@
 <view>
   <view class='product_item flex_row' wx:for="{{items}}" wx:key>
     <view class='product_img' bindtap='openDetail' data-index="{{index}}">
-      <image src='{{host}}c=Goods&a=goodsThumImages&width=180&height=180&goods_id={{item.goods_id}}'></image>
+      <image src='{{host}}c=Goods&a=goodsThumImages&goods_id={{item.goods_id}}'></image>
     </view>
     <view class='product_context'>
       <view class='product_text tx_ov2'>{{item.goods_name}}</view>
