@@ -65,7 +65,7 @@ Page({
     getGoodsList({ category_id: this.data.id, page: this.data.p })
       .then(({ status, result, msg }) => {
         if (status === 1) {
-          console.log(result);
+          // console.log(result);
           let goods_list = result || []
           let arr = this.data.items.concat(goods_list)
 

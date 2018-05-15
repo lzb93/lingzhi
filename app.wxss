@@ -71,7 +71,7 @@ view, navigator, image, input, scroll-view {
   color: #B3B1B2 !important;
 }
 .color_7a {
-  color: #7A7A7C !important;
+  color: #B3B1B2 !important;
 }
 .tr{text-align: right}
 .tc{text-align: center}
@@ -81,3 +81,52 @@ view, navigator, image, input, scroll-view {
 .huang{
   color: #FF9E14;
 }
+
+
+/* 遮罩层 */
+.authorize_bg{
+   position:fixed;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   background-color:rgba(0, 0, 0, 0.5);
+   z-index:9999;
+}
+.authorize_warp{
+  margin: auto;
+  margin-top: 40%;
+  margin-bottom: 50rpx;
+  background: #ffffff;
+  width: 600rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  overflow: hidden;
+
+
+}
+.authorize_img{
+  width: 90rpx;
+  height: 90rpx;
+  margin:50rpx auto 0 auto;
+  
+
+}
+.authorize_text{
+  color: #B6B6B6;
+  line-height: 90rpx;
+
+}
+.authorize_btn{
+  background: none;
+  border: none;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  line-height: 90rpx;
+  overflow: auto;
+  font-size: 34rpx;
+
+}
+.authorize_btn::after{ border: none; } 
+

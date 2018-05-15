@@ -1,4 +1,16 @@
-<!--pages/USER/user/user.wxml-->
+  <!--pages/USER/user/user.wxml-->
+<!-- 个人块未授权 -->
+<view class='authorize_bg'  hidden='{{authorize}}'>
+   <view class='authorize_warp'>
+       <view class='authorize_img'><image src='../../../images/shibai.png'></image></view>  
+       <view class='authorize_text'>授权失败</view>
+       <view class='authorize_btn color_7a' bindtap='quxiao'>取消</view>
+       <button class='authorize_btn' open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">授权</button> 
+   </view>
+     
+
+</view>
+
 <view>
 
    <view class='user_header flex_row'>

@@ -18,20 +18,27 @@ export function getUserInfo(cb) {
       cb && cb(userInfo)
     })
     .catch((e) => {
+      wx.setStorage({
+        key: 'authorize',
+        data: false,
+      })
+      wx.switchTab({
+        url: '/pages/USER/user/user',
+      })
       // 跳转设置 开启授权
-      wxAPI.confirm('请先授权登录哦')
-        .then(wxAPI.openSetting)
-        .then((res) => {
-          if (res.authSetting["scope.userInfo"]) {
-            getUserInfo(cb)
-            wxAPI.toast('授权成功')
-          } else {
-            wxAPI.alert('授权失败')
-          }
-        })
-        .catch(() => {
-          wx.switchTab({ url: '/pages/HOME/home/home' })
-        })
+      // wxAPI.confirm('请先授权登录哦')
+      //   .then(wxAPI.openSetting)
+      //   .then((res) => {
+      //     if (res.authSetting["scope.userInfo"]) {
+      //       getUserInfo(cb)
+      //       wxAPI.toast('授权成功')
+      //     } else {
+      //       wxAPI.alert('授权失败')
+      //     }
+      //   })
+      //   .catch(() => {
+      //     wx.switchTab({ url: '/pages/HOME/home/home' })
+      //   })
     })
 }
 

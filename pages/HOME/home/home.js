@@ -113,7 +113,7 @@ Page({
     })
   },
   onReachBottom() {
-    console.log(this.data.isAgain)
+    // console.log(this.data.isAgain)
     // if (!dalay(1000)) return;
 
     // if (!this.data.isAgain) return;

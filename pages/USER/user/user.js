@@ -4,6 +4,7 @@ const app = getApp();
 Page({
   data: {
     userInfo: '',
+    authorize: true,
     isShowButton: false,
     userNav: [
       {
@@ -88,6 +89,8 @@ Page({
     this.setData({ userInfo: app.userInfo })
   },
   onShow() {
+    let authorize = wx.getStorageSync('authorize')
+    this.setData({ authorize: authorize })
     let token = app.token;
     if (!token) {
       // 没登录处理....
@@ -122,5 +125,38 @@ Page({
         url: `/pages/USER/order/order?type=${type}`
       })
     }
+  },
+  // 授权
+  bindGetUserInfo() {
+    app.getUserInfo(() => {
+      this.setData({ userInfo: app.userInfo })
+    })
+    let that = this;
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              that.setData({
+                authorize: true
+              })
+              wx.setStorage({
+                key: 'authorize',
+                data: true,
+              })
+            }
+          })
+        }
+      },
+      fail: function (error) {
+        
+      }
+    })
+  },
+  quxiao() {
+    this.setData({
+      authorize: true
+    })
   }
 })
