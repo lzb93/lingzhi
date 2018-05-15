@@ -22,8 +22,8 @@
   <swiper class='swiper' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" circular="{{true}}">
     <block>
       <swiper-item wx:for="{{banners}}" wx:key>
-        <navigator url='/pages/HOME/detail/detail?id={{item.goods_id}}'>
-          <image src="{{http + item.img}}"></image>
+        <navigator url='/pages/HOME/detail/detail?id={{item.goods_id}}' >
+          <image src="{{http + item.img}}" mode="widthFix"></image>
         </navigator>
       </swiper-item>
     </block>

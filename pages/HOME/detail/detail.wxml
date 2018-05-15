@@ -74,6 +74,11 @@
       <view>客服</view>
       <button open-type='contact'></button>
     </view>
+    <view class='shouye'>
+      <image src='../../../images/kefu.png'></image>
+      <view>热线</view>
+      <button open-type='contact'></button>
+    </view>
     <view class='shouye' bindtap='collectFn'>
       <image src='../../../images/{{goodsInfo.is_collect ? "icon_checked_collect.png" : "icon_collect.png"}}'></image>
       <view>收藏</view>
