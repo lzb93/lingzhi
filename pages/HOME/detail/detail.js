@@ -22,7 +22,8 @@ Page({
     buyType: 'buy',
     popImg: '',
     defaultPrice: "",
-    selectedSpec: {}
+    selectedSpec: {},
+    kefutop:true
   },
   //切换商品详情和评价
   detailTab(e) {
@@ -206,6 +207,14 @@ Page({
           app.wxAPI.toast("已收藏");
         }
       }
+    })
+  },
+  kefutop(e){
+    this.setData({ kefutop: !this.data.kefutop });
+  },
+  makePhoneCall(e){
+    wx.makePhoneCall({
+      phoneNumber: '18907975577' //仅为示例，并非真实的电话号码
     })
   }
 })

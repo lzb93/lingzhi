@@ -28,7 +28,7 @@
     </view>
   </view>
 
-  <view class='detail_comment'>
+  <!-- <view class='detail_comment'>
     <view class='flex_between align_items'>
       <view class='comment_title'>商品评价（{{goodsInfo.statistics.total_sum}}）</view>
       <navigator class='comment_link' url='/pages/HOME/comment/comment?id={{goodsInfo.goods_id}}' 
@@ -48,7 +48,7 @@
 
       </view>
     </view>
-  </view>
+  </view> -->
 
   <view class='detail_detail'>
     <view class='detail_header'>
@@ -69,16 +69,28 @@
       <image src='../../../images/index.png'></image>
       <view>首页</view>
     </navigator>
-    <view class='shouye'>
+    <view class='shouye' catchtap='kefutop'>
       <image src='../../../images/kefu.png'></image>
       <view>客服</view>
-      <button open-type='contact'></button>
+      <!-- <button open-type='contact'></button> -->
+      <view class='dingweikefu' hidden='{{kefutop}}'>
+        <view class='shouye'>
+          <image src='../../../images/kefu.png'></image>
+          <view>客服</view>
+          <button open-type='contact'></button>
+        </view> 
+
+        <view class='shouye' catchtap='makePhoneCall'>
+          <image src='../../../images/call.png'></image>
+          <view>热线</view>
+        </view>
+      </view>
     </view>
-    <view class='shouye'>
+    <!-- <view class='shouye'>
       <image src='../../../images/kefu.png'></image>
       <view>热线</view>
       <button open-type='contact'></button>
-    </view>
+    </view> -->
     <view class='shouye' bindtap='collectFn'>
       <image src='../../../images/{{goodsInfo.is_collect ? "icon_checked_collect.png" : "icon_collect.png"}}'></image>
       <view>收藏</view>

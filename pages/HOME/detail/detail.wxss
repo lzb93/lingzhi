@@ -278,3 +278,15 @@ page {
   color: #fff;
   text-align: center;
 }
+.dingweikefu{
+  position:absolute;
+  z-index:99;
+  top:0;
+  left:0;
+  margin-top:-170rpx;
+  background:#fff;
+  border: 1px solid #efefef;
+  border-bottom:none; 
+
+
+}

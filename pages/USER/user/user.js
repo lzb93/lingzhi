@@ -25,7 +25,7 @@ Page({
       {
         type: 'WAITCCOMMENT',
         src: '../../../images/finish.png',
-        name: '待评论'
+        name: '完成'
       },
       {
         type: 'RETURN',

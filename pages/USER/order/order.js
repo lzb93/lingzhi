@@ -33,7 +33,7 @@ Page({
         id: 2
       },
       {
-        title: '待评论',
+        title: '完成',
         type: 'WAITCCOMMENT',
         id: 3
       }

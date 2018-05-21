@@ -167,4 +167,4 @@
 .hot_ul .hot_li .price {margin-top: 33rpx;}
 .hot_ul .hot_li .price text:nth-child(1) {font-size: 32rpx; color: #e7283a;}
 /* .hot_ul .hot_li .price text:nth-child(2) {font-size: 22rpx; color: #b7b7b7; margin-left: 10rpx; text-decoration: line-through;} */
-.hot_ul .hot_li .fukuan {font-size: 22rpx; color: #b7b7b7;margin-top: 10rpx;} 
+.hot_ul .hot_li .fukuan {font-size: 22rpx; color: #b7b7b7;margin-top: 18rpx;} 
