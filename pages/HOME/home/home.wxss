@@ -162,7 +162,7 @@
 
 
  .hot_ul .hot_li .info {padding: 20rpx}
-.hot_ul .hot_li .name {font-size: 26rpx; color: #333; min-height: 60rpx; margin-top: 6rpx; line-height:30rpx;
+.hot_ul .hot_li .name {font-size: 26rpx; color: #333; height: 70rpx; margin-top: 6rpx; line-height:34rpx;
 }
 .hot_ul .hot_li .price {margin-top: 33rpx;}
 .hot_ul .hot_li .price text:nth-child(1) {font-size: 32rpx; color: #e7283a;}

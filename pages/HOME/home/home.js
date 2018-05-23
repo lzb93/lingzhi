@@ -49,6 +49,7 @@ Page({
     })
     this.getGoodsList();
   },
+
   tabNavBar(e) {
     const id = e.currentTarget.dataset.id;
     const index = e.currentTarget.dataset.index;

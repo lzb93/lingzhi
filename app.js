@@ -28,6 +28,24 @@ App({
   },
   onLaunch: function (e) {
     this.userInfo.firstLeader = e.query.userId;
-    // getUserInfo();
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              getUserInfo()
+            }
+          })
+        }
+      },
+      fail: function (error) {
+        wx.showModal({
+          title: '警告',
+          content: '您点击了拒绝授权，将无法正常体验购物流程。'
+        })
+
+      }
+    })
   }
 })

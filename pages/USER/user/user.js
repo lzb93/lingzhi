@@ -95,7 +95,14 @@ Page({
     if (!token) {
       // 没登录处理....
       app.getUserInfo(() => {
-        this.setData({ userInfo: app.userInfo })
+        this.setData({
+           userInfo: app.userInfo,
+           authorize: true
+        })
+        wx.setStorage({
+          key: 'authorize',
+          data: true,
+        })
       })
       return
     }

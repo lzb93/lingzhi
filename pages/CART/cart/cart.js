@@ -20,6 +20,14 @@ Page({
   },
   onLoad() {},
   onShow() {
+    let token = app.token;
+    if (!token) {
+      // 没登录处理....
+      app.getUserInfo(() => {
+        this.setData({ userInfo: app.userInfo })
+      })
+      return
+    }
     
     cartList().then(this.render).catch(() => {
       app.wxAPI.alert('登录超时!')

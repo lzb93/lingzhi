@@ -109,6 +109,19 @@ Page({
     })
   },
   sure(e) {
+    let token = app.token;
+    if (!token) {
+      // 没登录处理....
+      this.setData({
+        isShowPop: false,
+        buyType: "buy"
+      })
+      app.getUserInfo(() => {
+        this.setData({ userInfo: app.userInfo })
+      })
+
+      return
+    }
     const buyType = this.data.buyType;
     const selectedSpec = this.data.selectedSpec;
     let params = {
