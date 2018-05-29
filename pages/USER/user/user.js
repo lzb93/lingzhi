@@ -105,6 +105,8 @@ Page({
         })
       })
       return
+    }else{
+      this.setData({ authorize: true })
     }
     this.setData({ userInfo: app.userInfo })
     getButton().then(({status, result, msg}) => {
@@ -164,6 +166,9 @@ Page({
   quxiao() {
     this.setData({
       authorize: true
+    })
+    wx.switchTab({
+      url: '/pages/HOME/home/home',
     })
   }
 })

@@ -38,13 +38,6 @@ App({
             }
           })
         }
-      },
-      fail: function (error) {
-        wx.showModal({
-          title: '警告',
-          content: '您点击了拒绝授权，将无法正常体验购物流程。'
-        })
-
       }
     })
   }

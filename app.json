@@ -68,7 +68,7 @@
         "pagePath": "pages/TYPE/type/type",
         "iconPath": "./images/icon_nav_type_f.png",
         "selectedIconPath": "./images/icon_nav_type_t.png",
-        "text": "分类"
+        "text": "全部"
       },
       {
         "pagePath": "pages/CART/cart/cart",

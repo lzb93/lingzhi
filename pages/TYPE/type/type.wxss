@@ -24,7 +24,7 @@ page{
 .sortbar_ul view {border: 0; width: 120rpx;}
 .sortbar_ul view .icon_sort {width: 22rpx; height: 22rpx; margin-left: 6rpx;}
 
-.content_ul {padding-top: 100rpx; background-color: #fff;}
+.content_ul { background-color: #fff;}
 .content_ul .content_li {padding: 12rpx 26rpx;}
 .content_ul .content_li .img {float: left; width: 200rpx; height: 200rpx;}
 .content_ul .content_li .img image {width: 100%; height: 100%;}

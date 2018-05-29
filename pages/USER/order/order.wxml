@@ -47,8 +47,8 @@
         <view class='footer_btn right btn_pay' wx:if="{{item.order_button.receive_btn}}" 
         data-order_id="{{item.order_id}}" bindtap='confirm'>确认收货</view>
 
-        <!-- <view class='footer_btn right btn_pay' wx:if="{{item.order_button.comment_btn}}"
-        bindtap='comment' data-index="{{index}}">评论</view> -->
+         <view class='footer_btn right btn_pay' 
+        bindtap='comment' data-index="{{index}}">评论</view> 
 
         <view class='footer_btn right btn_cancel' wx:if="{{item.order_button.cancel_btn}}" bindtap='cancelOrder'
         data-index="{{index}}">取消订单</view>

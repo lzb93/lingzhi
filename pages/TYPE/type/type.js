@@ -1,4 +1,4 @@
-import { getCategory, getGoodsList, orderbyDefault } from '../../../services/API.js'
+import { getCategory, getGoodsList, goodsList, orderbyDefault } from '../../../services/API.js'
 import { dalay } from '../../../utils/utils'
 const App = getApp()
 Page({
@@ -18,20 +18,22 @@ Page({
     scrollLeft: 0,
   },
   onLoad() {
-    getCategory()
-      .then(({ status, result, msg }) => {
-        if (status === 1) {
-          this.setData({ navbars: result })
-          if (App.typeMsg.index !== null) {
-            this.setData({ activeNav: App.typeMsg.index, id: App.typeMsg.id })
-          } else {
-            this.setData({ activeNav: 0, id: result[0].id })
-          }
-          this.getGoodsList()
-        } else {
-          App.wxAPI.alert(msg)
-        }
-      })
+    this.goodsList()
+
+    // getCategory()
+    //   .then(({ status, result, msg }) => {
+    //     if (status === 1) {
+    //       this.setData({ navbars: result })
+    //       if (App.typeMsg.index !== null) {
+    //         this.setData({ activeNav: App.typeMsg.index, id: App.typeMsg.id })
+    //       } else {
+    //         this.setData({ activeNav: 0, id: result[0].id })
+    //       }
+          
+    //     } else {
+    //       App.wxAPI.alert(msg)
+    //     }
+    //   })
   },
   onShow() {
     // 模拟点击
@@ -59,7 +61,8 @@ Page({
       p: 0,
     }
     // this.data.id = id
-    this.getGoodsList()
+    // this.getGoodsList()
+    this.goodsList()
   },
   getGoodsList(params) {
     getGoodsList({ category_id: this.data.id, page: this.data.p })
@@ -85,6 +88,31 @@ Page({
         }
       })
   },
+  goodsList(params) {
+    goodsList({page: this.data.p })
+      .then(({ status, result, msg }) => {
+        if (status === 1) {
+          // console.log(result);
+          let goods_list = result || []
+          let arr = this.data.items.concat(goods_list)
+
+          // ...
+          if ( goods_list.length < 8) {
+            this.setData({ isNomore: true })
+          }
+          this.setData({
+            items: arr,
+            allData: result,
+            url: result.orderby_default,
+            p: ++this.data.p
+          })
+ 
+
+        } else {
+          App.wxAPI.alert(msg)
+        }
+      })
+  },
   reset() {
     this.setData({
       items: [],
@@ -100,7 +128,8 @@ Page({
     if (!dalay(500)) return
     if (!this.data.isAgain) return
     this.setData({ isAgain: false })
-    this.getGoodsList()
+    // this.getGoodsList()
+    this.goodsList()
     // this.sort(this.data.url, { p: this.data.p })
   },
   tabSortbar(e) {
